@@ -40,6 +40,20 @@ is revertible.
 - `npm run lint` — eslint
 - `python3 scripts/convert_xlsx.py` — regenerate `src/data/*.json` from the xlsx
 
+## Local testing gotchas (learned the hard way)
+
+- **Testing the PIN gate locally**: the proxy reads env at build time — run BOTH
+  `APP_PIN=… npm run build` and `APP_PIN=… npm run start`, and temporarily comment out
+  the empty `APP_PIN=` line in `.env.local`. (On Vercel env vars are always present at
+  build, so production is unaffected.)
+- **Killing test servers**: Next rewrites its process title to `next-server`, so
+  `pkill -f "next start"` matches nothing and `kill %1` doesn't survive across shell
+  invocations. Kill by port: `lsof -ti :PORT | xargs kill`. Stale servers squat on ports
+  and serve old builds — if test results look impossible, check for them first.
+- Never run `npm run build` while a dev server is running in another terminal — they
+  share `.next` and corrupt each other. If you see `Cannot find module …turbopack…`,
+  `rm -rf .next` and rebuild.
+
 ## Layout
 
 - `src/app/` — App Router pages and API routes

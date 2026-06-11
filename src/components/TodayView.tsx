@@ -92,7 +92,7 @@ function UpNext({ state, today, onPick }: { state: AppState; today: string; onPi
 }
 
 export default function TodayView() {
-  const { state, syncError } = useStore();
+  const { state, syncError, pendingCount } = useStore();
   const params = useSearchParams();
   const today = todayNY();
   const [date, setDate] = useState(() => clampToPlan(params.get("d") ?? today));
@@ -194,10 +194,15 @@ export default function TodayView() {
         </span>
       </div>
 
+      {pendingCount > 0 && (
+        <div className="rounded-xl bg-amber-50 border border-amber-200 px-3.5 py-2 text-xs font-medium text-amber-800 dark:bg-amber-500/15 dark:border-amber-500/30 dark:text-amber-200">
+          ● {pendingCount} change{pendingCount > 1 ? "s" : ""} waiting to sync — saved here,
+          retrying automatically.
+        </div>
+      )}
       {syncError && (
-        <div className="rounded-xl bg-rose-50 border border-rose-200 px-3.5 py-2 text-xs text-rose-700 dark:bg-rose-500/15 dark:border-rose-500/30 dark:text-rose-200">
-          Couldn&apos;t reach the server — changes are saved on this device and will need a refresh
-          once you&apos;re back online.
+        <div className="rounded-xl bg-soft px-3.5 py-2 text-xs text-foreground/55">
+          Offline — showing the last data this device saw.
         </div>
       )}
 
