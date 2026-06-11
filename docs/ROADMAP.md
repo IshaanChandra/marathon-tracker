@@ -41,9 +41,13 @@
 - [x] Travel scenario pickers (Italy Wk 4, Wedding Wk 10) wired to week targets
 - [x] "Adjusted" badge on overridden days
 
-## Phase 5 — Deploy & polish (**user: connect Vercel**)
+## Phase 5 — Deploy & polish
 - [x] PWA manifest + icons
-- [ ] **User: import repo in Vercel, set env vars (APP_PIN, SUPABASE_URL, SUPABASE_SERVICE_KEY)**
+- [x] Deployed to production 2026-06-11: https://marathon-tracker-phi-five.vercel.app
+      (project ishaan-chandra-s-projects/marathon-tracker; env vars APP_PIN,
+      SUPABASE_URL, SUPABASE_SERVICE_KEY set; PIN gate + Supabase sync smoke-tested live)
+- [ ] **User: install Vercel GitHub app so `git push` auto-deploys** —
+      vercel.com/dashboard → marathon-tracker → Settings → Git → Connect GitHub repo
 - [ ] Add-to-Home-Screen tested on real iPhone
 - [ ] Mobile polish pass after real-device testing
 
