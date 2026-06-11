@@ -31,6 +31,15 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   palette; `@custom-variant dark` powers `dark:` chip variants; pre-paint inline script
   in layout.tsx prevents theme flash (`?theme=` param overrides for debugging).
 
+- **2026-06-12 — Feature batch from product research (sharing, Today UX, offline queue,
+  calendar feed, name).** Chosen via a pros/cons review against real usage (one-tap
+  check-off user); rejected push notifications (flaky iOS PWA delivery; calendar feed
+  covers it), Strava import (2026 API terms + manual entry is rare anyway), and friend
+  comments (moderation burden; public read suffices). Key mechanics: write queue in
+  localStorage with last-write-wins collapse (matches server upserts); calendar token
+  salted differently from the auth cookie so the feed URL can never authorize writes;
+  OG card shows the race date instead of a countdown so it never goes stale.
+
 - **2026-06-11 — Auth switched from gate-everything to public-read / PIN-to-write.**
   Ishaan wants to share the site read-only (friends/family can follow training); only
   edits need the PIN, prompted in-page at the moment of the first write. This also fixed

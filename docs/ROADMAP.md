@@ -62,6 +62,13 @@
 
 - [x] 2026-06-11 — Public-read / PIN-to-write auth model + in-page PIN modal
 - [x] 2026-06-11 — "Empire" theme (NYC Marathon blue/orange) + light/dark toggle
+- [x] 2026-06-12 — Share polish: OG card, share button, "Ishaan Chandra" branding
+- [x] 2026-06-12 — Today upgrades: tappable week strip, tomorrow preview, swipe nav
+- [x] 2026-06-12 — Offline write queue (durable check-offs for the Italy trip)
+- [x] 2026-06-12 — Live webcal calendar feed (runs 7–8 AM, lifts 8–9 AM ET)
+- [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
+- [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
+      race-day pacing card (build during taper), milestone celebrations
 
 ## Session log
 

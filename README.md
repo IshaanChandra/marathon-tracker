@@ -17,7 +17,13 @@ live in Supabase as a revertible override layer.
   weeks), Nutrition & Fueling, Paces & plan rationale
 - **Edit any day** — change the workout, skip it, swap with another day this week; every
   edit shows an "Adjusted" badge and can be reverted to the original plan
-- **PIN gate** — one-time PIN per device keeps it private
+- **Public to view, PIN to edit** — share the link with anyone; changes prompt for a
+  one-time PIN per device
+- **Offline-safe** — check-offs queue locally and sync when you're back online
+- **Calendar feed** — subscribe via webcal and every workout (edits included) appears
+  as a morning block in your phone calendar
+- **Share-ready** — links unfurl with a branded card; share button in the nav
+- **Light/dark mode** — Empire theme (NYC Marathon blue/orange), toggle in the nav
 - **PWA** — add to iPhone home screen for an app-like feel
 
 ## Stack
