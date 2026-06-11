@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { EffectiveDay, Run, RunType } from "@/lib/types";
+import type { EffectiveDay, Lift, Run, RunType } from "@/lib/types";
 import { getDay, getWeek, weekDates, RUN_TYPE_LABELS } from "@/lib/plan";
 import { formatWeekday, formatShort } from "@/lib/dates";
 import { useStore } from "@/lib/store";
 
 const RUN_TYPES = Object.keys(RUN_TYPE_LABELS) as RunType[];
+const LIFT_PRESETS = ["Legs", "Chest/Tri", "Back/Bi", "Shoulders/Arms", "Full body"];
 
 /**
  * Bottom-sheet editor. Writes a day_override patch; the plan itself is untouched.
@@ -22,6 +23,7 @@ export default function DayEditor({
   const { state, setOverride } = useStore();
   const planned = getDay(day.date)!; // original, pre-override
   const [run, setRun] = useState<Run | null>(day.run ? { ...day.run } : null);
+  const [lift, setLift] = useState<Lift | null>(day.lift ? { ...day.lift } : null);
   const [skipped, setSkipped] = useState(day.skipped);
 
   const week = getWeek(planned.weekId);
@@ -34,7 +36,7 @@ export default function DayEditor({
 
   const save = () => {
     const existing = state.overrides[day.date] ?? {};
-    setOverride(day.date, { ...existing, run, skipped: skipped || undefined });
+    setOverride(day.date, { ...existing, run, lift, skipped: skipped || undefined });
     onClose();
   };
 
@@ -158,6 +160,57 @@ export default function DayEditor({
               className="w-full rounded-xl border border-dashed border-edge py-3 text-sm font-medium text-foreground/60 hover:bg-soft"
             >
               + Add a run to this day
+            </button>
+          )}
+
+          {/* Lift */}
+          {lift ? (
+            <div className={`space-y-2 ${skipped ? "opacity-40 pointer-events-none" : ""}`}>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-foreground/45">Lift</span>
+                <button
+                  onClick={() => setLift(null)}
+                  className="text-xs font-semibold text-rose-600 dark:text-rose-300"
+                >
+                  Remove lift
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {LIFT_PRESETS.map((p) => (
+                  <button
+                    key={p}
+                    onClick={() => setLift({ ...lift, focus: p })}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                      lift.focus === p
+                        ? "bg-primary text-primary-contrast"
+                        : "bg-soft text-foreground/70 hover:bg-edge"
+                    }`}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </div>
+              <input
+                type="text"
+                value={lift.focus}
+                onChange={(e) => setLift({ ...lift, focus: e.target.value })}
+                placeholder="Focus (e.g. Legs)"
+                className="w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card"
+              />
+              <input
+                type="text"
+                value={lift.notes ?? ""}
+                onChange={(e) => setLift({ ...lift, notes: e.target.value || null })}
+                placeholder="Notes (e.g. RPE 7, light)"
+                className="w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card"
+              />
+            </div>
+          ) : (
+            <button
+              onClick={() => setLift({ focus: "Legs", notes: null })}
+              className="w-full rounded-xl border border-dashed border-edge py-3 text-sm font-medium text-foreground/60 hover:bg-soft"
+            >
+              + Add a lift to this day
             </button>
           )}
 
