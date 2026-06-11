@@ -8,7 +8,7 @@
 - [x] docs/: ARCHITECTURE, DATA_MODEL, ROADMAP, DECISIONS
 - [x] git init + initial commit
 - [x] Install gh CLI
-- [ ] **User runs `gh auth login`**, then create private GitHub repo `marathon-tracker`, push
+- [x] Private GitHub repo created and pushed: github.com/IshaanChandra/marathon-tracker
 
 ## Phase 1 — Data conversion (xlsx → JSON) ✅
 - [x] `scripts/convert_xlsx.py` parsing all 5 sheets
@@ -26,14 +26,15 @@
 - [x] Progress view: stats tiles, streak, weekly planned-vs-done chart, plan timeline
 - [x] Verified in headless Chrome at ~500px and 900px; Jun 10 shows BB-3 Wed 5 mi easy
 
-## Phase 3 — Backend & sync (code ✅, **user: create Supabase project**)
-- [x] `supabase/schema.sql` written (not yet applied — needs Supabase project)
+## Phase 3 — Backend & sync ✅
+- [x] `supabase/schema.sql` applied to project vmtuexysrearwtutssvq
 - [x] API routes: /api/pin, /api/log, /api/override, /api/settings, /api/state
 - [x] Local JSON file fallback (.data/) when Supabase env vars are unset
 - [x] PIN gate via src/proxy.ts (Next 16 middleware) + /pin page — tested: redirect,
       401 on API, wrong PIN rejected, cookie flow works
 - [x] Synced store with optimistic updates + localStorage cache
-- [ ] **User: create Supabase project, run schema.sql, fill env vars**
+- [x] Supabase env vars in .env.local; live round-trip tested (write, read-back, upsert,
+      delete, settings) on 2026-06-10
 
 ## Phase 4 — Editing & adjustments ✅
 - [x] Day editor bottom-sheet: edit run, skip, swap within week, revert
