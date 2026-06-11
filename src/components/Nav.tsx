@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ShareButton from "./ShareButton";
 import ThemeToggle from "./ThemeToggle";
 import { useStore } from "@/lib/store";
 
@@ -38,8 +39,11 @@ export default function Nav() {
       {/* Desktop top bar */}
       <header className="hidden sm:block sticky top-0 z-20 bg-card/80 backdrop-blur border-b border-edge">
         <div className="mx-auto max-w-3xl px-4 h-14 flex items-center gap-6">
-          <span className="font-semibold tracking-tight">
-            NYC <span className="text-accent font-bold">26.2</span>
+          <span className="flex items-baseline gap-2.5">
+            <span className="font-semibold tracking-tight">
+              NYC <span className="text-accent font-bold">26.2</span>
+            </span>
+            <span className="text-xs font-medium text-foreground/45">Ishaan Chandra</span>
           </span>
           <nav className="flex gap-1">
             {TABS.map((t) => (
@@ -58,6 +62,7 @@ export default function Nav() {
           </nav>
           <div className="ml-auto flex items-center gap-2">
             <LockChip />
+            <ShareButton />
             <ThemeToggle />
           </div>
         </div>
@@ -66,6 +71,7 @@ export default function Nav() {
       {/* Mobile top-right cluster */}
       <div className="sm:hidden fixed top-3 right-3 z-20 flex items-center gap-2">
         <LockChip />
+        <ShareButton />
         <ThemeToggle />
       </div>
 

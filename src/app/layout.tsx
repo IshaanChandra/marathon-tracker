@@ -15,14 +15,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_TITLE = "NYC 26.2 — Ishaan Chandra's Marathon Training";
+const SITE_DESCRIPTION =
+  "Following Ishaan's 20-week road to a sub-3:45 at the 2026 NYC Marathon.";
+
 export const metadata: Metadata = {
-  title: "NYC 26.2 — Marathon Tracker",
-  description: "Sub-3:45 NYC Marathon training plan tracker",
+  metadataBase: new URL("https://marathon-tracker-phi-five.vercel.app"),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "NYC 26.2",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: "NYC 26.2",
+    type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
 };
 
