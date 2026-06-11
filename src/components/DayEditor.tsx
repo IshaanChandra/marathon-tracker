@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { EffectiveDay, Lift, Run, RunType } from "@/lib/types";
 import { getDay, getWeek, weekDates, RUN_TYPE_LABELS } from "@/lib/plan";
+import { effectiveDay } from "@/lib/merge";
 import { formatWeekday, formatShort } from "@/lib/dates";
 import { useStore } from "@/lib/store";
 
@@ -46,6 +47,30 @@ export default function DayEditor({
     const partner = state.overrides[day.date]?.swappedWith;
     if (partner) setOverride(partner, null);
     onClose();
+  };
+
+  /** Move this day's (possibly edited) run to another day; this day keeps its lift. */
+  const moveRun = (other: string) => {
+    if (!run) return;
+    setOverride(day.date, { ...state.overrides[day.date], run: null });
+    setOverride(other, { ...state.overrides[other], run });
+    onClose();
+  };
+
+  const moveLift = (other: string) => {
+    if (!lift) return;
+    setOverride(day.date, { ...state.overrides[day.date], lift: null });
+    setOverride(other, { ...state.overrides[other], lift });
+    onClose();
+  };
+
+  /** Short label of what currently lives on a candidate day. */
+  const dayLabel = (d: string) => {
+    const eff = effectiveDay(d, state);
+    if (!eff || eff.skipped) return "—";
+    if (eff.run) return `${eff.run.miles} mi`;
+    if (eff.lift) return `Lift`;
+    return "Rest";
   };
 
   const swapWith = (other: string) => {
@@ -214,11 +239,47 @@ export default function DayEditor({
             </button>
           )}
 
-          {/* Swap */}
+          {/* Move run / lift to another day this week */}
+          {run && swapCandidates.length > 0 && (
+            <div className={skipped ? "opacity-40 pointer-events-none" : ""}>
+              <div className="text-xs font-medium text-foreground/45 mb-2">
+                Move this run to… <span className="text-foreground/35">(replaces what&apos;s there)</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {swapCandidates.map((d) => (
+                  <button
+                    key={d}
+                    onClick={() => moveRun(d)}
+                    className="rounded-lg border border-edge px-3 py-1.5 text-xs font-medium hover:bg-soft"
+                  >
+                    {formatWeekday(d)} <span className="text-foreground/45">· now {dayLabel(d)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {lift && swapCandidates.length > 0 && (
+            <div className={skipped ? "opacity-40 pointer-events-none" : ""}>
+              <div className="text-xs font-medium text-foreground/45 mb-2">Move this lift to…</div>
+              <div className="flex flex-wrap gap-2">
+                {swapCandidates.map((d) => (
+                  <button
+                    key={d}
+                    onClick={() => moveLift(d)}
+                    className="rounded-lg border border-edge px-3 py-1.5 text-xs font-medium hover:bg-soft"
+                  >
+                    {formatWeekday(d)} <span className="text-foreground/45">· now {dayLabel(d)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Swap entire days */}
           {swapCandidates.length > 0 && (
             <div>
               <div className="text-xs font-medium text-foreground/45 mb-2">
-                Swap with another day this week
+                Swap whole day with…
               </div>
               <div className="flex flex-wrap gap-2">
                 {swapCandidates.map((d) => {
