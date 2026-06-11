@@ -42,7 +42,8 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      {/* suppressHydrationWarning: browser extensions inject classes into <body> */}
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <StoreProvider>
           <Nav />
           <main className="mx-auto w-full max-w-3xl px-4 pt-4 pb-24 sm:pb-12 flex-1">
