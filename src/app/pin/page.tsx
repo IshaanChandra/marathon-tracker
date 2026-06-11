@@ -44,13 +44,13 @@ export default function PinPage() {
                 setError(false);
               }}
               className={`w-full rounded-xl border px-4 py-3 text-center text-2xl tracking-[0.5em] focus:outline-none focus:ring-2 ${
-                error ? "border-rose-400 ring-rose-200" : "border-black/10 focus:ring-foreground/20"
+                error ? "border-rose-400 ring-rose-200" : "border-edge focus:ring-primary/40"
               }`}
             />
-            {error && <p className="text-sm text-rose-600 font-medium">Wrong PIN — try again</p>}
+            {error && <p className="text-sm text-rose-600 dark:text-rose-300 font-medium">Wrong PIN — try again</p>}
             <button
               type="submit"
-              className="w-full rounded-xl bg-foreground text-background py-3 font-semibold text-sm"
+              className="w-full rounded-xl bg-primary text-primary-contrast py-3 font-semibold text-sm"
             >
               Unlock
             </button>

@@ -58,6 +58,11 @@
 
 ---
 
+## Post-launch updates
+
+- [x] 2026-06-11 — Public-read / PIN-to-write auth model + in-page PIN modal
+- [x] 2026-06-11 — "Empire" theme (NYC Marathon blue/orange) + light/dark toggle
+
 ## Session log
 
 - **2026-06-10** — Project created. Plan approved (Vercel + Supabase sync, full editing,

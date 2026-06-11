@@ -42,15 +42,15 @@ export default function ScenarioPicker() {
                     onClick={() => setSetting(`travel.${trip}`, { scenario: letter })}
                     className={`rounded-xl border p-3 text-left transition-colors ${
                       active
-                        ? "border-emerald-500 bg-emerald-50 ring-1 ring-emerald-400"
-                        : "border-black/10 hover:bg-black/[.03]"
+                        ? "border-success bg-emerald-50 ring-1 ring-success/60 dark:bg-emerald-500/15"
+                        : "border-edge hover:bg-soft"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-sm">
                         {letter} · {opt.label}
                       </span>
-                      {active && <span className="text-emerald-600 font-bold text-sm">✓</span>}
+                      {active && <span className="text-success font-bold text-sm">✓</span>}
                     </div>
                     <div className="text-xs font-semibold text-foreground/60 mt-1">
                       {opt.miles} mi

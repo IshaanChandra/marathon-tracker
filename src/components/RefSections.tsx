@@ -13,7 +13,7 @@ export default function RefSections({ sections }: { sections: RefSection[] }) {
           )}
           <dl className="space-y-3">
             {section.items.map((item, j) => (
-              <div key={j} className={item.sub ? "pl-4 border-l-2 border-black/10" : ""}>
+              <div key={j} className={item.sub ? "pl-4 border-l-2 border-edge" : ""}>
                 <dt className="font-semibold text-sm">{item.term}</dt>
                 <dd className="text-sm text-foreground/70 mt-0.5">{item.body}</dd>
               </div>

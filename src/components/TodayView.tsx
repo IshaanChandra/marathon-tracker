@@ -31,7 +31,7 @@ export default function TodayView() {
         <button
           onClick={() => setDate(addDays(date, -1))}
           disabled={date <= firstDate}
-          className="w-9 h-9 rounded-full bg-white border border-black/10 grid place-items-center text-foreground/60 disabled:opacity-30"
+          className="w-9 h-9 rounded-full bg-card border border-edge grid place-items-center text-foreground/60 disabled:opacity-30"
           aria-label="Previous day"
         >
           ‹
@@ -43,7 +43,7 @@ export default function TodayView() {
           {date === today ? (
             <div className="text-xs text-foreground/50">{formatLong(date)}</div>
           ) : (
-            <button onClick={() => setDate(clampToPlan(today))} className="text-xs font-medium text-sky-700">
+            <button onClick={() => setDate(clampToPlan(today))} className="text-xs font-medium text-primary">
               Back to today
             </button>
           )}
@@ -51,7 +51,7 @@ export default function TodayView() {
         <button
           onClick={() => setDate(addDays(date, 1))}
           disabled={date >= lastDate}
-          className="w-9 h-9 rounded-full bg-white border border-black/10 grid place-items-center text-foreground/60 disabled:opacity-30"
+          className="w-9 h-9 rounded-full bg-card border border-edge grid place-items-center text-foreground/60 disabled:opacity-30"
           aria-label="Next day"
         >
           ›
@@ -66,12 +66,12 @@ export default function TodayView() {
               Week {week.id} · {week.phase}
             </span>
             {week.isCutback && (
-              <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-teal-50 text-teal-700">
+              <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-teal-50 text-teal-700 dark:bg-teal-500/20 dark:text-teal-200">
                 Cutback
               </span>
             )}
             {week.travel && (
-              <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-amber-50 text-amber-700">
+              <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
                 {week.travel === "italy" ? "Italy" : "Wedding"}
               </span>
             )}
@@ -82,18 +82,18 @@ export default function TodayView() {
         </div>
       )}
 
-      {/* Race countdown */}
-      <div className="card px-4 py-3 flex items-center justify-between text-sm bg-gradient-to-r from-emerald-50 to-white">
+      {/* Race countdown — the orange moment */}
+      <div className="card px-4 py-3 flex items-center justify-between text-sm border-l-4 !border-l-accent bg-gradient-to-r from-orange-50 to-card dark:from-orange-500/15 dark:to-card">
         <span className="font-medium text-foreground/70">
           {plan.meta.race} · {plan.meta.goal}
         </span>
-        <span className="font-bold text-emerald-700">
+        <span className="font-bold text-accent">
           {daysToRace > 0 ? `${daysToRace} days to go` : daysToRace === 0 ? "RACE DAY 🗽" : "Done!"}
         </span>
       </div>
 
       {syncError && (
-        <div className="rounded-xl bg-rose-50 border border-rose-200 px-3.5 py-2 text-xs text-rose-700">
+        <div className="rounded-xl bg-rose-50 border border-rose-200 px-3.5 py-2 text-xs text-rose-700 dark:bg-rose-500/15 dark:border-rose-500/30 dark:text-rose-200">
           Couldn&apos;t reach the server — changes are saved on this device and will need a refresh
           once you&apos;re back online.
         </div>
@@ -104,14 +104,14 @@ export default function TodayView() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {day.adjusted && (
-                <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-violet-100 text-violet-700">
+                <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-violet-100 text-violet-700 dark:bg-violet-500/25 dark:text-violet-200">
                   Adjusted
                 </span>
               )}
             </div>
             <button
               onClick={() => setEditing(true)}
-              className="text-sm font-semibold text-foreground/60 hover:text-foreground rounded-full px-3 py-1 hover:bg-black/5"
+              className="text-sm font-semibold text-primary rounded-full px-3 py-1 hover:bg-soft"
             >
               Edit day
             </button>

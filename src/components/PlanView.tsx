@@ -17,17 +17,17 @@ function DayPill({ day, isToday }: { day: EffectiveDay; isToday: boolean }) {
   return (
     <Link
       href={`/?d=${day.date}`}
-      className={`block rounded-xl border p-2.5 transition-colors hover:bg-black/[.02] ${
-        isToday ? "border-foreground/40 ring-1 ring-foreground/20" : "border-black/5"
-      } ${day.skipped ? "opacity-50" : ""} bg-white`}
+      className={`block rounded-xl border p-2.5 transition-colors hover:bg-soft/60 ${
+        isToday ? "border-primary/60 ring-1 ring-primary/40" : "border-edge/60"
+      } ${day.skipped ? "opacity-50" : ""} bg-card`}
     >
       <div className="flex items-center justify-between text-xs">
         <span className="font-semibold text-foreground/50">
           {day.dow.slice(0, 3)} {formatShort(day.date)}
         </span>
         <span className="flex items-center gap-1">
-          {day.adjusted && <span className="text-violet-500 text-[10px] font-bold">adj</span>}
-          {done && <span className="text-emerald-600 font-bold">✓</span>}
+          {day.adjusted && <span className="text-violet-500 dark:text-violet-300 text-[10px] font-bold">adj</span>}
+          {done && <span className="text-success font-bold">✓</span>}
         </span>
       </div>
       <div className={`mt-1 text-sm font-medium ${day.skipped ? "line-through" : ""}`}>
@@ -89,12 +89,12 @@ function WeekBlock({ week, defaultOpen }: { week: Week; defaultOpen: boolean }) 
         </div>
       </button>
       {totals.done > 0 && (
-        <div className="h-1 bg-black/5">
+        <div className="h-1 bg-soft">
           <div className={`h-full ${style.dot}`} style={{ width: `${pct}%` }} />
         </div>
       )}
       {open && (
-        <div className="p-3 grid gap-1.5 sm:grid-cols-2 bg-black/[.015]">
+        <div className="p-3 grid gap-1.5 sm:grid-cols-2 bg-soft/40">
           {weekDates(week).map((d) => {
             const day = effectiveDay(d, state);
             return day ? <DayPill key={d} day={day} isToday={d === today} /> : null;
@@ -139,14 +139,14 @@ function MonthView() {
                   <Link
                     key={d}
                     href={`/?d=${d}`}
-                    className={`rounded-lg border p-1 min-h-14 flex flex-col items-center justify-between bg-white text-center ${
-                      d === today ? "border-foreground/50 ring-1 ring-foreground/30" : "border-black/5"
+                    className={`rounded-lg border p-1 min-h-14 flex flex-col items-center justify-between bg-card text-center ${
+                      d === today ? "border-primary/70 ring-1 ring-primary/50" : "border-edge/60"
                     } ${day.skipped ? "opacity-40" : ""}`}
                   >
                     <span className="text-[10px] text-foreground/45 font-medium">
                       {Number(d.slice(8))}
                     </span>
-                    <span className={`text-xs font-bold ${done ? "text-emerald-600" : ""}`}>
+                    <span className={`text-xs font-bold ${done ? "text-success" : ""}`}>
                       {day.run ? (done ? "✓" : day.run.miles) : day.lift ? "L" : "·"}
                     </span>
                     <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`} />
@@ -180,13 +180,13 @@ export default function PlanView() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-bold tracking-tight">Plan</h1>
-        <div className="flex rounded-full bg-black/5 p-0.5 text-sm font-medium">
+        <div className="flex rounded-full bg-soft p-0.5 text-sm font-medium">
           {(["week", "month", "full"] as const).map((m) => (
             <button
               key={m}
               onClick={() => pick(m)}
               className={`px-3.5 py-1.5 rounded-full capitalize transition-colors ${
-                mode === m ? "bg-white shadow-sm font-semibold" : "text-foreground/50"
+                mode === m ? "bg-card shadow-sm font-semibold" : "text-foreground/50"
               }`}
             >
               {m}

@@ -1,16 +1,52 @@
 @import "tailwindcss";
 
+/* ---- Empire theme (NYC Marathon: royal blue + marathon orange) ---- */
+
 :root {
-  --background: #f6f7f9;
+  --background: #f4f6fb;
   --foreground: #16181d;
+  --card: #ffffff;
+  --edge: rgb(13 27 66 / 0.1);
+  --soft: rgb(13 27 66 / 0.05);
+  --primary: #1e40af;
+  --primary-contrast: #ffffff;
+  --accent: #f97316;
+  --success: #059669;
+  --success-contrast: #ffffff;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --background: #0e1322;
+  --foreground: #e6eaf5;
+  --card: #18203a;
+  --edge: rgb(214 226 255 / 0.13);
+  --soft: rgb(214 226 255 / 0.07);
+  --primary: #93b4ff;
+  --primary-contrast: #0e1322;
+  --accent: #fb923c;
+  --success: #34d399;
+  --success-contrast: #0e1322;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-edge: var(--edge);
+  --color-soft: var(--soft);
+  --color-primary: var(--primary);
+  --color-primary-contrast: var(--primary-contrast);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-success-contrast: var(--success-contrast);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* dark: utilities key off the data-theme attribute (set pre-paint in layout) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 html {
   /* iOS: prevent tap-zoom jank and rubber-band visual gaps */
@@ -24,10 +60,14 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: var(--card);
   border-radius: 1rem;
-  border: 1px solid rgb(0 0 0 / 0.06);
+  border: 1px solid var(--edge);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+[data-theme="dark"] .card {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
 }
 
 /* Hide number-input spinners (actual miles field) */

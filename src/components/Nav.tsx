@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 import { useStore } from "@/lib/store";
 
 const TABS = [
@@ -17,13 +18,13 @@ function isActive(pathname: string, href: string): boolean {
   return pathname.startsWith(href);
 }
 
-function LockChip({ className }: { className?: string }) {
+function LockChip() {
   const { authed, openPinPrompt } = useStore();
   if (authed) return null;
   return (
     <button
       onClick={openPinPrompt}
-      className={`rounded-full bg-black/5 px-2.5 py-1 text-[11px] font-semibold text-foreground/50 hover:text-foreground ${className ?? ""}`}
+      className="rounded-full bg-soft px-2.5 py-1 text-[11px] font-semibold text-foreground/50 hover:text-foreground"
     >
       🔒 View only
     </button>
@@ -35,9 +36,11 @@ export default function Nav() {
   return (
     <>
       {/* Desktop top bar */}
-      <header className="hidden sm:block sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-black/5">
+      <header className="hidden sm:block sticky top-0 z-20 bg-card/80 backdrop-blur border-b border-edge">
         <div className="mx-auto max-w-3xl px-4 h-14 flex items-center gap-6">
-          <span className="font-semibold tracking-tight">NYC 26.2</span>
+          <span className="font-semibold tracking-tight">
+            NYC <span className="text-accent font-bold">26.2</span>
+          </span>
           <nav className="flex gap-1">
             {TABS.map((t) => (
               <Link
@@ -45,32 +48,36 @@ export default function Nav() {
                 href={t.href}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   isActive(pathname, t.href)
-                    ? "bg-foreground text-background"
-                    : "text-foreground/60 hover:text-foreground hover:bg-black/5"
+                    ? "bg-primary text-primary-contrast"
+                    : "text-foreground/60 hover:text-foreground hover:bg-soft"
                 }`}
               >
                 {t.label}
               </Link>
             ))}
           </nav>
-          <LockChip className="ml-auto" />
+          <div className="ml-auto flex items-center gap-2">
+            <LockChip />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
-      {/* Mobile view-only chip, floating above the bottom nav */}
-      <div className="sm:hidden fixed top-3 right-3 z-20">
+      {/* Mobile top-right cluster */}
+      <div className="sm:hidden fixed top-3 right-3 z-20 flex items-center gap-2">
         <LockChip />
+        <ThemeToggle />
       </div>
 
       {/* Mobile bottom nav */}
-      <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/90 backdrop-blur border-t border-black/10 pb-[env(safe-area-inset-bottom)]">
+      <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-card/90 backdrop-blur border-t border-edge pb-[env(safe-area-inset-bottom)]">
         <div className="grid grid-cols-4">
           {TABS.map((t) => (
             <Link
               key={t.href}
               href={t.href}
               className={`flex flex-col items-center gap-0.5 py-2 text-[11px] font-medium ${
-                isActive(pathname, t.href) ? "text-foreground" : "text-foreground/40"
+                isActive(pathname, t.href) ? "text-primary" : "text-foreground/40"
               }`}
             >
               <span className="text-base leading-none">{t.icon}</span>

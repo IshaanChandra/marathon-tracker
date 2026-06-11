@@ -86,8 +86,8 @@ export default function ProgressView() {
           <span>{Math.round(pctTime)}% through the plan</span>
           <span>Nov 1</span>
         </div>
-        <div className="h-2 rounded-full bg-black/5 overflow-hidden">
-          <div className="h-full bg-emerald-500" style={{ width: `${pctTime}%` }} />
+        <div className="h-2 rounded-full bg-soft overflow-hidden">
+          <div className="h-full bg-success" style={{ width: `${pctTime}%` }} />
         </div>
       </div>
 
@@ -110,7 +110,7 @@ export default function ProgressView() {
                 >
                   {w.id}
                 </span>
-                <div className="flex-1 h-4 rounded bg-black/[.04] relative overflow-hidden">
+                <div className="flex-1 h-4 rounded bg-soft relative overflow-hidden">
                   <div
                     className={`absolute inset-y-0 left-0 rounded opacity-30 ${style.dot}`}
                     style={{ width: `${(planned / maxWeekMiles) * 100}%` }}

@@ -67,8 +67,8 @@ export default function DayEditor({
   return (
     <div className="fixed inset-0 z-30" role="dialog" aria-modal="true">
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
-      <div className="absolute bottom-0 inset-x-0 sm:max-w-lg sm:mx-auto bg-white rounded-t-2xl shadow-xl max-h-[85dvh] overflow-y-auto pb-[env(safe-area-inset-bottom)]">
-        <div className="sticky top-0 bg-white px-5 pt-4 pb-3 border-b border-black/5 flex items-center justify-between">
+      <div className="absolute bottom-0 inset-x-0 sm:max-w-lg sm:mx-auto bg-card rounded-t-2xl shadow-xl max-h-[85dvh] overflow-y-auto pb-[env(safe-area-inset-bottom)]">
+        <div className="sticky top-0 bg-card px-5 pt-4 pb-3 border-b border-edge/60 flex items-center justify-between">
           <h2 className="font-semibold">
             Edit {formatWeekday(day.date)} {formatShort(day.date)}
           </h2>
@@ -85,7 +85,7 @@ export default function DayEditor({
               type="checkbox"
               checked={skipped}
               onChange={(e) => setSkipped(e.target.checked)}
-              className="w-5 h-5 accent-emerald-600"
+              className="w-5 h-5 accent-success"
             />
           </label>
 
@@ -101,7 +101,7 @@ export default function DayEditor({
                     step="0.5"
                     value={run.miles}
                     onChange={(e) => patchRun({ miles: Number(e.target.value) || 0 })}
-                    className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm"
+                    className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm"
                   />
                 </label>
                 <label className="block">
@@ -109,7 +109,7 @@ export default function DayEditor({
                   <select
                     value={run.type}
                     onChange={(e) => patchRun({ type: e.target.value as RunType })}
-                    className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-white"
+                    className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card"
                   >
                     {RUN_TYPES.map((t) => (
                       <option key={t} value={t}>
@@ -126,7 +126,7 @@ export default function DayEditor({
                   value={run.pace ?? run.hrZone ?? ""}
                   onChange={(e) => patchRun({ pace: e.target.value || null })}
                   placeholder="e.g. 8:35 or HR 135-145"
-                  className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm"
+                  className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm"
                 />
               </label>
               <label className="block">
@@ -136,7 +136,7 @@ export default function DayEditor({
                   value={run.structure ?? ""}
                   onChange={(e) => patchRun({ structure: e.target.value || null })}
                   placeholder="e.g. 2 mi wu + 4 mi tempo + 1 mi cd"
-                  className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm"
+                  className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm"
                 />
               </label>
               <label className="block">
@@ -146,7 +146,7 @@ export default function DayEditor({
                   value={run.fueling ?? ""}
                   onChange={(e) => patchRun({ fueling: e.target.value || null })}
                   placeholder="e.g. 3 gels + 2 SaltStick + water"
-                  className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm"
+                  className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm"
                 />
               </label>
             </div>
@@ -155,7 +155,7 @@ export default function DayEditor({
               onClick={() =>
                 setRun({ miles: 4, type: "easy", hrZone: "HR 135-145", pace: null, structure: null, fueling: null })
               }
-              className="w-full rounded-xl border border-dashed border-black/20 py-3 text-sm font-medium text-foreground/60 hover:bg-black/5"
+              className="w-full rounded-xl border border-dashed border-edge py-3 text-sm font-medium text-foreground/60 hover:bg-soft"
             >
               + Add a run to this day
             </button>
@@ -174,7 +174,7 @@ export default function DayEditor({
                     <button
                       key={d}
                       onClick={() => swapWith(d)}
-                      className="rounded-lg border border-black/10 px-3 py-1.5 text-xs font-medium hover:bg-black/5"
+                      className="rounded-lg border border-edge px-3 py-1.5 text-xs font-medium hover:bg-soft"
                     >
                       {formatWeekday(d)} ·{" "}
                       {pd.run ? `${pd.run.miles} mi` : pd.lift ? pd.lift.focus : "Rest"}
@@ -189,14 +189,14 @@ export default function DayEditor({
           <div className="flex gap-2 pt-1">
             <button
               onClick={save}
-              className="flex-1 rounded-xl bg-foreground text-background py-3 font-semibold text-sm"
+              className="flex-1 rounded-xl bg-primary text-primary-contrast py-3 font-semibold text-sm"
             >
               Save changes
             </button>
             {day.adjusted && (
               <button
                 onClick={revert}
-                className="rounded-xl border border-black/10 px-4 py-3 font-semibold text-sm text-rose-600 hover:bg-rose-50"
+                className="rounded-xl border border-edge px-4 py-3 font-semibold text-sm text-rose-600 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-500/15"
               >
                 Revert to plan
               </button>

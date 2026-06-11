@@ -19,13 +19,13 @@ function CheckButton({
       onClick={onToggle}
       className={`shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
         done
-          ? "bg-emerald-600 text-white"
-          : "bg-black/5 text-foreground/70 hover:bg-black/10"
+          ? "bg-success text-success-contrast"
+          : "bg-primary/10 text-primary hover:bg-primary/20"
       }`}
     >
       <span
         className={`grid place-items-center w-5 h-5 rounded-full border-2 text-[11px] ${
-          done ? "border-white/70" : "border-foreground/30"
+          done ? "border-success-contrast/60" : "border-primary/40"
         }`}
       >
         {done ? "✓" : ""}
@@ -109,14 +109,14 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
           </dl>
 
           {day.run.fueling && (
-            <div className="mt-3 rounded-xl bg-amber-50 border border-amber-200/60 px-3.5 py-2.5 text-sm">
-              <span className="font-semibold text-amber-900">Fueling · </span>
-              <span className="text-amber-900/90">{day.run.fueling}</span>
+            <div className="mt-3 rounded-xl bg-amber-50 border border-amber-200/60 px-3.5 py-2.5 text-sm dark:bg-amber-500/15 dark:border-amber-500/30">
+              <span className="font-semibold text-amber-900 dark:text-amber-200">Fueling · </span>
+              <span className="text-amber-900/90 dark:text-amber-100/90">{day.run.fueling}</span>
             </div>
           )}
 
           {/* Actuals */}
-          <div className="mt-4 pt-3 border-t border-black/5 grid grid-cols-2 gap-2">
+          <div className="mt-4 pt-3 border-t border-edge/60 grid grid-cols-2 gap-2">
             <label className="block">
               <span className="text-xs font-medium text-foreground/45">Actual miles</span>
               <input
@@ -129,7 +129,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
                   patchLog({ actualMiles: e.target.value === "" ? null : Number(e.target.value) })
                 }
                 placeholder={String(day.run.miles)}
-                className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-foreground/20"
+                className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
             </label>
             <label className="block">
@@ -140,7 +140,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
                 key={`${day.date}-pace-${log.actualPace}`}
                 onBlur={(e) => patchLog({ actualPace: e.target.value || null })}
                 placeholder="9:45"
-                className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-foreground/20"
+                className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
             </label>
           </div>
@@ -151,7 +151,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
         <div className="card p-5">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-stone-200 text-stone-700">
+              <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-stone-200 text-stone-700 dark:bg-stone-500/25 dark:text-stone-200">
                 Lift
               </span>
               <div className="mt-1.5 text-xl font-bold tracking-tight">{day.lift.focus}</div>
@@ -170,7 +170,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
 
       {!day.run && !day.lift && (
         <div className="card p-5">
-          <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-slate-100 text-slate-600">
+          <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-slate-100 text-slate-600 dark:bg-slate-500/25 dark:text-slate-300">
             Rest
           </span>
           <p className="mt-2 text-foreground/70">{day.notes ?? "Rest day — stretch and recover."}</p>
@@ -187,7 +187,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
             onBlur={(e) => patchLog({ notes: e.target.value || null })}
             placeholder="How did it feel?"
             rows={2}
-            className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-foreground/20 resize-none"
+            className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
           />
         </label>
       </div>

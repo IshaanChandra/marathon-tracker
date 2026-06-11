@@ -21,6 +21,16 @@ Append-only. Newest at the bottom. Format: date — decision — why.
 - **2026-06-10 — Dates as YYYY-MM-DD strings, America/New_York semantics.** Avoids the
   classic UTC-parsing off-by-one (a 10pm check-off must land on the right day).
 
+- **2026-06-11 — "Empire" color theme + light/dark toggle.** Ishaan wanted more color
+  than the original monochrome and a dark mode. Researched NYC Marathon branding
+  (NYC-flag blue + orange) and dark-mode practice (soft navy, not pure black; desaturated
+  accents); he picked Empire over Sunrise/Central Park/Volt options, with a simple
+  2-state toggle (no system/auto). Implementation: semantic CSS vars in globals.css
+  (`--card/--edge/--soft/--primary/--accent/--success`) mapped via `@theme inline` to
+  utilities (`bg-card`, `border-edge`, `text-primary`…); `[data-theme=dark]` swaps the
+  palette; `@custom-variant dark` powers `dark:` chip variants; pre-paint inline script
+  in layout.tsx prevents theme flash (`?theme=` param overrides for debugging).
+
 - **2026-06-11 — Auth switched from gate-everything to public-read / PIN-to-write.**
   Ishaan wants to share the site read-only (friends/family can follow training); only
   edits need the PIN, prompted in-page at the moment of the first write. This also fixed
