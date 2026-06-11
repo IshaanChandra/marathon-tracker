@@ -101,7 +101,6 @@ export default function TodayView() {
 
   const day = effectiveDay(date, state);
   const week = day ? getWeek(day.weekId) : null;
-  const style = phaseStyle(week?.phase ?? "");
   const totals = week ? weekTotals(week, state) : null;
   const target = week ? weekTarget(week, state, plan.scenarios) : null;
   const daysToRace = daysBetween(today, plan.meta.raceDate);
@@ -125,74 +124,77 @@ export default function TodayView() {
 
   return (
     <div className="space-y-4" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      {/* Header: date nav + countdown */}
-      <div className="flex items-center justify-between">
-        <button
-          onClick={() => step(-1)}
-          disabled={date <= firstDate}
-          className="w-9 h-9 rounded-full bg-card border border-edge grid place-items-center text-foreground/60 disabled:opacity-30"
-          aria-label="Previous day"
-        >
-          ‹
-        </button>
-        <div className="text-center">
-          <h1 className="text-lg font-bold tracking-tight">
-            {date === today ? "Today" : formatLong(date)}
-          </h1>
-          {date === today ? (
-            <div className="text-xs text-foreground/50">{formatLong(date)}</div>
-          ) : (
-            <button onClick={() => setDate(clampToPlan(today))} className="text-xs font-medium text-primary">
-              Back to today
-            </button>
-          )}
+      {/* Hero: date nav + week summary + countdown on the Empire gradient */}
+      <div className="rounded-2xl bg-gradient-to-br from-blue-800 via-blue-700 to-orange-600 dark:from-blue-950 dark:via-blue-900 dark:to-orange-900 text-white shadow-md px-4 pt-4 pb-3.5 space-y-3">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => step(-1)}
+            disabled={date <= firstDate}
+            className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 grid place-items-center disabled:opacity-30 transition-colors"
+            aria-label="Previous day"
+          >
+            ‹
+          </button>
+          <div className="text-center">
+            <h1 className="text-lg font-bold tracking-tight">
+              {date === today ? "Today" : formatLong(date)}
+            </h1>
+            {date === today ? (
+              <div className="text-xs text-white/70">{formatLong(date)}</div>
+            ) : (
+              <button
+                onClick={() => setDate(clampToPlan(today))}
+                className="text-xs font-semibold text-white/90 underline underline-offset-2"
+              >
+                Back to today
+              </button>
+            )}
+          </div>
+          <button
+            onClick={() => step(1)}
+            disabled={date >= lastDate}
+            className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 grid place-items-center disabled:opacity-30 transition-colors"
+            aria-label="Next day"
+          >
+            ›
+          </button>
         </div>
-        <button
-          onClick={() => step(1)}
-          disabled={date >= lastDate}
-          className="w-9 h-9 rounded-full bg-card border border-edge grid place-items-center text-foreground/60 disabled:opacity-30"
-          aria-label="Next day"
-        >
-          ›
-        </button>
+
+        <div className="flex items-center justify-between gap-2 text-xs font-semibold">
+          <div className="flex items-center gap-1.5 min-w-0">
+            {week && (
+              <span className="rounded-full bg-white/15 px-2.5 py-1 whitespace-nowrap">
+                Wk {week.id} · {week.phase}
+              </span>
+            )}
+            {week?.isCutback && (
+              <span className="rounded-full bg-white/15 px-2 py-1">Cutback</span>
+            )}
+            {week?.travel && (
+              <span className="rounded-full bg-white/15 px-2 py-1">
+                {week.travel === "italy" ? "Italy" : "Wedding"}
+              </span>
+            )}
+            <span className="text-white/75 font-medium whitespace-nowrap pl-0.5">
+              {totals?.done ?? 0} / {target?.text ?? ""}
+            </span>
+          </div>
+          <span className="whitespace-nowrap">
+            {daysToRace > 0
+              ? `${daysToRace} days to NYC 🗽`
+              : daysToRace === 0
+                ? "RACE DAY 🗽"
+                : "Done!"}
+          </span>
+        </div>
       </div>
 
-      {/* Week context: badges, weekly progress, tappable day strip */}
+      {/* Tappable week strip */}
       {week && (
-        <div className="card px-3 py-3 space-y-2.5">
-          <div className="flex items-center justify-between gap-2 text-sm px-1">
-            <div className="flex items-center gap-2 min-w-0">
-              <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${style.chip}`}>
-                Week {week.id} · {week.phase}
-              </span>
-              {week.isCutback && (
-                <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-teal-50 text-teal-700 dark:bg-teal-500/20 dark:text-teal-200">
-                  Cutback
-                </span>
-              )}
-              {week.travel && (
-                <span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
-                  {week.travel === "italy" ? "Italy" : "Wedding"}
-                </span>
-              )}
-            </div>
-            <div className="text-foreground/55 font-medium whitespace-nowrap">
-              {totals?.done ?? 0} / {target?.text ?? ""}
-            </div>
-          </div>
+        <div className="card px-3 py-2">
           <WeekStrip week={week} state={state} date={date} today={today} onPick={setDate} />
         </div>
       )}
-
-      {/* Race countdown — the orange moment */}
-      <div className="card px-4 py-3 flex items-center justify-between text-sm border-l-4 !border-l-accent bg-gradient-to-r from-orange-50 to-card dark:from-orange-500/15 dark:to-card">
-        <span className="font-medium text-foreground/70">
-          {plan.meta.race} · {plan.meta.goal}
-        </span>
-        <span className="font-bold text-accent">
-          {daysToRace > 0 ? `${daysToRace} days to go` : daysToRace === 0 ? "RACE DAY 🗽" : "Done!"}
-        </span>
-      </div>
 
       {pendingCount > 0 && (
         <div className="rounded-xl bg-amber-50 border border-amber-200 px-3.5 py-2 text-xs font-medium text-amber-800 dark:bg-amber-500/15 dark:border-amber-500/30 dark:text-amber-200">

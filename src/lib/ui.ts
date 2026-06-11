@@ -53,6 +53,37 @@ export function phaseStyle(phase: string): PhaseStyle {
   return PHASE_STYLES[phase] ?? PHASE_STYLES["Base Building"];
 }
 
+/**
+ * Workout-card surface tint per run type: gradient wash + left edge.
+ * Color is information — every day looks different because the workout is.
+ */
+export const RUN_TYPE_TINT: Record<string, string> = {
+  easy: "from-sky-100/80 !border-l-sky-400 dark:from-sky-500/15",
+  long: "from-indigo-100/80 !border-l-indigo-400 dark:from-indigo-500/15",
+  hills: "from-amber-100/80 !border-l-amber-400 dark:from-amber-500/15",
+  threshold: "from-rose-100/80 !border-l-rose-400 dark:from-rose-500/15",
+  vo2: "from-violet-100/80 !border-l-violet-400 dark:from-violet-500/15",
+  tempo: "from-rose-100/80 !border-l-rose-400 dark:from-rose-500/15",
+  mp: "from-orange-100/80 !border-l-orange-400 dark:from-orange-500/15",
+  shakeout: "from-slate-100/80 !border-l-slate-300 dark:from-slate-500/15",
+  strides: "from-slate-100/80 !border-l-slate-300 dark:from-slate-500/15",
+  race: "from-emerald-100 !border-l-emerald-500 dark:from-emerald-500/20",
+};
+
+/** Thin left-edge accent for compact day pills in the Plan views. */
+export const RUN_TYPE_EDGE: Record<string, string> = {
+  easy: "!border-l-sky-400",
+  long: "!border-l-indigo-400",
+  hills: "!border-l-amber-400",
+  threshold: "!border-l-rose-400",
+  vo2: "!border-l-violet-400",
+  tempo: "!border-l-rose-400",
+  mp: "!border-l-orange-400",
+  shakeout: "!border-l-slate-300",
+  strides: "!border-l-slate-300",
+  race: "!border-l-emerald-500",
+};
+
 /** Hard sessions pop; easy days stay quiet. */
 export const RUN_TYPE_CHIP: Record<string, string> = {
   easy: "bg-sky-100 text-sky-700 dark:bg-sky-500/25 dark:text-sky-200",

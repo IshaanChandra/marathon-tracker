@@ -31,6 +31,12 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   palette; `@custom-variant dark` powers `dark:` chip variants; pre-paint inline script
   in layout.tsx prevents theme flash (`?theme=` param overrides for debugging).
 
+- **2026-06-12 — Light-mode color pass: type-tinted cards + gradient hero.** Ishaan found
+  light mode grey/flat. Chose (A) workout cards tinted by run type — color as information,
+  every day looks like its workout — and (C) a blue→orange gradient hero merging date nav,
+  week summary, and countdown. Rejected for now: blue chrome nav, background gradients.
+  Tab title shortened to "Ishaan's NYC 26.2".
+
 - **2026-06-12 — Feature batch from product research (sharing, Today UX, offline queue,
   calendar feed, name).** Chosen via a pros/cons review against real usage (one-tap
   check-off user); rejected push notifications (flaky iOS PWA delivery; calendar feed

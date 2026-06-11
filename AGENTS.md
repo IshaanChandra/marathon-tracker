@@ -53,6 +53,10 @@ is revertible.
 - Never run `npm run build` while a dev server is running in another terminal — they
   share `.next` and corrupt each other. If you see `Cannot find module …turbopack…`,
   `rm -rf .next` and rebuild.
+- **Never pipe `npm run build` through `head`** (e.g. `npm run build | grep X | head -3`):
+  once `head` exits, SIGPIPE kills the build mid-write and leaves `.next` half-built
+  (symptom: `✓ Compiled` followed by missing `pages-manifest.json` / `middleware-manifest`
+  at start). Redirect to a file (`npm run build > /tmp/build.log 2>&1`), then grep that.
 
 ## Layout
 

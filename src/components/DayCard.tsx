@@ -2,7 +2,7 @@
 
 import type { EffectiveDay } from "@/lib/types";
 import { RUN_TYPE_LABELS } from "@/lib/plan";
-import { RUN_TYPE_CHIP } from "@/lib/ui";
+import { RUN_TYPE_CHIP, RUN_TYPE_TINT } from "@/lib/ui";
 import { useStore } from "@/lib/store";
 
 function CheckButton({
@@ -59,7 +59,11 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
   return (
     <div className="space-y-3">
       {day.run && (
-        <div className="card p-5">
+        <div
+          className={`rounded-2xl border border-edge border-l-4 bg-card bg-gradient-to-br to-card shadow-sm p-5 ${
+            RUN_TYPE_TINT[day.run.type] ?? RUN_TYPE_TINT.easy
+          }`}
+        >
           <div className="flex items-start justify-between gap-3">
             <div>
               <span
@@ -148,7 +152,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
       )}
 
       {day.lift && (
-        <div className="card p-5">
+        <div className="rounded-2xl border border-edge border-l-4 !border-l-stone-400 bg-card bg-gradient-to-br from-stone-200/50 to-card shadow-sm p-5 dark:from-stone-500/15">
           <div className="flex items-center justify-between gap-3">
             <div>
               <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-stone-200 text-stone-700 dark:bg-stone-500/25 dark:text-stone-200">

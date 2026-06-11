@@ -5,7 +5,7 @@ import Link from "next/link";
 import { plan, getWeek, weekDates, weekForDate, allDates, RUN_TYPE_LABELS } from "@/lib/plan";
 import { effectiveDay, weekTotals, weekTarget } from "@/lib/merge";
 import { formatShort, monthKey, monthLabel, todayNY } from "@/lib/dates";
-import { phaseStyle, RUN_TYPE_CHIP } from "@/lib/ui";
+import { phaseStyle, RUN_TYPE_CHIP, RUN_TYPE_EDGE } from "@/lib/ui";
 import { useStore } from "@/lib/store";
 import type { EffectiveDay, Week } from "@/lib/types";
 
@@ -19,7 +19,9 @@ function DayPill({ day, isToday }: { day: EffectiveDay; isToday: boolean }) {
       href={`/?d=${day.date}`}
       className={`block rounded-xl border p-2.5 transition-colors hover:bg-soft/60 ${
         isToday ? "border-primary/60 ring-1 ring-primary/40" : "border-edge/60"
-      } ${day.skipped ? "opacity-50" : ""} bg-card`}
+      } ${day.skipped ? "opacity-50" : ""} ${
+        day.run ? `border-l-[3px] ${RUN_TYPE_EDGE[day.run.type] ?? ""}` : ""
+      } bg-card`}
     >
       <div className="flex items-center justify-between text-xs">
         <span className="font-semibold text-foreground/50">

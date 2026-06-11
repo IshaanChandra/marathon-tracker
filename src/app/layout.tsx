@@ -21,7 +21,7 @@ const SITE_DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://marathon-tracker-phi-five.vercel.app"),
-  title: SITE_TITLE,
+  title: "Ishaan's NYC 26.2",
   description: SITE_DESCRIPTION,
   manifest: "/manifest.webmanifest",
   appleWebApp: {
