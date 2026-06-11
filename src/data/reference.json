@@ -1,0 +1,706 @@
+{
+  "travel": [
+    {
+      "heading": "TRAVEL ADJUSTMENTS \u2014 Italy (Jul 2-12) + Wedding (Aug 14-25)",
+      "items": []
+    },
+    {
+      "heading": "CORE PRINCIPLE",
+      "items": [
+        {
+          "term": "Don't make up missed miles",
+          "body": "Single biggest injury cause for travelers: jumping back to full mileage too fast. Resume at the planned week's volume, not the missed week's volume.",
+          "sub": false
+        },
+        {
+          "term": "Travel = built-in rest",
+          "body": "1-2 weeks of REDUCED running (even half mileage) loses minimal aerobic fitness. Tissue adaptation slows but doesn't reverse. The plan absorbs this.",
+          "sub": false
+        },
+        {
+          "term": "Three scenarios per trip",
+          "body": "Have a Good / Realistic / Minimal version so you can adapt based on how the trip actually unfolds. Land at Minimal? Fine. Don't catastrophize.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "TRIP 1: ITALY \u2014 Jul 2 (night) to Jul 12",
+      "items": [
+        {
+          "term": "Weeks affected",
+          "body": "Wk 3 (Jun 29-Jul 5): partial \u2014 at home Mon-Thu, travel Thu night, in Italy Fri-Sun. Wk 4 (Jul 6-12): all in Italy.",
+          "sub": false
+        },
+        {
+          "term": "Lift access",
+          "body": "No gym \u2014 bodyweight only. Push-ups, pull-ups (find a bar/doorway), squats, lunges, plank, glute bridges. 20-30 min, 3-4x during the trip.",
+          "sub": false
+        },
+        {
+          "term": "Wk 3 adjusted target",
+          "body": "25-28 mi (vs original 30). Get Mon-Thu morning runs done at home as planned. Sat long run in Italy at 8-10 mi (shorter than planned 13 \u2014 jetlag, exploring).",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "Wk 4 \u2014 pick the scenario that fits your trip",
+      "items": [
+        {
+          "term": "Scenario A (Good)",
+          "body": "22-26 mi. 4 runs of 5-6 mi + 1 longer 8-10 mi. Treat as a cutback week.",
+          "sub": true
+        },
+        {
+          "term": "Scenario B (Realistic)",
+          "body": "15-20 mi. 3 runs of 4-6 mi + 1 medium 7-8 mi. Still a real cutback. EXPECTED DEFAULT.",
+          "sub": true
+        },
+        {
+          "term": "Scenario C (Minimal)",
+          "body": "8-12 mi. 2-3 short runs of 3-5 mi only. Bodyweight on other days. Walk a lot.",
+          "sub": true
+        },
+        {
+          "term": "Coming back (Wk 5)",
+          "body": "Resume planned 31 mi. Don't try to make up Italy. Easy days the first 3-4 days back will feel harder due to jetlag \u2014 HR will be higher at same pace, so pace will be slower. That's correct, not a problem.",
+          "sub": false
+        },
+        {
+          "term": "Italy-specific tips",
+          "body": "Hot in July. Run early morning (cooler + before tourist crowds). Hydration discipline \u2014 easy to under-drink on vacation. Practice gel + water on long run if you can carry it.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "TRIP 2: WEDDING \u2014 Aug 14-25 (STRUCTURAL REDESIGN)",
+      "items": [
+        {
+          "term": "Why this is different",
+          "body": "Original plan had Wk 10 as the SHARPEST hill week (37 mi, peak hill repeats). That can't happen during a wedding trip. The Wk 9-10-11 block has been redesigned in the main plan.",
+          "sub": false
+        },
+        {
+          "term": "The swap",
+          "body": "Old: Wk 9 cutback (29) \u2192 Wk 10 peak hills (37) \u2192 Wk 11 build (38). New: Wk 9 peak hills (37) \u2192 Wk 10 travel cutback (15-25) \u2192 Wk 11 conservative bounce (33).",
+          "sub": false
+        },
+        {
+          "term": "Wk 9 \u2014 DO HARD WORK BEFORE TRIP",
+          "body": "Move the peak hill workout to Wednesday and the long run to Thursday so they're done before you fly Friday Aug 14. If you can only manage one before leaving, prioritize the LONG RUN over the hill workout (long run is harder to replace on the road).",
+          "sub": false
+        },
+        {
+          "term": "Wk 9 schedule",
+          "body": "Mon Legs / Tue 6 + Chest-Tri / WED HILL REPEATS / THU 14-mile long run / Fri travel + Sh-Arms or skip / Sat-Sun rest or short shakeouts at the trip.",
+          "sub": false
+        },
+        {
+          "term": "Lift access on trip",
+          "body": "Hotel gym available. Do Chest/Tri and Back/Bi if energy allows. SKIP LEGS this week \u2014 they need rest from Wk 9's hill work anyway.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "Wk 10 \u2014 pick the scenario",
+      "items": [
+        {
+          "term": "Scenario A (Good)",
+          "body": "20-25 mi. 3 hotel treadmill runs of 4-5 mi + 1 outdoor 8-10 mi. 2 hotel gym lifts (upper-body only).",
+          "sub": true
+        },
+        {
+          "term": "Scenario B (Realistic)",
+          "body": "12-18 mi. 2-3 short runs of 4-5 mi + 1 medium 6-8 mi. 1-2 upper-body lifts. EXPECTED DEFAULT.",
+          "sub": true
+        },
+        {
+          "term": "Scenario C (Minimal)",
+          "body": "6-10 mi. 2 short hotel treadmill runs. Walk a lot. 0-1 lifts.",
+          "sub": true
+        },
+        {
+          "term": "Wedding days specifically",
+          "body": "Don't even try to run the wedding day itself or the day after if it's a late night. Sleep matters more than mileage.",
+          "sub": false
+        },
+        {
+          "term": "Wk 11 \u2014 RECONSERVATIVE BOUNCE",
+          "body": "Reduced from original 38 mi to 33 mi. Long run drops from 16 to 12 mi. Threshold workout shortened from 3 x 1 mi to 2 x 1 mi. Don't snap back to full volume.",
+          "sub": false
+        },
+        {
+          "term": "Wk 12 onward",
+          "body": "Resume original plan at 40 mi. The August trip costs ~15 miles total across Wks 10-11. That's a fair price; the plan absorbs it.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "GENERAL TRAVEL RUNNING TIPS",
+      "items": [
+        {
+          "term": "Pack the essentials",
+          "body": "Shoes, 3-4 pairs running socks, 2-3 lightweight running shirts/shorts, watch + charger, gels (TSA OK), SaltStick caps, body glide. Hat optional but helpful.",
+          "sub": false
+        },
+        {
+          "term": "Treadmill \u2260 outdoor",
+          "body": "Treadmill is fine for easy mileage. Set 1% incline to roughly approximate outdoor effort. Don't try hard workouts on treadmills in hotel gyms \u2014 they're often low quality and uneven.",
+          "sub": false
+        },
+        {
+          "term": "Heat / time zone adjustments",
+          "body": "Run early morning when traveling east (your body still thinks it's earlier \u2014 easier to wake up). Hydrate aggressively the first 2-3 days; jetlag dehydrates. Don't try to PR a workout in the first 4-5 days.",
+          "sub": false
+        },
+        {
+          "term": "Hotel bodyweight session (~25 min)",
+          "body": "3 rounds of: 15 push-ups, 15 bodyweight squats, 10 lunges/leg, 30s plank, 12 glute bridges. Optional: pull-ups if a bar is available. Maintains movement patterns; doesn't replace your lifts but keeps you out of the hole.",
+          "sub": false
+        },
+        {
+          "term": "When to call it",
+          "body": "If you're getting <5 hours sleep, traveling all day, or hungover from wedding \u2014 REST. A skipped run on poor sleep is better than a run that wrecks tomorrow.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "RED FLAGS \u2014 STOP AND ADJUST",
+      "items": [
+        {
+          "term": "Pain that doesn't fade",
+          "body": "Calf/achilles tightness in mile 1-2 that fades = normal. Pain that gets WORSE during a run, or any sharp pain = stop. Don't 'push through' on vacation when medical access is unfamiliar.",
+          "sub": false
+        },
+        {
+          "term": "Excessive fatigue on return",
+          "body": "If easy pace HR is 10+ bpm higher than normal for 3+ days after returning, you came back too fast or are sick. Drop another week to easy-only.",
+          "sub": false
+        },
+        {
+          "term": "Foot numbness gets worse",
+          "body": "If the foot numbness you mentioned earlier escalates during travel (different shoes, more walking, etc.), don't ignore it. Note when it happens and address back home.",
+          "sub": false
+        }
+      ]
+    }
+  ],
+  "fueling": [
+    {
+      "heading": "NUTRITION & FUELING \u2014 172 lb / 6 ft",
+      "items": []
+    },
+    {
+      "heading": "DURING-RUN TARGETS (any run > 90 min)",
+      "items": [
+        {
+          "term": "Carbs",
+          "body": "60-75 g/hour. For a 3:45 marathon, aim for ~70 g/hr.",
+          "sub": false
+        },
+        {
+          "term": "Sodium",
+          "body": "400-500 mg/hour. THIS IS YOUR CRAMP LEVER \u2014 currently likely <100 mg/hr.",
+          "sub": false
+        },
+        {
+          "term": "Fluid",
+          "body": "16-24 oz/hr (about 4-6 oz every 15-20 min). Start sipping at mile 2-3, NOT when thirsty.",
+          "sub": false
+        },
+        {
+          "term": "Caffeine",
+          "body": "Optional. If used: 100-200 mg total, not per hour. Use mostly for race day or peak workouts.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "GEL OPTIONS \u2014 CURRENT AND ALTERNATIVES",
+      "items": [
+        {
+          "term": "Huma Standard (current)",
+          "body": "~22g carb, ~25 mg sodium, dual-source. 3/hr = 66g carb, 75 mg sodium.",
+          "sub": false
+        },
+        {
+          "term": "Huma Plus (current)",
+          "body": "~24g carb, ~250 mg sodium, ~25 mg caffeine. 3/hr = 72g carb, 750 mg sodium (TOO MUCH if also using salt caps).",
+          "sub": false
+        },
+        {
+          "term": "Precision Fuel PF 30",
+          "body": "30g carb per gel, dual-source. Top marathon gel. ~3/hr easily hits 90g if you want it. Try ONE on a long run before committing.",
+          "sub": false
+        },
+        {
+          "term": "SiS Beta Fuel",
+          "body": "40g carb per gel \u2014 highest mainstream. Thick, sweet, divisive. Only if you want to push to 80-120g/hr.",
+          "sub": false
+        },
+        {
+          "term": "Maurten Gel 100",
+          "body": "25g carb, hydrogel, gentlest on gut. Pricey. Good if any GI issues develop.",
+          "sub": false
+        },
+        {
+          "term": "Recommendation",
+          "body": "Don't switch yet. Huma works. Fix sodium and water first. If switching later, try Precision PF 30 as natural step up.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "SODIUM \u2014 WHAT TO TRY",
+      "items": [
+        {
+          "term": "Why it matters for YOU",
+          "body": "Your 60-min cramp pattern fits sodium depletion timeline. Current likely intake ~75 mg/hr (3 Huma standard); target is 300-600 mg/hr.",
+          "sub": false
+        },
+        {
+          "term": "SaltStick Caps",
+          "body": "215 mg sodium per capsule, take with water every 30-45 min. Easy to carry. RECOMMENDED START.",
+          "sub": false
+        },
+        {
+          "term": "LMNT",
+          "body": "1000 mg sodium per stick pack, mix in 16-32 oz water. One pack = full hour's sodium. Good if using handheld/flask.",
+          "sub": false
+        },
+        {
+          "term": "Precision Hydration PH Caps",
+          "body": "250-500 mg sodium per cap depending on version. Pricier alternative to SaltStick.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "RECOMMENDED FUELING COMBOS",
+      "items": [
+        {
+          "term": "Option A (cheapest, most flexible)",
+          "body": "Standard Huma gels x 3/hr + SaltStick Caps x 2/hr + 16-20 oz plain water/hr. = 66g carb, 75+430=505 mg sodium/hr. Hits all targets.",
+          "sub": false
+        },
+        {
+          "term": "Option B (fewer items to manage)",
+          "body": "Huma Plus gels x 3/hr (each has electrolytes) + plain water. = 72g carb, 750 mg sodium/hr. Sodium runs high but acceptable if you're a heavy sweater.",
+          "sub": false
+        },
+        {
+          "term": "Option C (LMNT in bottle)",
+          "body": "Standard Huma x 3/hr + LMNT stick in 20 oz water/hr. = 66g carb, 1075 mg sodium/hr. Sodium too high unless heavy sweater in heat. Use HALF an LMNT pack instead = ~575 mg.",
+          "sub": false
+        },
+        {
+          "term": "My recommendation",
+          "body": "Start with Option A. Use Plus gels only on hardest long runs / race day for caffeine boost (max 2 Plus per long run, rest standard).",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "HYDRATION \u2014 STARTING FROM ZERO",
+      "items": [
+        {
+          "term": "Current state",
+          "body": "You haven't been drinking on runs. Highest-impact fix in your nutrition picture.",
+          "sub": false
+        },
+        {
+          "term": "Long runs (>90 min)",
+          "body": "16-24 oz/hr. Sip every 15-20 min. Start drinking at mile 2-3, not when thirsty (thirst lags ~30 min).",
+          "sub": false
+        },
+        {
+          "term": "Short easy runs (<60 min)",
+          "body": "Optional. Drink based on thirst.",
+          "sub": false
+        },
+        {
+          "term": "Equipment options",
+          "body": "HANDHELD BOTTLE (Nathan/Salomon, 12-20 oz): simplest, fine up to ~12 mi. HYDRATION VEST (Salomon ADV Skin 5, Nathan Pinnacle 4L): needed for 15+ mi solo runs. NYC race day has aid stations every mile \u2014 no vest needed for race.",
+          "sub": false
+        },
+        {
+          "term": "Daily intake",
+          "body": "~110-130 oz/day (~half body weight in oz, more on running days). Pee color check: pale yellow = good, dark = drink more.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "GUT TRAINING \u2014 8-12 WEEK BUILD",
+      "items": [
+        {
+          "term": "Why",
+          "body": "Your gut needs adaptation to absorb 60-75g carb/hr. Untrained gut = bonk or GI distress at race. Build it up gradually in long runs.",
+          "sub": false
+        },
+        {
+          "term": "Progression",
+          "body": "Wk 1-3: water + 1 gel on long run. Wk 4-6: water + 2 gels + 1 SaltStick. Wk 7-10: water + 3 gels + 2 SaltStick. Wk 11+: full race fueling (3-4 gels/hr + sodium).",
+          "sub": false
+        },
+        {
+          "term": "On the plan",
+          "body": "Long-run cells now include fueling cues for each week's practice level.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "RACE WEEK / RACE DAY",
+      "items": [
+        {
+          "term": "Carb-load (36-48 hr pre-race)",
+          "body": "780-940 g carbs/day for 1-2 days before race (about 10-12 g/kg). Feels uncomfortable; that's the point. Bagels, pasta, rice, white bread, sports drinks.",
+          "sub": false
+        },
+        {
+          "term": "Race morning (2-3 hr before)",
+          "body": "~160g carbs (bagel + banana + sports drink). Last bathroom break ~30 min before start.",
+          "sub": false
+        },
+        {
+          "term": "15-30 min pre-race",
+          "body": "One gel (caffeinated optional). 6-8 oz water.",
+          "sub": false
+        },
+        {
+          "term": "During race",
+          "body": "Gel every 20-25 min (~5-6 total). SaltStick at 45 min and every 45 min after (~4-5 total). Water at most aid stations, ~4-6 oz each.",
+          "sub": false
+        },
+        {
+          "term": "Caffeine plan (race day)",
+          "body": "Total ~250-350 mg. Coffee morning of (~100mg) + 1-2 caffeinated gels late race (Huma Plus or similar). Don't stack too high \u2014 GI risk.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "OPEN ITEMS",
+      "items": [
+        {
+          "term": "Sweat test",
+          "body": "Do a sweat test this summer (weigh before/after a 60-min run, account for fluid drunk). Tells you ACTUAL sweat rate and informs sodium per hour. Worth doing twice (cool day, hot day).",
+          "sub": false
+        },
+        {
+          "term": "Try-before-trust",
+          "body": "Test every nutrition variable in TRAINING before race day. Never try new gel/drink/cap for the first time on Nov 1.",
+          "sub": false
+        }
+      ]
+    }
+  ],
+  "paces": [
+    {
+      "heading": "SUB-3:45 NYC MARATHON \u2014 KEY, PACES & RATIONALE",
+      "items": [
+        {
+          "term": "Goal",
+          "body": "3:45 marathon (~8:35/mile)",
+          "sub": false
+        },
+        {
+          "term": "Race",
+          "body": "Sunday Nov 1, 2026 \u2014 NYC Marathon",
+          "sub": false
+        },
+        {
+          "term": "Plan",
+          "body": "20 weeks starting Jun 15, 2026. Base Building tab covers May 25 - Jun 14.",
+          "sub": false
+        },
+        {
+          "term": "Athlete",
+          "body": "23yo M, 6 ft, 170-175 lb. Half PB: 1:53 (Dec 2025, Central Park). LT1 ~147 bpm. Limiter: tissue adaptation.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "PACE ZONES",
+      "items": [
+        {
+          "term": "Marathon Pace (MP)",
+          "body": "8:35 / mile",
+          "sub": false
+        },
+        {
+          "term": "Easy / Recovery",
+          "body": "~9:45-10:45/mile \u2014 GOVERNED BY HR 135-145 bpm, not pace",
+          "sub": false
+        },
+        {
+          "term": "Tempo / Threshold",
+          "body": "~7:55-8:05/mile (RPE 6-7)",
+          "sub": false
+        },
+        {
+          "term": "Intervals",
+          "body": "~7:25-7:40/mile (RPE 8-9)",
+          "sub": false
+        },
+        {
+          "term": "Long Run",
+          "body": "Mostly easy; MP segments added from Wk 10",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "WEEKLY MILEAGE \u2014 CORRECTED CURVE",
+      "items": [
+        {
+          "term": "Shape",
+          "body": "Matches reference PDF: gradual build, single peak at Wk 17, NOT a long high-mileage plateau.",
+          "sub": false
+        },
+        {
+          "term": "Weeks at 40+ mi",
+          "body": "3 (Wks 12, 15, 17) \u2014 same count as reference PDF.",
+          "sub": false
+        },
+        {
+          "term": "Long runs \u2265 20 mi",
+          "body": "1 (Wk 17 only). Second peak long run is 18 mi at Wk 18.",
+          "sub": false
+        },
+        {
+          "term": "Wk 1",
+          "body": "Base | 26 mi \u2014 Open at current fitness (~25).",
+          "sub": false
+        },
+        {
+          "term": "Wk 2",
+          "body": "Base | 28 mi \u2014 +2 build.",
+          "sub": false
+        },
+        {
+          "term": "Wk 3",
+          "body": "Base | 30 mi \u2014 +2 build. First long run with fueling practice.",
+          "sub": false
+        },
+        {
+          "term": "Wk 4",
+          "body": "Base | 26 mi \u2014 CUTBACK -13%.",
+          "sub": false
+        },
+        {
+          "term": "Wk 5",
+          "body": "Base | 31 mi \u2014 New high after cutback.",
+          "sub": false
+        },
+        {
+          "term": "Wk 6",
+          "body": "Base | 33 mi \u2014 Last pure-base week. First long run with sodium practice.",
+          "sub": false
+        },
+        {
+          "term": "Wk 7",
+          "body": "Hills | 34 mi \u2014 Hill intensity introduced, mileage barely moves.",
+          "sub": false
+        },
+        {
+          "term": "Wk 8",
+          "body": "Hills | 36 mi \u2014 Build.",
+          "sub": false
+        },
+        {
+          "term": "Wk 9",
+          "body": "Hills | 29 mi \u2014 DEEPER CUTBACK (-19%) before sharper Wk 10.",
+          "sub": false
+        },
+        {
+          "term": "Wk 10",
+          "body": "Hills | 37 mi \u2014 Sharpest hills. First MP segment in long run.",
+          "sub": false
+        },
+        {
+          "term": "Wk 11",
+          "body": "Intervals | 38 mi \u2014 Threshold introduced, hold mileage.",
+          "sub": false
+        },
+        {
+          "term": "Wk 12",
+          "body": "Intervals | 40 mi \u2014 VO2 work. First 40+ week.",
+          "sub": false
+        },
+        {
+          "term": "Wk 13",
+          "body": "Intervals | 35 mi \u2014 CUTBACK -13%.",
+          "sub": false
+        },
+        {
+          "term": "Wk 14",
+          "body": "Tempo/MP | 39 mi \u2014 Tempo work begins.",
+          "sub": false
+        },
+        {
+          "term": "Wk 15",
+          "body": "Tempo/MP | 41 mi \u2014 Heaviest MP volume (5 mi MP workout + 5 mi MP in long run).",
+          "sub": false
+        },
+        {
+          "term": "Wk 16",
+          "body": "Tempo/MP | 36 mi \u2014 CUTBACK -12% before peak.",
+          "sub": false
+        },
+        {
+          "term": "Wk 17",
+          "body": "Peak | 44 mi \u2014 PEAK WEEK. ONE 20-MILER with full race fueling. Lift drops.",
+          "sub": false
+        },
+        {
+          "term": "Wk 18",
+          "body": "Peak | 37 mi \u2014 Second hard week but lower. Long run 18 mi (not 20).",
+          "sub": false
+        },
+        {
+          "term": "Wk 19",
+          "body": "Taper | 30 mi \u2014 Classic taper week 1.",
+          "sub": false
+        },
+        {
+          "term": "Wk 20",
+          "body": "Race | 38 mi \u2014 Includes 26.2 race day.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "WHAT CHANGED FROM PRIOR VERSION",
+      "items": [
+        {
+          "term": "Mileage curve",
+          "body": "Pulled mid-block weeks down. Reference PDF has only ~3 weeks at 40+; mine now matches that. No long high-mileage plateau.",
+          "sub": false
+        },
+        {
+          "term": "20-milers",
+          "body": "Reduced from 2 to 1. Wk 18 long run is now 18 mi instead of 20. Fits tissue-adaptation limiter better.",
+          "sub": false
+        },
+        {
+          "term": "Peak mileage",
+          "body": "Now 44 mi (was 46). Matches example PDF's peak.",
+          "sub": false
+        },
+        {
+          "term": "Fueling cues",
+          "body": "Added to long-run cells throughout. Builds gut training week by week.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "STRUCTURE LOGIC",
+      "items": [
+        {
+          "term": "Easy/hard balance",
+          "body": "~75-80% easy. Slightly more conservative than tester's 65-75% because tissue is the limiter.",
+          "sub": false
+        },
+        {
+          "term": "Cutbacks",
+          "body": "Wk 4, 9, 13, 16. -12 to -19% drops.",
+          "sub": false
+        },
+        {
+          "term": "Weekday runs",
+          "body": "Tue/Wed/Thu AM. Thursday = weekly QUALITY session.",
+          "sub": false
+        },
+        {
+          "term": "Long run",
+          "body": "Saturday.",
+          "sub": false
+        },
+        {
+          "term": "5th run",
+          "body": "Optional Sunday shakeout from Wk 11 onward (3 mi).",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "LIFTING",
+      "items": [
+        {
+          "term": "Split",
+          "body": "Legs (Mon) / Chest-Tri (Tue) / Back-Bi (Thu \u2014 but no lift Thu in higher weeks) / Sh-Arms (Fri). 4-day.",
+          "sub": false
+        },
+        {
+          "term": "Critical rule",
+          "body": "Legs Monday \u2014 far from Thursday quality + Saturday long run.",
+          "sub": false
+        },
+        {
+          "term": "Peak weeks",
+          "body": "Lift drops first (per your choice). Legs go to light maintenance, upper-body optional.",
+          "sub": false
+        },
+        {
+          "term": "Race week",
+          "body": "No heavy lifting.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "HEART RATE",
+      "items": [
+        {
+          "term": "LT1",
+          "body": "~147 bpm (Jan 2026 test)",
+          "sub": false
+        },
+        {
+          "term": "Zone 2",
+          "body": "135-145 bpm; under 150 OK for daily variability (+/-5)",
+          "sub": false
+        },
+        {
+          "term": "Caveat",
+          "body": "Jan numbers may be slightly low now. Easy days are HR-capped; slower pace at 135 bpm is correct, not lazy.",
+          "sub": false
+        }
+      ]
+    },
+    {
+      "heading": "OPEN ITEMS",
+      "items": [
+        {
+          "term": "Goal confirmation",
+          "body": "Built to 3:45. If sub-4:00 is actual target, all paces reslot.",
+          "sub": false
+        },
+        {
+          "term": "Foot numbness",
+          "body": "Not assumed away. Test lacing/shoe fit first. If persists or worsens, see a pro.",
+          "sub": false
+        },
+        {
+          "term": "Sweat test",
+          "body": "Worth doing this summer to dial in sodium per hour.",
+          "sub": false
+        },
+        {
+          "term": "See Nutrition & Fueling tab",
+          "body": "For carb/sodium/water/caffeine/gel options.",
+          "sub": false
+        }
+      ]
+    }
+  ]
+}

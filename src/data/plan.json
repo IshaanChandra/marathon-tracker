@@ -1,0 +1,2694 @@
+{
+  "meta": {
+    "goal": "3:45 marathon (~8:35/mile)",
+    "race": "NYC Marathon",
+    "raceDate": "2026-11-01",
+    "startDate": "2026-05-25",
+    "marathonPace": "8:35/mi",
+    "baseBuildingNotes": [
+      "BASE BUILDING \u2014 now (week of May 25) through June 14, then Week 1 of the main plan starts June 15.",
+      "Purpose: hold consistent aerobic volume and keep your tissue adapting, so you start the 20-week plan fresh \u2014 not deep in fatigue.",
+      "You ran 22 then 25 recently. This bridge sits at 23 / 26 / 22 \u2014 NOT a big jump. The point is consistency and staying healthy, not building peak fitness yet.",
+      "All running is easy / Zone 2 (HR 135-145). No quality sessions yet \u2014 save the intensity for the plan.",
+      "BB-3 (week of Jun 8) settles back slightly on purpose so you're rested entering Week 1 (which opens at 27 mi).",
+      "Keep your daily stretching and pre-run dynamic warm-up throughout \u2014 this is exactly the work your tissue-adaptation limiter needs.",
+      "Lifting: same 4-day split, legs on Monday (away from the Saturday long run). Same interference rules as the main plan.",
+      "If anything feels tweaky (shins, knees, achilles), drop a run to easy walking/cross-train \u2014 protecting tissue now matters more than hitting a mileage number."
+    ]
+  },
+  "weeks": [
+    {
+      "id": "BB-1",
+      "phase": "Base Building",
+      "weekOf": "2026-05-25",
+      "targetMiles": 23.0,
+      "targetMilesText": "23",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "BB-2",
+      "phase": "Base Building",
+      "weekOf": "2026-06-01",
+      "targetMiles": 26.0,
+      "targetMilesText": "26",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "BB-3",
+      "phase": "Base Building",
+      "weekOf": "2026-06-08",
+      "targetMiles": 22.0,
+      "targetMilesText": "22",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "1",
+      "phase": "Base",
+      "weekOf": "2026-06-15",
+      "targetMiles": 26.0,
+      "targetMilesText": "26",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "2",
+      "phase": "Base",
+      "weekOf": "2026-06-22",
+      "targetMiles": 28.0,
+      "targetMilesText": "28",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "3",
+      "phase": "Base",
+      "weekOf": "2026-06-29",
+      "targetMiles": 30.0,
+      "targetMilesText": "30",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": "italy",
+      "note": "Italy Thu+"
+    },
+    {
+      "id": "4",
+      "phase": "Base",
+      "weekOf": "2026-07-06",
+      "targetMiles": 26.0,
+      "targetMilesText": "26",
+      "liftDays": "4",
+      "isCutback": true,
+      "travel": "italy",
+      "note": "ITALY WK"
+    },
+    {
+      "id": "5",
+      "phase": "Base",
+      "weekOf": "2026-07-13",
+      "targetMiles": 31.0,
+      "targetMilesText": "31",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "6",
+      "phase": "Base",
+      "weekOf": "2026-07-20",
+      "targetMiles": 33.0,
+      "targetMilesText": "33",
+      "liftDays": "4",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "7",
+      "phase": "Hills",
+      "weekOf": "2026-07-27",
+      "targetMiles": 34.0,
+      "targetMilesText": "34",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "8",
+      "phase": "Hills",
+      "weekOf": "2026-08-03",
+      "targetMiles": 36.0,
+      "targetMilesText": "36",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "9",
+      "phase": "Hills",
+      "weekOf": "2026-08-10",
+      "targetMiles": 37.0,
+      "targetMilesText": "37",
+      "liftDays": "3",
+      "isCutback": true,
+      "travel": "wedding",
+      "note": "WEDDING TRAVEL starts Fri"
+    },
+    {
+      "id": "10",
+      "phase": "Hills",
+      "weekOf": "2026-08-17",
+      "targetMiles": 18.0,
+      "targetMilesText": "18 default\nA: 22-25\nB: 15-20\nC: 8-12",
+      "liftDays": "2\n(upper only,\nskip legs)",
+      "isCutback": false,
+      "travel": "wedding",
+      "note": "FULL TRAVEL WK"
+    },
+    {
+      "id": "11",
+      "phase": "Intervals",
+      "weekOf": "2026-08-24",
+      "targetMiles": 33.0,
+      "targetMilesText": "33\n(reduced from 38)",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": "wedding",
+      "note": "RETURN WK"
+    },
+    {
+      "id": "12",
+      "phase": "Intervals",
+      "weekOf": "2026-08-31",
+      "targetMiles": 40.0,
+      "targetMilesText": "40",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "13",
+      "phase": "Intervals",
+      "weekOf": "2026-09-07",
+      "targetMiles": 35.0,
+      "targetMilesText": "35",
+      "liftDays": "3",
+      "isCutback": true,
+      "travel": null,
+      "note": "CUTBACK"
+    },
+    {
+      "id": "14",
+      "phase": "Tempo/MP",
+      "weekOf": "2026-09-14",
+      "targetMiles": 39.0,
+      "targetMilesText": "39",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "15",
+      "phase": "Tempo/MP",
+      "weekOf": "2026-09-21",
+      "targetMiles": 41.0,
+      "targetMilesText": "41",
+      "liftDays": "3",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "16",
+      "phase": "Tempo/MP",
+      "weekOf": "2026-09-28",
+      "targetMiles": 36.0,
+      "targetMilesText": "36",
+      "liftDays": "3",
+      "isCutback": true,
+      "travel": null,
+      "note": "CUTBACK"
+    },
+    {
+      "id": "17",
+      "phase": "Peak",
+      "weekOf": "2026-10-05",
+      "targetMiles": 44.0,
+      "targetMilesText": "44",
+      "liftDays": "2-3\n(dropped 1)",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "18",
+      "phase": "Peak",
+      "weekOf": "2026-10-12",
+      "targetMiles": 37.0,
+      "targetMilesText": "37",
+      "liftDays": "2\n(dropped 2)",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "19",
+      "phase": "Taper",
+      "weekOf": "2026-10-19",
+      "targetMiles": 30.0,
+      "targetMilesText": "30",
+      "liftDays": "1-2\n(light only)",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    },
+    {
+      "id": "20",
+      "phase": "Race",
+      "weekOf": "2026-10-26",
+      "targetMiles": 38.0,
+      "targetMilesText": "38",
+      "liftDays": "0",
+      "isCutback": false,
+      "travel": null,
+      "note": null
+    }
+  ],
+  "days": {
+    "2026-05-25": {
+      "weekId": "BB-1",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-05-26": {
+      "weekId": "BB-1",
+      "dow": "Tuesday",
+      "raw": "4 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri\n(stack or PM)",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": "(stack or PM)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-05-27": {
+      "weekId": "BB-1",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-05-28": {
+      "weekId": "BB-1",
+      "dow": "Thursday",
+      "raw": "4 mi\nEasy (HR 135-145)\nLIFT: Back/Bi\n(stack or PM)",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": "(stack or PM)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-05-29": {
+      "weekId": "BB-1",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms\n+ stretch",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "+ stretch"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-05-30": {
+      "weekId": "BB-1",
+      "dow": "Saturday",
+      "raw": "10 mi\nLong Run\nEasy, conversational",
+      "run": {
+        "miles": 10,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy, conversational"
+    },
+    "2026-05-31": {
+      "weekId": "BB-1",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-06-01": {
+      "weekId": "BB-2",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-02": {
+      "weekId": "BB-2",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-03": {
+      "weekId": "BB-2",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-04": {
+      "weekId": "BB-2",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-05": {
+      "weekId": "BB-2",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms\n+ stretch",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "+ stretch"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-06": {
+      "weekId": "BB-2",
+      "dow": "Saturday",
+      "raw": "11 mi\nLong Run\nEasy",
+      "run": {
+        "miles": 11,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-07": {
+      "weekId": "BB-2",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-06-08": {
+      "weekId": "BB-3",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(lighter, RPE 6)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-09": {
+      "weekId": "BB-3",
+      "dow": "Tuesday",
+      "raw": "4 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-10": {
+      "weekId": "BB-3",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-11": {
+      "weekId": "BB-3",
+      "dow": "Thursday",
+      "raw": "4 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-12": {
+      "weekId": "BB-3",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms\n+ stretch",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "+ stretch"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-13": {
+      "weekId": "BB-3",
+      "dow": "Saturday",
+      "raw": "9 mi\nLong Run\nEasy (settle before\nplan starts)",
+      "run": {
+        "miles": 9,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (settle before plan starts)"
+    },
+    "2026-06-14": {
+      "weekId": "BB-3",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-06-15": {
+      "weekId": "1",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-16": {
+      "weekId": "1",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri\n(stack or PM)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": "(stack or PM)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-17": {
+      "weekId": "1",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-18": {
+      "weekId": "1",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-19": {
+      "weekId": "1",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms\n+ stretch",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "+ stretch"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-20": {
+      "weekId": "1",
+      "dow": "Saturday",
+      "raw": "11 mi\nLong Run\nEasy, conversational\nPractice: sip water\nevery 15 min",
+      "run": {
+        "miles": 11,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "Practice: sip water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy, conversational every 15 min"
+    },
+    "2026-06-21": {
+      "weekId": "1",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-06-22": {
+      "weekId": "2",
+      "dow": "Monday",
+      "raw": "LIFT: Legs",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-23": {
+      "weekId": "2",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-24": {
+      "weekId": "2",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-25": {
+      "weekId": "2",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-26": {
+      "weekId": "2",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-27": {
+      "weekId": "2",
+      "dow": "Saturday",
+      "raw": "12 mi\nLong Run\nEasy\nWater every 15 min",
+      "run": {
+        "miles": 12,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "Water every 15 min"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-28": {
+      "weekId": "2",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-06-29": {
+      "weekId": "3",
+      "dow": "Monday",
+      "raw": "LIFT: Legs",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-06-30": {
+      "weekId": "3",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-01": {
+      "weekId": "3",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-02": {
+      "weekId": "3",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-03": {
+      "weekId": "3",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-04": {
+      "weekId": "3",
+      "dow": "Saturday",
+      "raw": "13 mi\nLong Run\nEasy\n1 gel + water",
+      "run": {
+        "miles": 13,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "1 gel + water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-05": {
+      "weekId": "3",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-07-06": {
+      "weekId": "4",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(lighter, RPE 6)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-07": {
+      "weekId": "4",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-08": {
+      "weekId": "4",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-09": {
+      "weekId": "4",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-10": {
+      "weekId": "4",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-11": {
+      "weekId": "4",
+      "dow": "Saturday",
+      "raw": "11 mi\nLong Run\nEasy (cutback)\nPractice fueling",
+      "run": {
+        "miles": 11,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "Practice fueling"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (cutback)"
+    },
+    "2026-07-12": {
+      "weekId": "4",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-07-13": {
+      "weekId": "5",
+      "dow": "Monday",
+      "raw": "LIFT: Legs",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-14": {
+      "weekId": "5",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-15": {
+      "weekId": "5",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-16": {
+      "weekId": "5",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-17": {
+      "weekId": "5",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-18": {
+      "weekId": "5",
+      "dow": "Saturday",
+      "raw": "14 mi\nLong Run\nEasy\n2 gels + water",
+      "run": {
+        "miles": 14,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "2 gels + water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-19": {
+      "weekId": "5",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-07-20": {
+      "weekId": "6",
+      "dow": "Monday",
+      "raw": "LIFT: Legs",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-21": {
+      "weekId": "6",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-22": {
+      "weekId": "6",
+      "dow": "Wednesday",
+      "raw": "7 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-23": {
+      "weekId": "6",
+      "dow": "Thursday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-24": {
+      "weekId": "6",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-25": {
+      "weekId": "6",
+      "dow": "Saturday",
+      "raw": "15 mi\nLong Run\nEasy\n2 gels + 1 SaltStick\n+ water 16oz/hr",
+      "run": {
+        "miles": 15,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "2 gels + 1 SaltStick + water 16oz/hr"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-26": {
+      "weekId": "6",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-07-27": {
+      "weekId": "7",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6-7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-28": {
+      "weekId": "7",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-29": {
+      "weekId": "7",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-30": {
+      "weekId": "7",
+      "dow": "Thursday",
+      "raw": "6 mi total\nHill Repeats\n2 mi wu +\n8 x 30s uphill (RPE 8-9)\n/ jog down +\n2 mi cd",
+      "run": {
+        "miles": 6,
+        "type": "hills",
+        "hrZone": null,
+        "pace": null,
+        "structure": "2 mi wu + 8 x 30s uphill (RPE 8-9) / jog down + 2 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-07-31": {
+      "weekId": "7",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-01": {
+      "weekId": "7",
+      "dow": "Saturday",
+      "raw": "16 mi\nLong Run\nEasy\n3 gels + 1 SaltStick",
+      "run": {
+        "miles": 16,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels + 1 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-02": {
+      "weekId": "7",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-08-03": {
+      "weekId": "8",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6-7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-04": {
+      "weekId": "8",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-05": {
+      "weekId": "8",
+      "dow": "Wednesday",
+      "raw": "7 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-06": {
+      "weekId": "8",
+      "dow": "Thursday",
+      "raw": "7 mi total\nHill Repeats\n2 mi wu +\n10 x 30s uphill\n+ 2 mi cd",
+      "run": {
+        "miles": 7,
+        "type": "hills",
+        "hrZone": null,
+        "pace": null,
+        "structure": "2 mi wu + 10 x 30s uphill + 2 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-07": {
+      "weekId": "8",
+      "dow": "Friday",
+      "raw": "LIFT: Back/Bi",
+      "run": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-08": {
+      "weekId": "8",
+      "dow": "Saturday",
+      "raw": "16 mi\nLong Run\nEasy\n3 gels + 2 SaltStick\n+ 20oz/hr water",
+      "run": {
+        "miles": 16,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels + 2 SaltStick + 20oz/hr water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-09": {
+      "weekId": "8",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-08-10": {
+      "weekId": "9",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6-7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-11": {
+      "weekId": "9",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-12": {
+      "weekId": "9",
+      "dow": "Wednesday",
+      "raw": "7 mi total\nHill Repeats (PEAK)\n2 mi wu +\n8 x 45s uphill (RPE 8-9)\n+ 2 mi cd\n(MOVED FROM THU)",
+      "run": {
+        "miles": 7,
+        "type": "hills",
+        "hrZone": null,
+        "pace": null,
+        "structure": "2 mi wu + 8 x 45s uphill (RPE 8-9) + 2 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Hill Repeats (PEAK) (MOVED FROM THU)"
+    },
+    "2026-08-13": {
+      "weekId": "9",
+      "dow": "Thursday",
+      "raw": "14 mi\nLong Run\nEasy + last 2mi @ MP\n3 gels + 2 SaltStick\n(MOVED FROM SAT \u2014\nDO BEFORE TRAVEL)",
+      "run": {
+        "miles": 14,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 2mi @ MP",
+        "fueling": "3 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "(MOVED FROM SAT \u2014 DO BEFORE TRAVEL)"
+    },
+    "2026-08-14": {
+      "weekId": "9",
+      "dow": "Friday",
+      "raw": "3 mi\nEasy shakeout\nthen fly\nLIFT: Sh/Arms\n(if time)",
+      "run": {
+        "miles": 3,
+        "type": "shakeout",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "(if time)"
+      },
+      "rest": false,
+      "notes": "Easy shakeout then fly"
+    },
+    "2026-08-15": {
+      "weekId": "9",
+      "dow": "Saturday",
+      "raw": "4 mi\nEasy at destination\n(if possible)\nOR rest",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy at destination (if possible) OR rest"
+    },
+    "2026-08-16": {
+      "weekId": "9",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy shakeout\n(optional)\nOR rest",
+      "run": {
+        "miles": 3,
+        "type": "shakeout",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy shakeout (optional) OR rest"
+    },
+    "2026-08-17": {
+      "weekId": "10",
+      "dow": "Monday",
+      "raw": "5 mi\nHotel treadmill\nEasy\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": "Hotel treadmill"
+    },
+    "2026-08-18": {
+      "weekId": "10",
+      "dow": "Tuesday",
+      "raw": "Rest\n(wedding events)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (wedding events)"
+    },
+    "2026-08-19": {
+      "weekId": "10",
+      "dow": "Wednesday",
+      "raw": "5 mi\nHotel treadmill\nEasy\nLIFT: Back/Bi",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": "Hotel treadmill"
+    },
+    "2026-08-20": {
+      "weekId": "10",
+      "dow": "Thursday",
+      "raw": "Rest\n(wedding events)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (wedding events)"
+    },
+    "2026-08-21": {
+      "weekId": "10",
+      "dow": "Friday",
+      "raw": "Rest\n(wedding day \u2014\nNO running, sleep)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (wedding day \u2014 NO running, sleep)"
+    },
+    "2026-08-22": {
+      "weekId": "10",
+      "dow": "Saturday",
+      "raw": "8 mi\nOutdoor if possible\nOR treadmill\nEasy + water\n(SCENARIO B default)",
+      "run": {
+        "miles": 8,
+        "type": "easy",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "Easy + water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Outdoor if possible OR treadmill (SCENARIO B default)"
+    },
+    "2026-08-23": {
+      "weekId": "10",
+      "dow": "Sunday",
+      "raw": "Rest\n(travel home /\nwedding recovery)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (travel home / wedding recovery)"
+    },
+    "2026-08-24": {
+      "weekId": "11",
+      "dow": "Monday",
+      "raw": "Travel home /\nFull rest",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Travel home / Full rest"
+    },
+    "2026-08-25": {
+      "weekId": "11",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-26": {
+      "weekId": "11",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-27": {
+      "weekId": "11",
+      "dow": "Thursday",
+      "raw": "6 mi total\nThreshold (SHORTENED)\n2 mi wu + 2 x 1 mi\n@ 7:55-8:05 / 0.5 mi jog\n+ 1 mi cd",
+      "run": {
+        "miles": 6,
+        "type": "threshold",
+        "hrZone": null,
+        "pace": "7:55-8:05",
+        "structure": "2 mi wu + 2 x 1 mi + 1 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Threshold (SHORTENED) @ 7:55-8:05 / 0.5 mi jog"
+    },
+    "2026-08-28": {
+      "weekId": "11",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-08-29": {
+      "weekId": "11",
+      "dow": "Saturday",
+      "raw": "13 mi\nLong Run\nEasy (shorter than\nplanned 16 \u2014 return wk)\n3 gels + 2 SaltStick",
+      "run": {
+        "miles": 13,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (shorter than planned 16 \u2014 return wk)"
+    },
+    "2026-08-30": {
+      "weekId": "11",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy shakeout",
+      "run": {
+        "miles": 3,
+        "type": "shakeout",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy shakeout"
+    },
+    "2026-08-31": {
+      "weekId": "12",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6-7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-01": {
+      "weekId": "12",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-02": {
+      "weekId": "12",
+      "dow": "Wednesday",
+      "raw": "7 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-03": {
+      "weekId": "12",
+      "dow": "Thursday",
+      "raw": "8 mi total\nVO2 Intervals\n2 mi wu + 5 x 800m\n@ 7:25-7:40 / 400m jog\n+ 1.5 mi cd",
+      "run": {
+        "miles": 8,
+        "type": "vo2",
+        "hrZone": null,
+        "pace": "7:25-7:40",
+        "structure": "2 mi wu + 5 x 800m + 1.5 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "VO2 Intervals @ 7:25-7:40 / 400m jog"
+    },
+    "2026-09-04": {
+      "weekId": "12",
+      "dow": "Friday",
+      "raw": "LIFT: Back/Bi",
+      "run": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-05": {
+      "weekId": "12",
+      "dow": "Saturday",
+      "raw": "16 mi\nLong Run\nEasy + last 3mi @ MP\n3 gels + 2 SaltStick",
+      "run": {
+        "miles": 16,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 3mi @ MP",
+        "fueling": "3 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-06": {
+      "weekId": "12",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy (HR 135-145)\nOptional 5th run",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional 5th run"
+    },
+    "2026-09-07": {
+      "weekId": "13",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(lighter, RPE 6)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-08": {
+      "weekId": "13",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-09": {
+      "weekId": "13",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-10": {
+      "weekId": "13",
+      "dow": "Thursday",
+      "raw": "6 mi total\nThreshold (light)\n2 mi wu + 2 x 1 mi\n@ 7:55-8:05 / 0.5 mi jog\n+ 1 mi cd (cutback)",
+      "run": {
+        "miles": 6,
+        "type": "threshold",
+        "hrZone": null,
+        "pace": "7:55-8:05",
+        "structure": "2 mi wu + 2 x 1 mi + 1 mi cd (cutback)",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Threshold (light) @ 7:55-8:05 / 0.5 mi jog"
+    },
+    "2026-09-11": {
+      "weekId": "13",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-12": {
+      "weekId": "13",
+      "dow": "Saturday",
+      "raw": "15 mi\nLong Run\nEasy (cutback)\n3 gels + 2 SaltStick",
+      "run": {
+        "miles": 15,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (cutback)"
+    },
+    "2026-09-13": {
+      "weekId": "13",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy (HR 135-145)\nOptional 5th run",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional 5th run"
+    },
+    "2026-09-14": {
+      "weekId": "14",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6-7)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-15": {
+      "weekId": "14",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-16": {
+      "weekId": "14",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-17": {
+      "weekId": "14",
+      "dow": "Thursday",
+      "raw": "7 mi total\nTempo\n2 mi wu + 4 mi tempo\n@ 7:55-8:05\n+ 1 mi cd",
+      "run": {
+        "miles": 7,
+        "type": "tempo",
+        "hrZone": null,
+        "pace": "7:55-8:05",
+        "structure": "2 mi wu + 4 mi tempo + 1 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "@ 7:55-8:05"
+    },
+    "2026-09-18": {
+      "weekId": "14",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-19": {
+      "weekId": "14",
+      "dow": "Saturday",
+      "raw": "17 mi\nLong Run\nEasy + last 4mi @ MP\n4 gels + 2 SaltStick",
+      "run": {
+        "miles": 17,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 4mi @ MP",
+        "fueling": "4 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-20": {
+      "weekId": "14",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy (HR 135-145)\nOptional 5th run",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional 5th run"
+    },
+    "2026-09-21": {
+      "weekId": "15",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(RPE 6)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-22": {
+      "weekId": "15",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-23": {
+      "weekId": "15",
+      "dow": "Wednesday",
+      "raw": "7 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-24": {
+      "weekId": "15",
+      "dow": "Thursday",
+      "raw": "9 mi total\nMP Workout\n2 mi wu + 5 mi @ MP 8:35\n+ 2 mi cd",
+      "run": {
+        "miles": 9,
+        "type": "mp",
+        "hrZone": null,
+        "pace": "MP 8:35",
+        "structure": "2 mi wu + 5 mi @ MP 8:35 + 2 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-25": {
+      "weekId": "15",
+      "dow": "Friday",
+      "raw": "LIFT: Back/Bi",
+      "run": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-26": {
+      "weekId": "15",
+      "dow": "Saturday",
+      "raw": "16 mi\nLong Run\nEasy + last 5mi @ MP\n4 gels + 2 SaltStick",
+      "run": {
+        "miles": 16,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 5mi @ MP",
+        "fueling": "4 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-27": {
+      "weekId": "15",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy (HR 135-145)\nOptional 5th run",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional 5th run"
+    },
+    "2026-09-28": {
+      "weekId": "16",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(lighter)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-29": {
+      "weekId": "16",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-09-30": {
+      "weekId": "16",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-01": {
+      "weekId": "16",
+      "dow": "Thursday",
+      "raw": "7 mi total\nTempo (light)\n2 mi wu + 3 mi tempo\n@ 7:55-8:05\n+ 2 mi cd",
+      "run": {
+        "miles": 7,
+        "type": "tempo",
+        "hrZone": null,
+        "pace": "7:55-8:05",
+        "structure": "2 mi wu + 3 mi tempo + 2 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Tempo (light) @ 7:55-8:05"
+    },
+    "2026-10-02": {
+      "weekId": "16",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-03": {
+      "weekId": "16",
+      "dow": "Saturday",
+      "raw": "15 mi\nLong Run\nEasy (cutback)\n3 gels + 2 SaltStick",
+      "run": {
+        "miles": 15,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels + 2 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (cutback)"
+    },
+    "2026-10-04": {
+      "weekId": "16",
+      "dow": "Sunday",
+      "raw": "3 mi\nEasy (HR 135-145)\nOptional 5th run",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional 5th run"
+    },
+    "2026-10-05": {
+      "weekId": "17",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(maintenance, light)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(maintenance, light)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-06": {
+      "weekId": "17",
+      "dow": "Tuesday",
+      "raw": "7 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri\n(optional)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": "(optional)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-07": {
+      "weekId": "17",
+      "dow": "Wednesday",
+      "raw": "7 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 7,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-08": {
+      "weekId": "17",
+      "dow": "Thursday",
+      "raw": "9 mi total\nMP Workout\n2 mi wu + 6 mi @ MP 8:35\n+ 1 mi cd",
+      "run": {
+        "miles": 9,
+        "type": "mp",
+        "hrZone": null,
+        "pace": "MP 8:35",
+        "structure": "2 mi wu + 6 mi @ MP 8:35 + 1 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-09": {
+      "weekId": "17",
+      "dow": "Friday",
+      "raw": "LIFT: Shoulders/Arms\n(light) \u2014 or rest",
+      "run": null,
+      "lift": {
+        "focus": "Shoulders/Arms",
+        "notes": "(light) \u2014 or rest"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-10": {
+      "weekId": "17",
+      "dow": "Saturday",
+      "raw": "20 mi\nPEAK Long Run\nEasy + last 5mi @ MP\nFULL RACE FUELING:\n5 gels + 3 SaltStick\n+ 20oz/hr water",
+      "run": {
+        "miles": 20,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 5mi @ MP",
+        "fueling": "FULL RACE FUELING: 5 gels + 3 SaltStick + 20oz/hr water"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "PEAK Long Run"
+    },
+    "2026-10-11": {
+      "weekId": "17",
+      "dow": "Sunday",
+      "raw": "1 mi\nEasy (HR 135-145)\nShakeout (optional)",
+      "run": {
+        "miles": 1,
+        "type": "shakeout",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Shakeout (optional)"
+    },
+    "2026-10-12": {
+      "weekId": "18",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(maintenance, light)",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(maintenance, light)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-13": {
+      "weekId": "18",
+      "dow": "Tuesday",
+      "raw": "6 mi\nEasy (HR 135-145)\nLIFT: Chest/Tri\n(optional)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": "(optional)"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-14": {
+      "weekId": "18",
+      "dow": "Wednesday",
+      "raw": "6 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 6,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-15": {
+      "weekId": "18",
+      "dow": "Thursday",
+      "raw": "7 mi total\nTempo\n2 mi wu + 4 mi tempo\n@ 7:55-8:05\n+ 1 mi cd",
+      "run": {
+        "miles": 7,
+        "type": "tempo",
+        "hrZone": null,
+        "pace": "7:55-8:05",
+        "structure": "2 mi wu + 4 mi tempo + 1 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "@ 7:55-8:05"
+    },
+    "2026-10-16": {
+      "weekId": "18",
+      "dow": "Friday",
+      "raw": "Rest or light\nfull-body lift",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest or light full-body lift"
+    },
+    "2026-10-17": {
+      "weekId": "18",
+      "dow": "Saturday",
+      "raw": "18 mi\nLong Run\nEasy + last 4mi @ MP\n4 gels + 3 SaltStick",
+      "run": {
+        "miles": 18,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": "Easy + last 4mi @ MP",
+        "fueling": "4 gels + 3 SaltStick"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-18": {
+      "weekId": "18",
+      "dow": "Sunday",
+      "raw": "Rest\n(stretch / mobility)",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (stretch / mobility)"
+    },
+    "2026-10-19": {
+      "weekId": "19",
+      "dow": "Monday",
+      "raw": "LIFT: Legs\n(light, RPE 5)\nor rest",
+      "run": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(light, RPE 5) or rest"
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-20": {
+      "weekId": "19",
+      "dow": "Tuesday",
+      "raw": "5 mi\nEasy (HR 135-145)\nLIFT: upper (light)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": {
+        "focus": "upper (light)",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-21": {
+      "weekId": "19",
+      "dow": "Wednesday",
+      "raw": "5 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 5,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-22": {
+      "weekId": "19",
+      "dow": "Thursday",
+      "raw": "6 mi total\nMP Tune-up\n2 mi wu + 3 mi @ MP 8:35\n+ 1 mi cd",
+      "run": {
+        "miles": 6,
+        "type": "mp",
+        "hrZone": null,
+        "pace": "MP 8:35",
+        "structure": "2 mi wu + 3 mi @ MP 8:35 + 1 mi cd",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-23": {
+      "weekId": "19",
+      "dow": "Friday",
+      "raw": "Rest / mobility",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest / mobility"
+    },
+    "2026-10-24": {
+      "weekId": "19",
+      "dow": "Saturday",
+      "raw": "13 mi\nLong Run\nEasy (taper)\n3 gels practice",
+      "run": {
+        "miles": 13,
+        "type": "long",
+        "hrZone": null,
+        "pace": null,
+        "structure": null,
+        "fueling": "3 gels practice"
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Easy (taper)"
+    },
+    "2026-10-25": {
+      "weekId": "19",
+      "dow": "Sunday",
+      "raw": "1 mi\nEasy (HR 135-145)\nOptional shakeout",
+      "run": {
+        "miles": 1,
+        "type": "shakeout",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Optional shakeout"
+    },
+    "2026-10-26": {
+      "weekId": "20",
+      "dow": "Monday",
+      "raw": "Rest / mobility\nNO heavy lifting",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest / mobility NO heavy lifting"
+    },
+    "2026-10-27": {
+      "weekId": "20",
+      "dow": "Tuesday",
+      "raw": "4 mi\nEasy (HR 135-145)\n+ 4 x 20s strides",
+      "run": {
+        "miles": 4,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": "+ 4 x 20s strides",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-28": {
+      "weekId": "20",
+      "dow": "Wednesday",
+      "raw": "3 mi\nEasy (HR 135-145)",
+      "run": {
+        "miles": 3,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-29": {
+      "weekId": "20",
+      "dow": "Thursday",
+      "raw": "2 mi\nEasy (HR 135-145)\n+ 4 x 20s strides",
+      "run": {
+        "miles": 2,
+        "type": "easy",
+        "hrZone": "HR 135-145",
+        "pace": null,
+        "structure": "+ 4 x 20s strides",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": null
+    },
+    "2026-10-30": {
+      "weekId": "20",
+      "dow": "Friday",
+      "raw": "Rest\n(travel / expo)\nhydrate, carb-load",
+      "run": null,
+      "lift": null,
+      "rest": true,
+      "notes": "Rest (travel / expo) hydrate, carb-load"
+    },
+    "2026-10-31": {
+      "weekId": "20",
+      "dow": "Saturday",
+      "raw": "2.8 mi\nShake-Out\nVery easy +\n3 x 20s strides",
+      "run": {
+        "miles": 2.8,
+        "type": "shakeout",
+        "hrZone": null,
+        "pace": null,
+        "structure": "3 x 20s strides",
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "Very easy +"
+    },
+    "2026-11-01": {
+      "weekId": "20",
+      "dow": "Sunday",
+      "raw": "RACE DAY\nNYC MARATHON\n26.2 mi @ 8:35/mi\nGoal 3:45",
+      "run": {
+        "miles": 26.2,
+        "type": "race",
+        "hrZone": null,
+        "pace": "8:35/mi",
+        "structure": null,
+        "fueling": null
+      },
+      "lift": null,
+      "rest": false,
+      "notes": "NYC MARATHON \u2014 Goal 3:45"
+    }
+  },
+  "scenarios": {
+    "italy": {
+      "weekId": "4",
+      "options": {
+        "A": {
+          "label": "Good",
+          "miles": "22-26",
+          "description": "22-26 mi. 4 runs of 5-6 mi + 1 longer 8-10 mi. Treat as a cutback week."
+        },
+        "B": {
+          "label": "Realistic",
+          "miles": "15-20",
+          "description": "15-20 mi. 3 runs of 4-6 mi + 1 medium 7-8 mi. Still a real cutback. EXPECTED DEFAULT."
+        },
+        "C": {
+          "label": "Minimal",
+          "miles": "8-12",
+          "description": "8-12 mi. 2-3 short runs of 3-5 mi only. Bodyweight on other days. Walk a lot."
+        }
+      }
+    },
+    "wedding": {
+      "weekId": "10",
+      "options": {
+        "A": {
+          "label": "Good",
+          "miles": "20-25",
+          "description": "20-25 mi. 3 hotel treadmill runs of 4-5 mi + 1 outdoor 8-10 mi. 2 hotel gym lifts (upper-body only)."
+        },
+        "B": {
+          "label": "Realistic",
+          "miles": "12-18",
+          "description": "12-18 mi. 2-3 short runs of 4-5 mi + 1 medium 6-8 mi. 1-2 upper-body lifts. EXPECTED DEFAULT."
+        },
+        "C": {
+          "label": "Minimal",
+          "miles": "6-10",
+          "description": "6-10 mi. 2 short hotel treadmill runs. Walk a lot. 0-1 lifts."
+        }
+      }
+    }
+  }
+}
