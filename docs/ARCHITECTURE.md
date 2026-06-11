@@ -1,0 +1,56 @@
+# Architecture
+
+## Overview
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Browser (phone / laptop)                                │
+│  Next.js client components · localStorage offline cache  │
+└──────────────┬──────────────────────────────────────────┘
+               │ fetch (PIN cookie attached)
+┌──────────────▼──────────────────────────────────────────┐
+│  Vercel — Next.js 16 App Router                          │
+│  middleware: PIN gate (httpOnly cookie vs APP_PIN env)   │
+│  pages: server components read src/data/*.json           │
+│  api routes: /api/log /api/override /api/settings        │
+└──────────────┬──────────────────────────────────────────┘
+               │ supabase-js (service key, server-only)
+┌──────────────▼──────────────────────────────────────────┐
+│  Supabase Postgres                                       │
+│  day_log · day_override · settings                       │
+└──────────────────────────────────────────────────────────┘
+```
+
+## Data flow & merge logic
+
+1. **Static plan** (`src/data/plan.json`) maps every calendar date May 25 → Nov 1, 2026
+   to a planned day (run / lift / rest / race) plus week metadata.
+2. **Dynamic layer** from Supabase:
+   - `day_log` — check-offs and logged actuals (run_done, lift_done, actual_miles, notes)
+   - `day_override` — a JSON patch replacing/altering the planned workout for a date
+     (edit, skip, swap)
+   - `settings` — key/value JSON, e.g. travel scenario picks (`travel.italy = "B"`)
+3. **Merge** (`src/lib/merge.ts`): `effectiveDay(date) = plan[date] ⊕ override[date]`,
+   annotated with log state. Days with an override get `adjusted: true` for the UI badge.
+   "Revert to plan" = delete the override row.
+4. Client keeps the latest fetched state in localStorage so the app still renders
+   offline / before sync resolves; writes are optimistic, then reconciled.
+
+## Auth
+
+Single user. `middleware.ts` checks the `mt_auth` httpOnly cookie on all routes except
+`/pin` and static assets. `/api/pin` validates the entered PIN against `APP_PIN` env var
+and sets the cookie (long expiry, so it's once per device).
+
+## Views
+
+- `/` Today — today's run + lift cards, fueling cues, check-offs, race countdown
+- `/plan` — Week / Month / Full toggleable views
+- `/travel`, `/fueling`, `/paces` — reference content from `src/data/reference.json`
+- `/progress` — stats: % complete, streak, weekly planned-vs-actual mileage
+
+## Why these choices
+
+See docs/DECISIONS.md. Short version: one Next.js codebase covers UI + API on Vercel's
+free tier; Supabase free Postgres gives cross-device sync without running a server; the
+plan itself stays in git so it's versioned and editable by agents.
