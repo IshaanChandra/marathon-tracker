@@ -1,5 +1,6 @@
 "use client";
 
+import CalendarCard from "./CalendarCard";
 import { plan, allDates } from "@/lib/plan";
 import { effectiveDay, weekTotals, weekTarget } from "@/lib/merge";
 import { addDays, daysBetween, todayNY } from "@/lib/dates";
@@ -137,6 +138,8 @@ export default function ProgressView() {
           </span>
         </div>
       </div>
+
+      <CalendarCard />
     </div>
   );
 }
