@@ -38,9 +38,13 @@
 
 ## Auth
 
-Single user. `middleware.ts` checks the `mt_auth` httpOnly cookie on all routes except
-`/pin` and static assets. `/api/pin` validates the entered PIN against `APP_PIN` env var
-and sets the cookie (long expiry, so it's once per device).
+Public-read, PIN-to-write. Anyone with the URL can view every page and `GET /api/state`.
+`src/proxy.ts` (Next 16's middleware) gates only the mutating routes (`/api/log`,
+`/api/override`, `/api/settings`) behind the `mt_auth` httpOnly cookie. `/api/auth` tells
+the client whether the device is unlocked; un-authed visitors who try to make a change get
+an in-page PIN modal (`PinModal`, wired through the store's mutation queue), and a
+"View only" chip in the nav opens the same prompt proactively. `/api/pin` validates
+against the `APP_PIN` env var and sets the cookie (year expiry — once per device).
 
 ## Views
 

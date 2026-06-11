@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useStore } from "@/lib/store";
 
 const TABS = [
   { href: "/", label: "Today", icon: "●" },
@@ -14,6 +15,19 @@ function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   if (href.startsWith("/guide")) return pathname.startsWith("/guide");
   return pathname.startsWith(href);
+}
+
+function LockChip({ className }: { className?: string }) {
+  const { authed, openPinPrompt } = useStore();
+  if (authed) return null;
+  return (
+    <button
+      onClick={openPinPrompt}
+      className={`rounded-full bg-black/5 px-2.5 py-1 text-[11px] font-semibold text-foreground/50 hover:text-foreground ${className ?? ""}`}
+    >
+      🔒 View only
+    </button>
+  );
 }
 
 export default function Nav() {
@@ -39,8 +53,14 @@ export default function Nav() {
               </Link>
             ))}
           </nav>
+          <LockChip className="ml-auto" />
         </div>
       </header>
+
+      {/* Mobile view-only chip, floating above the bottom nav */}
+      <div className="sm:hidden fixed top-3 right-3 z-20">
+        <LockChip />
+      </div>
 
       {/* Mobile bottom nav */}
       <nav className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/90 backdrop-blur border-t border-black/10 pb-[env(safe-area-inset-bottom)]">

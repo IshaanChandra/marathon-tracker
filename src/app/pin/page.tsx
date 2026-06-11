@@ -1,24 +1,21 @@
 "use client";
 
-import { Suspense, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useStore } from "@/lib/store";
 
-function PinForm() {
+/**
+ * Standalone unlock page (the site is publicly viewable; unlocking enables edits).
+ * Kept for bookmarks and as a direct way to authorize a device.
+ */
+export default function PinPage() {
+  const { authed, unlock } = useStore();
   const [pin, setPin] = useState("");
   const [error, setError] = useState(false);
-  const router = useRouter();
-  const params = useSearchParams();
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("/api/pin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pin }),
-    });
-    if (res.ok) {
-      router.replace(params.get("from") ?? "/");
-      router.refresh();
+    if (await unlock(pin)) {
+      window.location.assign("/");
     } else {
       setError(true);
       setPin("");
@@ -31,37 +28,35 @@ function PinForm() {
         <div>
           <div className="text-2xl">🗽</div>
           <h1 className="font-bold mt-1">NYC 26.2</h1>
-          <p className="text-sm text-foreground/50">Enter your PIN</p>
+          <p className="text-sm text-foreground/50">
+            {authed ? "This device is already unlocked for editing." : "Enter the PIN to enable editing on this device"}
+          </p>
         </div>
-        <input
-          type="password"
-          inputMode="numeric"
-          autoFocus
-          value={pin}
-          onChange={(e) => {
-            setPin(e.target.value);
-            setError(false);
-          }}
-          className={`w-full rounded-xl border px-4 py-3 text-center text-2xl tracking-[0.5em] focus:outline-none focus:ring-2 ${
-            error ? "border-rose-400 ring-rose-200" : "border-black/10 focus:ring-foreground/20"
-          }`}
-        />
-        {error && <p className="text-sm text-rose-600 font-medium">Wrong PIN — try again</p>}
-        <button
-          type="submit"
-          className="w-full rounded-xl bg-foreground text-background py-3 font-semibold text-sm"
-        >
-          Unlock
-        </button>
+        {!authed && (
+          <>
+            <input
+              type="password"
+              inputMode="numeric"
+              autoFocus
+              value={pin}
+              onChange={(e) => {
+                setPin(e.target.value);
+                setError(false);
+              }}
+              className={`w-full rounded-xl border px-4 py-3 text-center text-2xl tracking-[0.5em] focus:outline-none focus:ring-2 ${
+                error ? "border-rose-400 ring-rose-200" : "border-black/10 focus:ring-foreground/20"
+              }`}
+            />
+            {error && <p className="text-sm text-rose-600 font-medium">Wrong PIN — try again</p>}
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-foreground text-background py-3 font-semibold text-sm"
+            >
+              Unlock
+            </button>
+          </>
+        )}
       </form>
     </div>
-  );
-}
-
-export default function PinPage() {
-  return (
-    <Suspense>
-      <PinForm />
-    </Suspense>
   );
 }

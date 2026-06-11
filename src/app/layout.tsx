@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import PinModal from "@/components/PinModal";
 import { StoreProvider } from "@/lib/store";
 
 const geistSans = Geist({
@@ -49,6 +50,7 @@ export default function RootLayout({
           <main className="mx-auto w-full max-w-3xl px-4 pt-4 pb-24 sm:pb-12 flex-1">
             {children}
           </main>
+          <PinModal />
         </StoreProvider>
       </body>
     </html>

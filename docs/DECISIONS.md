@@ -20,3 +20,9 @@ Append-only. Newest at the bottom. Format: date — decision — why.
 
 - **2026-06-10 — Dates as YYYY-MM-DD strings, America/New_York semantics.** Avoids the
   classic UTC-parsing off-by-one (a 10pm check-off must land on the right day).
+
+- **2026-06-11 — Auth switched from gate-everything to public-read / PIN-to-write.**
+  Ishaan wants to share the site read-only (friends/family can follow training); only
+  edits need the PIN, prompted in-page at the moment of the first write. This also fixed
+  a bug where the store fetched /api/state while still on the PIN page, got a 401, and
+  showed a stale "couldn't reach server" banner after unlock.
