@@ -6,50 +6,58 @@
 - [x] Scaffold Next.js 16 (TS, Tailwind v4, App Router, src dir)
 - [x] AGENTS.md / CLAUDE.md project guide
 - [x] docs/: ARCHITECTURE, DATA_MODEL, ROADMAP, DECISIONS
-- [ ] git init + initial commit
-- [ ] Install gh CLI, **user runs `gh auth login`**
-- [ ] Create private GitHub repo `marathon-tracker`, push
+- [x] git init + initial commit
+- [x] Install gh CLI
+- [ ] **User runs `gh auth login`**, then create private GitHub repo `marathon-tracker`, push
 
-## Phase 1 — Data conversion (xlsx → JSON)
-- [ ] `scripts/convert_xlsx.py` parsing all 5 sheets
-- [ ] `src/data/plan.json` with every date May 25 → Nov 1 mapped
-- [ ] `src/data/reference.json` (travel / fueling / paces)
-- [ ] Mileage validation: per-week sum of parsed run miles == "Run Miles" column
-- [ ] Manual verification pass of all weeks vs xlsx; notes in DATA_MODEL.md
+## Phase 1 — Data conversion (xlsx → JSON) ✅
+- [x] `scripts/convert_xlsx.py` parsing all 5 sheets
+- [x] `src/data/plan.json` with every date May 25 → Nov 1 mapped (161 days, 23 weeks)
+- [x] `src/data/reference.json` (travel / fueling / paces)
+- [x] Mileage validation: per-week sum of parsed run miles == "Run Miles" column (all 23 OK)
+- [x] Spot verification of tricky days (travel week, race day, peak long run, hill repeats)
 
-## Phase 2 — Core UI (read-only, localStorage)
-- [ ] App shell: bottom nav (mobile) / top nav (desktop), phase color system
-- [ ] Today view: run card (miles/pace/HR/structure/fueling), lift card, check-offs,
+## Phase 2 — Core UI ✅
+- [x] App shell: bottom nav (mobile) / top nav (desktop), phase color system
+- [x] Today view: run card (miles/pace/HR/structure/fueling), lift card, check-offs,
       race countdown, prev/next day arrows
-- [ ] Plan view: Week / Month / Full toggle
-- [ ] Travel / Fueling / Paces reference pages
-- [ ] Progress view: % complete, streak, weekly planned-vs-actual chart
-- [ ] Verified on 390px and desktop; today's date shows correct workout
+- [x] Plan view: Week / Month / Full toggle (choice persisted)
+- [x] Travel / Fueling / Paces reference pages under /guide
+- [x] Progress view: stats tiles, streak, weekly planned-vs-done chart, plan timeline
+- [x] Verified in headless Chrome at ~500px and 900px; Jun 10 shows BB-3 Wed 5 mi easy
 
-## Phase 3 — Backend & sync (**user: create Supabase project**)
-- [ ] `supabase/schema.sql` applied
-- [ ] API routes: /api/pin, /api/log, /api/override, /api/settings, /api/state
-- [ ] PIN middleware + /pin page
-- [ ] Synced store with optimistic updates + localStorage cache
+## Phase 3 — Backend & sync (code ✅, **user: create Supabase project**)
+- [x] `supabase/schema.sql` written (not yet applied — needs Supabase project)
+- [x] API routes: /api/pin, /api/log, /api/override, /api/settings, /api/state
+- [x] Local JSON file fallback (.data/) when Supabase env vars are unset
+- [x] PIN gate via src/proxy.ts (Next 16 middleware) + /pin page — tested: redirect,
+      401 on API, wrong PIN rejected, cookie flow works
+- [x] Synced store with optimistic updates + localStorage cache
+- [ ] **User: create Supabase project, run schema.sql, fill env vars**
 
-## Phase 4 — Editing & adjustments
-- [ ] Day editor bottom-sheet: edit run/lift, skip, swap within week, revert
-- [ ] Travel scenario pickers (Italy Wk 4, Wedding Wk 10) wired to week targets
-- [ ] "Adjusted" badge on overridden days
+## Phase 4 — Editing & adjustments ✅
+- [x] Day editor bottom-sheet: edit run, skip, swap within week, revert
+- [x] Travel scenario pickers (Italy Wk 4, Wedding Wk 10) wired to week targets
+- [x] "Adjusted" badge on overridden days
 
 ## Phase 5 — Deploy & polish (**user: connect Vercel**)
-- [ ] Vercel project + env vars (APP_PIN, SUPABASE_URL, SUPABASE_SERVICE_KEY)
-- [ ] PWA manifest + icons; Add-to-Home-Screen tested on iPhone
-- [ ] Mobile polish pass
+- [x] PWA manifest + icons
+- [ ] **User: import repo in Vercel, set env vars (APP_PIN, SUPABASE_URL, SUPABASE_SERVICE_KEY)**
+- [ ] Add-to-Home-Screen tested on real iPhone
+- [ ] Mobile polish pass after real-device testing
 
 ## Phase 6 — Wrap-up
-- [ ] README with screenshots
-- [ ] Claude memory entry (project state + resume instructions)
-- [ ] Final docs pass + push
+- [x] README
+- [x] Claude memory entry (project state + resume instructions)
+- [ ] Push to GitHub (blocked on gh auth)
 
 ---
 
 ## Session log
 
 - **2026-06-10** — Project created. Plan approved (Vercel + Supabase sync, full editing,
-  PIN gate). Scaffolded Next.js 16, wrote docs structure. Started Phase 0/1.
+  PIN gate). Scaffolded Next.js 16, wrote docs. Converted xlsx → JSON with full mileage
+  validation. Built the complete app (all views, editor, scenario pickers, PIN gate,
+  sync API with local fallback). Production build passes; smoke-tested pages, log API
+  round-trip, and PIN flow. Remaining: user account steps (GitHub auth → push, Supabase
+  project, Vercel import) and real-device testing.

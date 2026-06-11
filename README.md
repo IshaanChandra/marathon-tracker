@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NYC 26.2 — Marathon Tracker
 
-## Getting Started
+Personal training tracker for a Sub-3:45 NYC Marathon plan (race day: **Sun Nov 1, 2026**).
+Mobile-first, works on phone and laptop, progress syncs across devices.
 
-First, run the development server:
+Built from `Sub_3-45_NYC_Marathon_Plan.xlsx` (5 tabs → structured JSON). The plan itself is
+immutable in git; check-offs, logged actuals, workout edits/swaps, and travel scenario picks
+live in Supabase as a revertible override layer.
+
+## Features
+
+- **Today** — today's run (miles, pace/HR, workout structure, fueling cues), lift, one-tap
+  check-offs, actual miles/pace/notes, race countdown
+- **Plan** — Week / Month / Full views, phase-colored, planned-vs-done weekly bars
+- **Progress** — miles done, run streak, % through plan, weekly mileage chart
+- **Guide** — Travel adjustments (with A/B/C scenario pickers for the Italy and wedding
+  weeks), Nutrition & Fueling, Paces & plan rationale
+- **Edit any day** — change the workout, skip it, swap with another day this week; every
+  edit shows an "Adjusted" badge and can be reverted to the original plan
+- **PIN gate** — one-time PIN per device keeps it private
+- **PWA** — add to iPhone home screen for an app-like feel
+
+## Stack
+
+Next.js 16 (App Router) · TypeScript · Tailwind v4 · Supabase Postgres (or a local JSON
+file store when Supabase env vars are unset) · Vercel.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000 — no PIN, local file store in .data/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Regenerate plan data after editing the spreadsheet:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+python3 scripts/convert_xlsx.py   # validates weekly mileage, writes src/data/*.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy (one-time setup)
 
-## Learn More
+1. **Supabase**: create a free project, run `supabase/schema.sql` in the SQL editor,
+   copy the Project URL and `service_role` key.
+2. **Vercel**: import this GitHub repo, set env vars `APP_PIN`, `SUPABASE_URL`,
+   `SUPABASE_SERVICE_KEY`, deploy.
+3. Open the Vercel URL on your phone → Share → Add to Home Screen.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Docs: [architecture](docs/ARCHITECTURE.md) · [data model](docs/DATA_MODEL.md) ·
+[roadmap/progress](docs/ROADMAP.md) · [decisions](docs/DECISIONS.md)
