@@ -53,6 +53,13 @@ is revertible.
 - Never run `npm run build` while a dev server is running in another terminal — they
   share `.next` and corrupt each other. If you see `Cannot find module …turbopack…`,
   `rm -rf .next` and rebuild.
+- **SIGBUS (signal 10) / "Invalid package config" / `pack-objects died of signal 10`:**
+  seen 2026-06-12 — the machine intermittently faults on multi-threaded memory-mapped
+  I/O. Workarounds applied: `npm ci` (clears any half-written cache) fixes build crashes;
+  `pack.threads=1` is now set in repo git config so `git push` won't crash. If a build
+  SIGBUSes, `rm -rf node_modules .next && npm ci` then rebuild. If pushes start failing
+  again, it's worth telling the user to check the machine (RAM/SSD health) — repeated
+  SIGBUS across unrelated tools is a hardware/filesystem smell, not a project bug.
 - **Never pipe `npm run build` through `head`** (e.g. `npm run build | grep X | head -3`):
   once `head` exits, SIGPIPE kills the build mid-write and leaves `.next` half-built
   (symptom: `✓ Compiled` followed by missing `pages-manifest.json` / `middleware-manifest`
