@@ -4,6 +4,7 @@ import type { EffectiveDay } from "@/lib/types";
 import { RUN_TYPE_LABELS } from "@/lib/plan";
 import { RUN_TYPE_CHIP, RUN_TYPE_TINT } from "@/lib/ui";
 import { useStore } from "@/lib/store";
+import FuelingPanel from "./FuelingPanel";
 
 function CheckButton({
   done,
@@ -112,12 +113,7 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
             )}
           </dl>
 
-          {day.run.fueling && (
-            <div className="mt-3 rounded-xl bg-amber-50 border border-amber-200/60 px-3.5 py-2.5 text-sm dark:bg-amber-500/15 dark:border-amber-500/30">
-              <span className="font-semibold text-amber-900 dark:text-amber-200">Fueling · </span>
-              <span className="text-amber-900/90 dark:text-amber-100/90">{day.run.fueling}</span>
-            </div>
-          )}
+          <FuelingPanel run={day.run} />
 
           {/* Actuals */}
           <div className="mt-4 pt-3 border-t border-edge/60 grid grid-cols-2 gap-2">
