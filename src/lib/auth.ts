@@ -29,3 +29,17 @@ export async function calToken(): Promise<string> {
     .join("")
     .slice(0, 32);
 }
+
+/**
+ * Shared secret for the Strava integration: the OAuth `state` (CSRF guard on the
+ * callback) and the webhook `verify_token` / `?t=` guard. Salted separately again so
+ * it can't be derived from the auth cookie or the calendar token.
+ */
+export async function stravaToken(): Promise<string> {
+  const data = new TextEncoder().encode(`marathon-strava:${process.env.APP_PIN ?? ""}`);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("")
+    .slice(0, 32);
+}

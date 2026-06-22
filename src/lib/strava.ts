@@ -1,6 +1,6 @@
 import "server-only";
 import type { DayLog } from "./types";
-import { getDayLog, setLog } from "./db";
+import { getDayLog, getSetting, setLog, setSetting } from "./db";
 import { nyDateFromInstant } from "./dates";
 
 /**
@@ -82,5 +82,121 @@ export async function applyActivity(a: StravaActivity): Promise<ApplyResult> {
   const { date, miles, pace } = activityToLogPatch(a);
   const existing = (await getDayLog(date)) ?? EMPTY_LOG;
   await setLog(date, { ...existing, runDone: true, actualMiles: miles, actualPace: pace });
+  await setSetting(STATUS_KEY, {
+    ...(((await getSetting(STATUS_KEY)) as StravaStatus | null) ?? { connected: true }),
+    lastSyncAt: new Date().toISOString(),
+    lastRun: { date, miles, pace },
+  });
   return { applied: true, date, miles, pace };
+}
+
+// ---- OAuth + token store (Phase 2) ----------------------------------------------
+//
+// Tokens live in the `strava.tokens` setting, which db.isSecretSetting() redacts from
+// the public /api/state. A non-secret `strava.status` mirror (connected flag + last
+// sync) is what the UI reads.
+
+const TOKENS_KEY = "strava.tokens";
+const STATUS_KEY = "strava.status";
+const OAUTH_URL = "https://www.strava.com/oauth/token";
+
+interface StravaTokens {
+  access_token: string;
+  refresh_token: string;
+  expires_at: number; // unix seconds
+  athlete_id: number;
+}
+
+export interface StravaStatus {
+  connected: boolean;
+  athleteId?: number;
+  athleteName?: string;
+  connectedAt?: string;
+  lastSyncAt?: string;
+  lastRun?: { date: string; miles: number; pace: string | null };
+  subscribed?: boolean;
+}
+
+export function stravaConfigured(): boolean {
+  return !!(process.env.STRAVA_CLIENT_ID && process.env.STRAVA_CLIENT_SECRET);
+}
+
+export function clientId(): string {
+  return process.env.STRAVA_CLIENT_ID ?? "";
+}
+
+async function getTokens(): Promise<StravaTokens | null> {
+  return ((await getSetting(TOKENS_KEY)) as StravaTokens | null) ?? null;
+}
+
+export async function getStatus(): Promise<StravaStatus | null> {
+  return ((await getSetting(STATUS_KEY)) as StravaStatus | null) ?? null;
+}
+
+/** Exchange an OAuth authorization code for tokens and persist them. */
+export async function exchangeCode(code: string): Promise<{ athleteId: number }> {
+  const res = await fetch(OAUTH_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      client_id: process.env.STRAVA_CLIENT_ID,
+      client_secret: process.env.STRAVA_CLIENT_SECRET,
+      code,
+      grant_type: "authorization_code",
+    }),
+  });
+  if (!res.ok) throw new Error(`Strava token exchange failed: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  const athleteId = data.athlete?.id as number;
+  await setSetting(TOKENS_KEY, {
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    expires_at: data.expires_at,
+    athlete_id: athleteId,
+  } satisfies StravaTokens);
+  await setSetting(STATUS_KEY, {
+    connected: true,
+    athleteId,
+    athleteName: [data.athlete?.firstname, data.athlete?.lastname].filter(Boolean).join(" ") || undefined,
+    connectedAt: new Date().toISOString(),
+  } satisfies StravaStatus);
+  return { athleteId };
+}
+
+/** Current access token, refreshed in place when it's within 60s of expiry. */
+export async function getAccessToken(): Promise<string | null> {
+  const t = await getTokens();
+  if (!t) return null;
+  if (t.expires_at > Date.now() / 1000 + 60) return t.access_token;
+  const res = await fetch(OAUTH_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      client_id: process.env.STRAVA_CLIENT_ID,
+      client_secret: process.env.STRAVA_CLIENT_SECRET,
+      refresh_token: t.refresh_token,
+      grant_type: "refresh_token",
+    }),
+  });
+  if (!res.ok) throw new Error(`Strava token refresh failed: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  const next: StravaTokens = {
+    ...t,
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    expires_at: data.expires_at,
+  };
+  await setSetting(TOKENS_KEY, next);
+  return next.access_token;
+}
+
+/** The athlete id we authorized — used to ignore webhook events for anyone else. */
+export async function getAthleteId(): Promise<number | null> {
+  return (await getTokens())?.athlete_id ?? null;
+}
+
+/** Forget the Strava connection (tokens + status). Subscription teardown is separate. */
+export async function disconnect(): Promise<void> {
+  await setSetting(TOKENS_KEY, null);
+  await setSetting(STATUS_KEY, null);
 }

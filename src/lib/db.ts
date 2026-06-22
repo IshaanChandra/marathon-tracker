@@ -144,6 +144,23 @@ export async function setOverride(date: string, patch: DayOverride | null): Prom
   }
 }
 
+/** Read a single setting value (used by the Strava token store). */
+export async function getSetting(key: string): Promise<unknown> {
+  if (!useSupabase) return readLocal().settings[key] ?? null;
+  const rows = (await sb(`settings?key=eq.${encodeURIComponent(key)}&select=value`).then((r) =>
+    r.json(),
+  )) as Array<{ value: unknown }>;
+  return rows[0]?.value ?? null;
+}
+
+/**
+ * Settings holding secrets (Strava OAuth tokens). These must be redacted from the
+ * public /api/state response — the site is publicly readable.
+ */
+export function isSecretSetting(key: string): boolean {
+  return key.startsWith("strava.tokens");
+}
+
 export async function setSetting(key: string, value: unknown): Promise<void> {
   if (!useSupabase) {
     const state = readLocal();
