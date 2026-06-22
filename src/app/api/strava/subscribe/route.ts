@@ -32,8 +32,11 @@ export async function POST(request: Request) {
   if (!stravaConfigured()) {
     return NextResponse.json({ error: "Strava env not configured" }, { status: 500 });
   }
+  // Clean callback URL — NO query string. Strava appends its own hub.* params during
+  // validation; a pre-existing `?t=` would collide into `...?t=...?hub.mode=...` and
+  // break parsing. The `verify_token` below is the secret that guards the GET handshake.
   const token = await stravaToken();
-  const callbackUrl = `${origin(request)}/api/strava/webhook?t=${token}`;
+  const callbackUrl = `${origin(request)}/api/strava/webhook`;
   try {
     const sub = await createSubscription(callbackUrl, token);
     return NextResponse.json({ ok: true, subscription: sub });
