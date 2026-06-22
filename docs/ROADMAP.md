@@ -69,6 +69,11 @@
 - [x] 2026-06-21 — Lift plan → 3-day split (Mon Chest/Tri · Wed Back/Bi · Sun Legs) via
       converter remap; optional per-day stretch/recover add-on with its own check-off
 - [ ] User to run the `addon_done` column migration in Supabase (in `supabase/schema.sql`)
+- [x] 2026-06-21 — Garmin auto-sync via Strava: OAuth connect, webhook, auto check-off +
+      fill distance/pace (mapping → OAuth → webhook → docs). See `docs/GARMIN_SYNC.md`.
+- [ ] User to do one-time Strava setup (see `docs/GARMIN_SYNC.md`): create Strava app,
+      set `STRAVA_CLIENT_ID`/`STRAVA_CLIENT_SECRET` in Vercel, enable Garmin→Strava,
+      then Progress → Connect Strava → Enable auto-sync
 - [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations

@@ -53,6 +53,17 @@ against the `APP_PIN` env var and sets the cookie (year expiry — once per devi
 - `/travel`, `/fueling`, `/paces` — reference content from `src/data/reference.json`
 - `/progress` — stats: % complete, streak, weekly planned-vs-actual mileage
 
+## Garmin auto-sync (Strava bridge)
+
+Finished runs auto-fill the log: Garmin → Strava → our webhook → `setLog`. Strava push
+events hit `/api/strava/webhook` (open; guarded by a salted `?t=` secret + `owner_id`),
+which acks in <2s and does the activity fetch + apply in Next's `after()`. OAuth tokens
+live in the `settings` table under `strava.tokens` and are **redacted from the public
+`/api/state`** (`isSecretSetting`); the UI reads only the non-secret `strava.status`.
+Source-agnostic core: `activityToLogPatch` → `applyActivity` in `src/lib/strava.ts`.
+Full setup + secret-handling notes: `docs/GARMIN_SYNC.md`. Env: `STRAVA_CLIENT_ID`,
+`STRAVA_CLIENT_SECRET`.
+
 ## Why these choices
 
 See docs/DECISIONS.md. Short version: one Next.js codebase covers UI + API on Vercel's

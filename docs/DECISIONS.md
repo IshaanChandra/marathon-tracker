@@ -77,3 +77,19 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   first gel 30–45 min, then every 30–45). Chose the interval model over a carbs/hr dial
   because it maps to the athlete's mental model ("a gel every 30–40 min") and reads as a
   short, scannable line. The plan's week cue stays visible as a separate `planCue`.
+
+- **2026-06-21 — Garmin auto-sync built on the Strava bridge, not Garmin directly.** Goal:
+  a finished run auto-checks-off its day and fills distance/pace. There's no direct watch
+  API; of the four pipes (Strava, Apple Health+Shortcut, official Garmin API, unofficial
+  Garmin login) we chose **Strava** — Garmin already auto-syncs runs there, and Strava's
+  API is official, free, push-based (webhook), and approves instantly, with no password
+  storage. Rejected: the official Garmin Activity API (partner approval is 1–4 weeks and
+  may be denied for a personal app); unofficial Garmin login (ToS violation, stores
+  credentials, brittle); Apple Health (HealthKit is device-only, needs a native iOS app or
+  a paid bridge). Backend is source-agnostic (`activityToLogPatch`/`applyActivity`), so the
+  pipe can change later. Confirmed behavior: auto-apply immediately (revertible); Strava
+  overwrites distance/pace but never notes/lift/addon; only runs. Security: OAuth tokens in
+  the `strava.tokens` setting are redacted from the public `/api/state` (the site is
+  public-read); the unsigned webhook is guarded by a salted `?t=` secret + `owner_id` +
+  our-token-only fetches; the 2-second ack rule is met by doing the fetch+apply in Next
+  `after()`. Built and shipped in 4 phases (mapping core → OAuth → webhook → docs).
