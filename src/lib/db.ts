@@ -87,6 +87,24 @@ export async function getState(): Promise<AppState> {
   return state;
 }
 
+/** Read a single day's log (used by sync, which preserves notes/lift/addon). */
+export async function getDayLog(date: string): Promise<DayLog | null> {
+  if (!useSupabase) return readLocal().logs[date] ?? null;
+  const rows = (await sb(`day_log?date=eq.${date}&select=*`).then((r) => r.json())) as Array<
+    Record<string, unknown>
+  >;
+  const row = rows[0];
+  if (!row) return null;
+  return {
+    runDone: !!row.run_done,
+    liftDone: !!row.lift_done,
+    addonDone: !!row.addon_done,
+    actualMiles: (row.actual_miles as number) ?? null,
+    actualPace: (row.actual_pace as string) ?? null,
+    notes: (row.notes as string) ?? null,
+  };
+}
+
 export async function setLog(date: string, log: DayLog | null): Promise<void> {
   if (!useSupabase) {
     const state = readLocal();

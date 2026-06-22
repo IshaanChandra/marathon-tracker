@@ -13,6 +13,20 @@ export function todayNY(): string {
   }).format(new Date());
 }
 
+/**
+ * The NY calendar date (YYYY-MM-DD) an instant falls on — e.g. a run's UTC
+ * `start_date`. Unlike the plan-date strings, `iso` here is a full timestamp, so
+ * `new Date(iso)` is safe (no date-only UTC-midnight pitfall).
+ */
+export function nyDateFromInstant(iso: string): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(iso));
+}
+
 /** Noon-UTC anchor makes day arithmetic immune to DST/UTC shifts. */
 function toAnchor(date: string): Date {
   return new Date(`${date}T12:00:00Z`);

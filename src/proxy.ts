@@ -18,5 +18,14 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/log/:path*", "/api/override/:path*", "/api/settings/:path*"],
+  // Strava callback + webhook stay OPEN (Strava can't send the cookie; they carry
+  // their own validation). connect/subscribe/test are owner-only, so PIN-gate them.
+  matcher: [
+    "/api/log/:path*",
+    "/api/override/:path*",
+    "/api/settings/:path*",
+    "/api/strava/connect/:path*",
+    "/api/strava/subscribe/:path*",
+    "/api/strava/test/:path*",
+  ],
 };
