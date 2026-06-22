@@ -64,3 +64,16 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   tacked onto any day by time/feel — chosen over a fixed weekly stretch day or
   reference-only guidance because the athlete wanted to add sessions ad hoc. Extra lifts
   beyond the programmed 3 are still added manually via the existing day editor.
+
+- **2026-06-21 — Fueling made adaptive to time-on-feet (Model 1, interval-based).** The
+  old derivation assumed a 10:15/mi long-run pace (overcounted gels) and let a minimal
+  week cue ("Practice: sip water") replace the gel guidance entirely. Now `fuelingFor()`
+  drives everything off time on feet: long-run default pace dropped to 9:30, and it uses
+  the **logged actual** distance/pace when present (a logged run recomputes against what
+  was really run — flagged "· actual" in the panel). Gel schedule = first at ~0:40 (race
+  ~0:30), then every ~35 min (race ~30); gels in the final ~25 min show as "by feel," not
+  required. Verified against the athlete's own numbers (11 mi → 2 gels + 1 by feel; 20 mi
+  → 4 + 1; race → 6 + 1). Grounded in standard guidance (30–60 g/hr training, 60–90 race;
+  first gel 30–45 min, then every 30–45). Chose the interval model over a carbs/hr dial
+  because it maps to the athlete's mental model ("a gel every 30–40 min") and reads as a
+  short, scannable line. The plan's week cue stays visible as a separate `planCue`.

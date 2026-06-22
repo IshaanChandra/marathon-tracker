@@ -120,7 +120,10 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
             )}
           </dl>
 
-          <FuelingPanel run={day.run} />
+          <FuelingPanel
+            run={day.run}
+            actuals={{ actualMiles: log.actualMiles, actualPace: log.actualPace }}
+          />
 
           {/* Actuals */}
           <div className="mt-4 pt-3 border-t border-edge/60 grid grid-cols-2 gap-2">

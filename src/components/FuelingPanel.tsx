@@ -1,5 +1,5 @@
 import type { Run } from "@/lib/types";
-import { fuelingFor } from "@/lib/fueling";
+import { fuelingFor, type FuelActuals } from "@/lib/fueling";
 
 function Row({ label, body }: { label: string; body: string }) {
   return (
@@ -12,9 +12,10 @@ function Row({ label, body }: { label: string; body: string }) {
   );
 }
 
-/** Before / During / Hydration fueling guidance, derived from the run. */
-export default function FuelingPanel({ run }: { run: Run }) {
-  const fuel = fuelingFor(run);
+/** Before / During / Sodium / Water fueling guidance, derived from the run and,
+ *  when logged, the actual distance/pace (so time on feet stays accurate). */
+export default function FuelingPanel({ run, actuals }: { run: Run; actuals?: FuelActuals | null }) {
+  const fuel = fuelingFor(run, actuals);
 
   // Short runs: one quiet line, no big amber block.
   if (fuel.level !== "full") {
@@ -31,7 +32,7 @@ export default function FuelingPanel({ run }: { run: Run }) {
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-bold text-amber-900 dark:text-amber-200">⛽ Fueling</span>
         <span className="text-[11px] font-semibold text-amber-700/70 dark:text-amber-300/70">
-          ~{fuel.durationLabel} on feet
+          ~{fuel.durationLabel} on feet{fuel.fromActuals ? " · actual" : ""}
         </span>
       </div>
       <div className="space-y-2">
