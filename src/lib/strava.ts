@@ -82,11 +82,7 @@ export async function applyActivity(a: StravaActivity): Promise<ApplyResult> {
   const { date, miles, pace } = activityToLogPatch(a);
   const existing = (await getDayLog(date)) ?? EMPTY_LOG;
   await setLog(date, { ...existing, runDone: true, actualMiles: miles, actualPace: pace });
-  await setSetting(STATUS_KEY, {
-    ...(((await getSetting(STATUS_KEY)) as StravaStatus | null) ?? { connected: true }),
-    lastSyncAt: new Date().toISOString(),
-    lastRun: { date, miles, pace },
-  });
+  await mergeStatus({ lastSyncAt: new Date().toISOString(), lastRun: { date, miles, pace } });
   return { applied: true, date, miles, pace };
 }
 
@@ -115,6 +111,7 @@ export interface StravaStatus {
   lastSyncAt?: string;
   lastRun?: { date: string; miles: number; pace: string | null };
   subscribed?: boolean;
+  subscriptionId?: number;
 }
 
 export function stravaConfigured(): boolean {
@@ -131,6 +128,11 @@ async function getTokens(): Promise<StravaTokens | null> {
 
 export async function getStatus(): Promise<StravaStatus | null> {
   return ((await getSetting(STATUS_KEY)) as StravaStatus | null) ?? null;
+}
+
+async function mergeStatus(patch: Partial<StravaStatus>): Promise<void> {
+  const cur = (await getStatus()) ?? { connected: false };
+  await setSetting(STATUS_KEY, { ...cur, ...patch });
 }
 
 /** Exchange an OAuth authorization code for tokens and persist them. */
@@ -199,4 +201,63 @@ export async function getAthleteId(): Promise<number | null> {
 export async function disconnect(): Promise<void> {
   await setSetting(TOKENS_KEY, null);
   await setSetting(STATUS_KEY, null);
+}
+
+// ---- Activity fetch + webhook subscription (Phase 3) ----------------------------
+
+const API = "https://www.strava.com/api/v3";
+
+/** Fetch a full activity detail by id, using the (refreshed) access token. */
+export async function fetchActivity(id: number): Promise<StravaActivity | null> {
+  const token = await getAccessToken();
+  if (!token) return null;
+  const res = await fetch(`${API}/activities/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: "no-store",
+  });
+  if (!res.ok) return null;
+  return (await res.json()) as StravaActivity;
+}
+
+/** The webhook entry point: fetch the activity, then apply it to its day. */
+export async function syncActivityById(id: number): Promise<ApplyResult> {
+  const a = await fetchActivity(id);
+  if (!a) return { applied: false, reason: "fetch failed" };
+  return applyActivity(a);
+}
+
+function creds(): URLSearchParams {
+  return new URLSearchParams({
+    client_id: process.env.STRAVA_CLIENT_ID ?? "",
+    client_secret: process.env.STRAVA_CLIENT_SECRET ?? "",
+  });
+}
+
+/** Create the single push subscription. Strava immediately GET-validates callbackUrl. */
+export async function createSubscription(callbackUrl: string, verifyToken: string): Promise<unknown> {
+  const body = creds();
+  body.set("callback_url", callbackUrl);
+  body.set("verify_token", verifyToken);
+  const res = await fetch(`${API}/push_subscriptions`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body,
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(`subscribe failed: ${res.status} ${JSON.stringify(data)}`);
+  await mergeStatus({ subscribed: true, subscriptionId: data.id });
+  return data;
+}
+
+export async function getSubscriptions(): Promise<Array<{ id: number; callback_url: string }>> {
+  const res = await fetch(`${API}/push_subscriptions?${creds()}`, { cache: "no-store" });
+  return res.ok ? await res.json() : [];
+}
+
+/** Tear down any existing subscription(s). */
+export async function deleteSubscription(): Promise<void> {
+  for (const s of await getSubscriptions()) {
+    await fetch(`${API}/push_subscriptions/${s.id}?${creds()}`, { method: "DELETE" });
+  }
+  await mergeStatus({ subscribed: false, subscriptionId: undefined });
 }
