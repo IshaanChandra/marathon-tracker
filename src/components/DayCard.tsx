@@ -37,7 +37,14 @@ function CheckButton({
 }
 
 function emptyLog() {
-  return { runDone: false, liftDone: false, actualMiles: null, actualPace: null, notes: null };
+  return {
+    runDone: false,
+    liftDone: false,
+    addonDone: false,
+    actualMiles: null,
+    actualPace: null,
+    notes: null,
+  };
 }
 
 export default function DayCard({ day }: { day: EffectiveDay }) {
@@ -168,7 +175,28 @@ export default function DayCard({ day }: { day: EffectiveDay }) {
         </div>
       )}
 
-      {!day.run && !day.lift && (
+      {day.addon && (
+        <div className="rounded-2xl border border-edge border-l-4 !border-l-teal-400 bg-card bg-gradient-to-br from-teal-200/40 to-card shadow-sm p-5 dark:from-teal-500/15">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-teal-100 text-teal-700 dark:bg-teal-500/25 dark:text-teal-200">
+                Recovery
+              </span>
+              <div className="mt-1.5 text-xl font-bold tracking-tight">{day.addon.label}</div>
+              {day.addon.notes && (
+                <div className="text-sm text-foreground/55 mt-0.5">{day.addon.notes}</div>
+              )}
+            </div>
+            <CheckButton
+              done={log.addonDone}
+              label={log.addonDone ? "Done" : "Mark done"}
+              onToggle={() => patchLog({ addonDone: !log.addonDone })}
+            />
+          </div>
+        </div>
+      )}
+
+      {!day.run && !day.lift && !day.addon && (
         <div className="card p-5">
           <span className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold bg-slate-100 text-slate-600 dark:bg-slate-500/25 dark:text-slate-300">
             Rest

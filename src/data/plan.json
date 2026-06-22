@@ -278,8 +278,8 @@
       "raw": "LIFT: Legs\n(RPE 7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 7)"
+        "focus": "Chest/Tri",
+        "notes": "(stack or PM)"
       },
       "rest": false,
       "notes": null
@@ -296,10 +296,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": "(stack or PM)"
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -315,7 +312,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": "(stack or PM)"
+      },
       "rest": false,
       "notes": null
     },
@@ -331,10 +331,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": "(stack or PM)"
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -343,11 +340,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms\n+ stretch",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "+ stretch"
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-05-30": {
@@ -371,9 +365,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-06-01": {
       "weekId": "BB-2",
@@ -381,8 +378,8 @@
       "raw": "LIFT: Legs\n(RPE 7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -399,10 +396,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -418,7 +412,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -434,10 +431,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -446,11 +440,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms\n+ stretch",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "+ stretch"
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-06-06": {
@@ -474,9 +465,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-06-08": {
       "weekId": "BB-3",
@@ -484,8 +478,8 @@
       "raw": "LIFT: Legs\n(lighter, RPE 6)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(lighter, RPE 6)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -502,10 +496,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -521,7 +512,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -537,10 +531,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -549,11 +540,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms\n+ stretch",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "+ stretch"
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-06-13": {
@@ -577,9 +565,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-06-15": {
       "weekId": "1",
@@ -587,8 +578,8 @@
       "raw": "LIFT: Legs\n(RPE 7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 7)"
+        "focus": "Chest/Tri",
+        "notes": "(stack or PM)"
       },
       "rest": false,
       "notes": null
@@ -605,10 +596,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": "(stack or PM)"
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -624,7 +612,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -640,10 +631,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -652,11 +640,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms\n+ stretch",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "+ stretch"
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-06-20": {
@@ -680,9 +665,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 7)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-06-22": {
       "weekId": "2",
@@ -690,7 +678,7 @@
       "raw": "LIFT: Legs",
       "run": null,
       "lift": {
-        "focus": "Legs",
+        "focus": "Chest/Tri",
         "notes": null
       },
       "rest": false,
@@ -708,10 +696,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -727,7 +712,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -743,10 +731,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -755,11 +740,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-06-27": {
@@ -783,9 +765,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-06-29": {
       "weekId": "3",
@@ -793,7 +778,7 @@
       "raw": "LIFT: Legs",
       "run": null,
       "lift": {
-        "focus": "Legs",
+        "focus": "Chest/Tri",
         "notes": null
       },
       "rest": false,
@@ -811,10 +796,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -830,7 +812,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -846,10 +831,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -858,11 +840,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-07-04": {
@@ -886,9 +865,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-07-06": {
       "weekId": "4",
@@ -896,8 +878,8 @@
       "raw": "LIFT: Legs\n(lighter, RPE 6)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(lighter, RPE 6)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -914,10 +896,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -933,7 +912,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -949,10 +931,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -961,11 +940,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-07-11": {
@@ -989,9 +965,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-07-13": {
       "weekId": "5",
@@ -999,7 +978,7 @@
       "raw": "LIFT: Legs",
       "run": null,
       "lift": {
-        "focus": "Legs",
+        "focus": "Chest/Tri",
         "notes": null
       },
       "rest": false,
@@ -1017,10 +996,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1036,7 +1012,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -1052,10 +1031,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1064,11 +1040,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-07-18": {
@@ -1092,9 +1065,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-07-20": {
       "weekId": "6",
@@ -1102,7 +1078,7 @@
       "raw": "LIFT: Legs",
       "run": null,
       "lift": {
-        "focus": "Legs",
+        "focus": "Chest/Tri",
         "notes": null
       },
       "rest": false,
@@ -1120,10 +1096,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1139,7 +1112,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -1155,10 +1131,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1167,11 +1140,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-07-25": {
@@ -1195,9 +1165,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": null
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-07-27": {
       "weekId": "7",
@@ -1205,8 +1178,8 @@
       "raw": "LIFT: Legs\n(RPE 6-7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6-7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1223,10 +1196,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1267,11 +1237,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-08-01": {
@@ -1295,9 +1262,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-08-03": {
       "weekId": "8",
@@ -1305,8 +1275,8 @@
       "raw": "LIFT: Legs\n(RPE 6-7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6-7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1323,10 +1293,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1342,7 +1309,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -1367,11 +1337,8 @@
       "dow": "Friday",
       "raw": "LIFT: Back/Bi",
       "run": null,
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-08-08": {
@@ -1395,9 +1362,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-08-10": {
       "weekId": "9",
@@ -1405,8 +1375,8 @@
       "raw": "LIFT: Legs\n(RPE 6-7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6-7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1423,10 +1393,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1474,10 +1441,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "(if time)"
-      },
+      "lift": null,
       "rest": false,
       "notes": "Easy shakeout then fly"
     },
@@ -1509,7 +1473,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
       "rest": false,
       "notes": "Easy shakeout (optional) OR rest"
     },
@@ -1608,8 +1575,11 @@
       "dow": "Monday",
       "raw": "Travel home /\nFull rest",
       "run": null,
-      "lift": null,
-      "rest": true,
+      "lift": {
+        "focus": "Chest/Tri",
+        "notes": null
+      },
+      "rest": false,
       "notes": "Travel home / Full rest"
     },
     "2026-08-25": {
@@ -1624,10 +1594,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1668,11 +1635,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-08-29": {
@@ -1713,8 +1677,8 @@
       "raw": "LIFT: Legs\n(RPE 6-7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6-7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1731,10 +1695,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1750,7 +1711,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -1775,11 +1739,8 @@
       "dow": "Friday",
       "raw": "LIFT: Back/Bi",
       "run": null,
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-09-05": {
@@ -1810,7 +1771,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
       "rest": false,
       "notes": "Optional 5th run"
     },
@@ -1820,8 +1784,8 @@
       "raw": "LIFT: Legs\n(lighter, RPE 6)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(lighter, RPE 6)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1838,10 +1802,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1882,11 +1843,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-09-12": {
@@ -1917,7 +1875,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter, RPE 6)"
+      },
       "rest": false,
       "notes": "Optional 5th run"
     },
@@ -1927,8 +1888,8 @@
       "raw": "LIFT: Legs\n(RPE 6-7)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6-7)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -1945,10 +1906,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -1989,11 +1947,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-09-19": {
@@ -2024,7 +1979,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6-7)"
+      },
       "rest": false,
       "notes": "Optional 5th run"
     },
@@ -2034,8 +1992,8 @@
       "raw": "LIFT: Legs\n(RPE 6)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(RPE 6)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -2052,10 +2010,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -2071,7 +2026,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Back/Bi",
+        "notes": null
+      },
       "rest": false,
       "notes": null
     },
@@ -2096,11 +2054,8 @@
       "dow": "Friday",
       "raw": "LIFT: Back/Bi",
       "run": null,
-      "lift": {
-        "focus": "Back/Bi",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-09-26": {
@@ -2131,7 +2086,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(RPE 6)"
+      },
       "rest": false,
       "notes": "Optional 5th run"
     },
@@ -2141,8 +2099,8 @@
       "raw": "LIFT: Legs\n(lighter)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(lighter)"
+        "focus": "Chest/Tri",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -2159,10 +2117,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -2203,11 +2158,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": null
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-10-03": {
@@ -2238,7 +2190,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(lighter)"
+      },
       "rest": false,
       "notes": "Optional 5th run"
     },
@@ -2248,8 +2203,8 @@
       "raw": "LIFT: Legs\n(maintenance, light)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(maintenance, light)"
+        "focus": "Chest/Tri",
+        "notes": "(optional)"
       },
       "rest": false,
       "notes": null
@@ -2266,10 +2221,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": "(optional)"
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -2310,11 +2262,8 @@
       "dow": "Friday",
       "raw": "LIFT: Shoulders/Arms\n(light) \u2014 or rest",
       "run": null,
-      "lift": {
-        "focus": "Shoulders/Arms",
-        "notes": "(light) \u2014 or rest"
-      },
-      "rest": false,
+      "lift": null,
+      "rest": true,
       "notes": null
     },
     "2026-10-10": {
@@ -2345,7 +2294,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(maintenance, light)"
+      },
       "rest": false,
       "notes": "Shakeout (optional)"
     },
@@ -2355,8 +2307,8 @@
       "raw": "LIFT: Legs\n(maintenance, light)",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(maintenance, light)"
+        "focus": "Chest/Tri",
+        "notes": "(optional)"
       },
       "rest": false,
       "notes": null
@@ -2373,10 +2325,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "Chest/Tri",
-        "notes": "(optional)"
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -2442,9 +2391,12 @@
       "dow": "Sunday",
       "raw": "Rest\n(stretch / mobility)",
       "run": null,
-      "lift": null,
-      "rest": true,
-      "notes": "Rest (stretch / mobility)"
+      "lift": {
+        "focus": "Legs",
+        "notes": "(maintenance, light)"
+      },
+      "rest": false,
+      "notes": null
     },
     "2026-10-19": {
       "weekId": "19",
@@ -2452,8 +2404,8 @@
       "raw": "LIFT: Legs\n(light, RPE 5)\nor rest",
       "run": null,
       "lift": {
-        "focus": "Legs",
-        "notes": "(light, RPE 5) or rest"
+        "focus": "upper (light)",
+        "notes": null
       },
       "rest": false,
       "notes": null
@@ -2470,10 +2422,7 @@
         "structure": null,
         "fueling": null
       },
-      "lift": {
-        "focus": "upper (light)",
-        "notes": null
-      },
+      "lift": null,
       "rest": false,
       "notes": null
     },
@@ -2546,7 +2495,10 @@
         "structure": null,
         "fueling": null
       },
-      "lift": null,
+      "lift": {
+        "focus": "Legs",
+        "notes": "(light, RPE 5) or rest"
+      },
       "rest": false,
       "notes": "Optional shakeout"
     },

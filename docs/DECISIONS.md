@@ -51,3 +51,16 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   edits need the PIN, prompted in-page at the moment of the first write. This also fixed
   a bug where the store fetched /api/state while still on the PIN page, got a 401, and
   showed a stale "couldn't reach server" banner after unlock.
+
+- **2026-06-21 — Lift plan moved to a 3-day split + optional stretch/recover add-on.**
+  Ishaan switched from the original 4-day split (Mon Legs / Tue Chest-Tri / Thu Back-Bi /
+  Fri Shoulders-Arms) to **Mon Chest/Tri · Wed Back/Bi · Sun Legs**, with Shoulders/Arms
+  folded into the push/pull days. Runs are unchanged (3 weekday + Sat long). Implemented
+  as a `remap_lifts()` transform in the converter (relocate by focus, drop Shoulders/Arms),
+  not by re-authoring the xlsx — the xlsx lives outside the repo, so a tracked transform is
+  reproducible and the committed `plan.json` regenerates byte-for-byte. The old fixed
+  Friday "Shoulders/Arms + stretch" stretch role became a new **optional per-day add-on**
+  (`addon: {label, notes}` with its own `addon_done` check-off) so stretch/mobility can be
+  tacked onto any day by time/feel — chosen over a fixed weekly stretch day or
+  reference-only guidance because the athlete wanted to add sessions ad hoc. Extra lifts
+  beyond the programmed 3 are still added manually via the existing day editor.

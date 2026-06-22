@@ -24,12 +24,20 @@ export interface Lift {
   notes: string | null;
 }
 
+/** An optional stretch / recovery / mobility session bolted onto any day. */
+export interface Addon {
+  label: string;
+  notes: string | null;
+}
+
 export interface PlanDay {
   weekId: string;
   dow: string;
   raw: string;
   run: Run | null;
   lift: Lift | null;
+  /** Only ever set via an override — the static plan never carries an add-on. */
+  addon?: Addon | null;
   rest: boolean;
   notes: string | null;
 }
@@ -82,6 +90,7 @@ export interface RefSection {
 export interface DayLog {
   runDone: boolean;
   liftDone: boolean;
+  addonDone: boolean;
   actualMiles: number | null;
   actualPace: string | null;
   notes: string | null;
@@ -91,6 +100,7 @@ export interface DayLog {
 export interface DayOverride {
   run?: Run | null;
   lift?: Lift | null;
+  addon?: Addon | null;
   rest?: boolean;
   skipped?: boolean;
   swappedWith?: string; // date this day was swapped with

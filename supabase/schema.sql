@@ -6,11 +6,15 @@ create table if not exists day_log (
   date date primary key,
   run_done boolean not null default false,
   lift_done boolean not null default false,
+  addon_done boolean not null default false,
   actual_miles numeric,
   actual_pace text,
   notes text,
   updated_at timestamptz not null default now()
 );
+
+-- Migration for an already-created day_log (idempotent): stretch/recover add-on check-off.
+alter table day_log add column if not exists addon_done boolean not null default false;
 
 create table if not exists day_override (
   date date primary key,

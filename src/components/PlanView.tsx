@@ -13,7 +13,10 @@ type ViewMode = "week" | "month" | "full";
 const VIEW_KEY = "mt_plan_view";
 
 function DayPill({ day, isToday }: { day: EffectiveDay; isToday: boolean }) {
-  const done = day.log?.runDone || (!day.run && day.log?.liftDone);
+  const done =
+    day.log?.runDone ||
+    (!day.run && day.log?.liftDone) ||
+    (!day.run && !day.lift && !!day.addon && day.log?.addonDone);
   return (
     <Link
       href={`/?d=${day.date}`}
@@ -46,6 +49,8 @@ function DayPill({ day, isToday }: { day: EffectiveDay; isToday: boolean }) {
           </>
         ) : day.lift ? (
           <span className="text-foreground/70">Lift · {day.lift.focus}</span>
+        ) : day.addon ? (
+          <span className="text-foreground/70">{day.addon.label}</span>
         ) : (
           <span className="text-foreground/45">Rest</span>
         )}
@@ -136,7 +141,10 @@ function MonthView() {
                 const day = effectiveDay(d, state)!;
                 const week = weekForDate(d);
                 const style = phaseStyle(week?.phase ?? "");
-                const done = day.log?.runDone || (!day.run && day.log?.liftDone);
+                const done =
+    day.log?.runDone ||
+    (!day.run && day.log?.liftDone) ||
+    (!day.run && !day.lift && !!day.addon && day.log?.addonDone);
                 return (
                   <Link
                     key={d}

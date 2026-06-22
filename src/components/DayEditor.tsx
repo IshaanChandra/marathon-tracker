@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import type { EffectiveDay, Lift, Run, RunType } from "@/lib/types";
+import type { Addon, EffectiveDay, Lift, Run, RunType } from "@/lib/types";
 import { getDay, getWeek, weekDates, RUN_TYPE_LABELS } from "@/lib/plan";
 import { effectiveDay } from "@/lib/merge";
 import { formatWeekday, formatShort } from "@/lib/dates";
 import { useStore } from "@/lib/store";
 
 const RUN_TYPES = Object.keys(RUN_TYPE_LABELS) as RunType[];
-const LIFT_PRESETS = ["Legs", "Chest/Tri", "Back/Bi", "Shoulders/Arms", "Full body"];
+const LIFT_PRESETS = ["Chest/Tri", "Back/Bi", "Legs", "Shoulders/Arms", "Full body"];
 
 /**
  * Bottom-sheet editor. Writes a day_override patch; the plan itself is untouched.
@@ -25,6 +25,7 @@ export default function DayEditor({
   const planned = getDay(day.date)!; // original, pre-override
   const [run, setRun] = useState<Run | null>(day.run ? { ...day.run } : null);
   const [lift, setLift] = useState<Lift | null>(day.lift ? { ...day.lift } : null);
+  const [addon, setAddon] = useState<Addon | null>(day.addon ? { ...day.addon } : null);
   const [skipped, setSkipped] = useState(day.skipped);
 
   const week = getWeek(planned.weekId);
@@ -37,7 +38,7 @@ export default function DayEditor({
 
   const save = () => {
     const existing = state.overrides[day.date] ?? {};
-    setOverride(day.date, { ...existing, run, lift, skipped: skipped || undefined });
+    setOverride(day.date, { ...existing, run, lift, addon, skipped: skipped || undefined });
     onClose();
   };
 
@@ -241,10 +242,46 @@ export default function DayEditor({
             </div>
           ) : (
             <button
-              onClick={() => setLift({ focus: "Legs", notes: null })}
+              onClick={() => setLift({ focus: "Chest/Tri", notes: null })}
               className="w-full rounded-xl border border-dashed border-edge py-3 text-sm font-medium text-foreground/60 hover:bg-soft"
             >
               + Add a lift to this day
+            </button>
+          )}
+
+          {/* Stretch / recover add-on */}
+          {addon ? (
+            <div className={`space-y-2 ${skipped ? "opacity-40 pointer-events-none" : ""}`}>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-foreground/45">Stretch / recover</span>
+                <button
+                  onClick={() => setAddon(null)}
+                  className="text-xs font-semibold text-rose-600 dark:text-rose-300"
+                >
+                  Remove
+                </button>
+              </div>
+              <input
+                type="text"
+                value={addon.label}
+                onChange={(e) => setAddon({ ...addon, label: e.target.value })}
+                placeholder="e.g. Stretch / recover, Mobility, Yoga"
+                className="w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card"
+              />
+              <input
+                type="text"
+                value={addon.notes ?? ""}
+                onChange={(e) => setAddon({ ...addon, notes: e.target.value || null })}
+                placeholder="Notes (e.g. 20 min, hips + calves)"
+                className="w-full rounded-lg border border-edge px-3 py-2 text-sm bg-card"
+              />
+            </div>
+          ) : (
+            <button
+              onClick={() => setAddon({ label: "Stretch / recover", notes: null })}
+              className="w-full rounded-xl border border-dashed border-edge py-3 text-sm font-medium text-foreground/60 hover:bg-soft"
+            >
+              + Add stretch / recover
             </button>
           )}
 

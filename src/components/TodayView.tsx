@@ -29,7 +29,10 @@ function WeekStrip({
   return (
     <div className="grid grid-cols-7 gap-1">
       {effectiveWeekDays(week, state).map((d) => {
-        const done = d.log?.runDone || (!d.run && d.log?.liftDone);
+        const done =
+          d.log?.runDone ||
+          (!d.run && d.log?.liftDone) ||
+          (!d.run && !d.lift && !!d.addon && d.log?.addonDone);
         const isViewed = d.date === date;
         const isToday = d.date === today;
         return (

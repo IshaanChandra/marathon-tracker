@@ -14,6 +14,7 @@ export function effectiveDay(date: string, state: AppState): EffectiveDay | null
         ...base,
         run: override.run !== undefined ? override.run : base.run,
         lift: override.lift !== undefined ? override.lift : base.lift,
+        addon: override.addon !== undefined ? override.addon : (base.addon ?? null),
         rest: override.rest !== undefined ? override.rest : base.rest,
       }
     : base;

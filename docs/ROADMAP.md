@@ -66,6 +66,9 @@
 - [x] 2026-06-12 — Today upgrades: tappable week strip, tomorrow preview, swipe nav
 - [x] 2026-06-12 — Offline write queue (durable check-offs for the Italy trip)
 - [x] 2026-06-12 — Live webcal calendar feed (runs 7–8 AM, lifts 8–9 AM ET)
+- [x] 2026-06-21 — Lift plan → 3-day split (Mon Chest/Tri · Wed Back/Bi · Sun Legs) via
+      converter remap; optional per-day stretch/recover add-on with its own check-off
+- [ ] User to run the `addon_done` column migration in Supabase (in `supabase/schema.sql`)
 - [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations

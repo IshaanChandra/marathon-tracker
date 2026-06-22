@@ -73,6 +73,7 @@ day_log (
   date date primary key,
   run_done boolean default false,
   lift_done boolean default false,
+  addon_done boolean default false,  -- stretch/recover add-on check-off
   actual_miles numeric,
   actual_pace text,
   notes text,
@@ -81,7 +82,7 @@ day_log (
 
 day_override (
   date date primary key,
-  patch jsonb not null,   -- partial Day: {run?, lift?, rest?, skipped?, swappedWith?}
+  patch jsonb not null,   -- partial Day: {run?, lift?, addon?, rest?, skipped?, swappedWith?}
   updated_at timestamptz default now()
 )
 
@@ -94,11 +95,27 @@ settings (
 
 ### Override semantics
 
-- Edit: `patch` carries replacement `run`/`lift` fields; merge is shallow per top-level key.
+- Edit: `patch` carries replacement `run`/`lift`/`addon` fields; merge is shallow per
+  top-level key.
+- Add-on (`addon`): an optional `{label, notes}` stretch/recover/mobility session. It only
+  ever exists via an override (the static plan never carries one) and renders as its own
+  card with a separate `addon_done` check-off. Add/remove it in the day editor.
 - Skip: `patch = {"skipped": true}` — day renders struck-through, excluded from planned-miles.
 - Swap (within a week): both dates get patches carrying the other day's planned content,
   plus `swappedWith: "<date>"` for the badge/revert.
 - Revert: delete the row.
+
+## Lift schedule remap (converter transform)
+
+The workbook still encodes the original 4-day lift split (Mon Legs / Tue Chest-Tri /
+Thu Back-Bi / Fri Shoulders-Arms). `remap_lifts()` in `scripts/convert_xlsx.py` rewrites
+this at conversion time into the current 3-day split — **Mon Chest/Tri · Wed Back/Bi ·
+Sun Legs** — by relocating each week's existing lifts *by focus* onto fixed days, and
+**dropping Shoulders/Arms** (folded into push/pull). Reduced/travel weeks keep their
+reduced lift count (nothing is invented; an unplaceable focus is simply left off). Stretch
+that used to live on the Friday Shoulders/Arms cell is now the per-day `addon` instead.
+To change the schedule, edit `LIFT_TARGET_DOW` / `LIFT_DROP` and re-run the converter —
+never hand-edit `plan.json`.
 
 ## Manual corrections log
 

@@ -136,6 +136,57 @@ def parse_day_cell(raw, dow):
     return day
 
 
+# --- Lift schedule redesign (2026-06-21) ------------------------------------
+# The workbook still encodes the original 4-day split (Mon Legs / Tue Chest-Tri /
+# Thu Back-Bi / Fri Shoulders-Arms). The athlete moved to a 3-day split on fixed
+# days, with Shoulders/Arms folded into the push/pull days (dropped as a scheduled
+# session) and stretch/recover handled as an optional per-day add-on in the app
+# rather than a scheduled slot. Rather than re-author every xlsx cell, we relocate
+# each week's existing lifts by focus. Reduced/travel weeks keep their reduced
+# count — we only move what's already there; nothing is invented.
+LIFT_TARGET_DOW = {
+    "Chest/Tri": "Monday",
+    "Back/Bi": "Wednesday",
+    "Legs": "Sunday",
+    "upper (light)": "Monday",  # taper week's single light upper session
+}
+LIFT_DROP = {"Shoulders/Arms"}
+
+
+def remap_lifts(days):
+    """Relocate each week's lifts onto the new fixed days; drop Shoulders/Arms."""
+    from collections import defaultdict
+    by_week = defaultdict(list)
+    for dt, day in days.items():
+        by_week[day["weekId"]].append(dt)
+
+    for dates in by_week.values():
+        dow_to_date = {days[dt]["dow"]: dt for dt in dates}
+        # Lift off every day, remembering each by focus.
+        carried = {}
+        for dt in dates:
+            lift = days[dt]["lift"]
+            if lift:
+                carried[lift["focus"]] = lift
+                days[dt]["lift"] = None
+        # Re-place onto canonical days.
+        for focus, lift in carried.items():
+            if focus in LIFT_DROP:
+                continue
+            target = LIFT_TARGET_DOW.get(focus)
+            dt = dow_to_date.get(target) if target else None
+            if dt is None or days[dt]["lift"] is not None:
+                continue  # unplaceable / already occupied — leave it off, don't guess
+            days[dt]["lift"] = lift
+            # A former rest day that now holds a lift is no longer rest.
+            if days[dt]["run"] is None and (days[dt]["notes"] or "").lower().startswith("rest"):
+                days[dt]["notes"] = None
+
+    # Re-assert the invariant: rest == no run and no lift.
+    for day in days.values():
+        day["rest"] = day["run"] is None and day["lift"] is None
+
+
 def parse_target_miles(cell):
     """'33\\n(reduced from 38)' -> 33; '18 default\\nA: 22-25...' -> 18."""
     m = re.match(r"^\s*(\d+(?:\.\d+)?)", str(cell))
@@ -281,6 +332,7 @@ def main():
     wb = openpyxl.load_workbook(xlsx, data_only=True)
 
     weeks, days, bb_notes = convert_schedule(wb)
+    remap_lifts(days)  # apply the 3-day lift-split redesign (see remap_lifts docstring)
     reference = convert_reference(wb)
     scenarios = extract_scenarios(reference)
 

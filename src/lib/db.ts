@@ -72,6 +72,7 @@ export async function getState(): Promise<AppState> {
     state.logs[row.date as string] = {
       runDone: !!row.run_done,
       liftDone: !!row.lift_done,
+      addonDone: !!row.addon_done,
       actualMiles: (row.actual_miles as number) ?? null,
       actualPace: (row.actual_pace as string) ?? null,
       notes: (row.notes as string) ?? null,
@@ -99,6 +100,7 @@ export async function setLog(date: string, log: DayLog | null): Promise<void> {
       date,
       run_done: log.runDone,
       lift_done: log.liftDone,
+      addon_done: log.addonDone,
       actual_miles: log.actualMiles,
       actual_pace: log.actualPace,
       notes: log.notes,
