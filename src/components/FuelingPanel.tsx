@@ -37,6 +37,7 @@ export default function FuelingPanel({ run }: { run: Run }) {
       <div className="space-y-2">
         <Row label="Before" body={fuel.before} />
         {fuel.during && <Row label="During" body={fuel.during} />}
+        {fuel.planCue && <Row label="Plan" body={fuel.planCue} />}
         {fuel.sodium && <Row label="Sodium" body={fuel.sodium} />}
         <Row label="Water" body={fuel.hydration} />
       </div>

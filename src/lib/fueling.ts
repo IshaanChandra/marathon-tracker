@@ -30,6 +30,9 @@ export interface FuelPlan {
   durationLabel: string;
   before: string;
   during: string | null;
+  /** The plan's week-specific fueling cue (e.g. "Practice: sip water"), shown
+   *  alongside — never in place of — the derived gel guidance. */
+  planCue: string | null;
   sodium: string | null;
   hydration: string;
 }
@@ -60,6 +63,7 @@ export function fuelingFor(run: Run): FuelPlan {
           ? "Nothing needed — just don't head out on a totally empty stomach."
           : "Optional: a small carb snack (half a banana) if you haven't eaten in a while.",
       during: null,
+      planCue: null,
       sodium: null,
       hydration:
         durationMin < 60
@@ -73,22 +77,44 @@ export function fuelingFor(run: Run): FuelPlan {
   const ozLow = Math.round(hours * 16);
   const ozHigh = Math.round(hours * 24);
 
-  // Race day pushes to the ~70g/hr absorption target (a gel every 20-25 min);
-  // training long runs sit at the gut-friendlier ~1 gel every 30-35 min.
-  const raceGels = Math.max(1, Math.round(durationMin / 22));
-  const trainGels = Math.max(1, Math.round(durationMin / 32));
-
   const before = isRace
     ? "2–3 hr before: a big carb breakfast (~150g — bagel + banana + sports drink). 15 min before: 1 gel + a few sips of water."
     : "30–60 min before: a banana or toast + honey (~30g carb), or a gel if you're short on time. Don't run this one fasted.";
 
-  const during = run.fueling
-    ? run.fueling
-    : isRace
-      ? `~${raceGels} gels — one every 20–25 min (≈70g carb/hr). Start by 30–40 min in, before you feel low.`
-      : `~${trainGels} gels — one every 30–35 min. Start by ~45 min. (Race target is 70g/hr; build toward it as your gut adapts.)`;
+  // Concrete gel schedule for the runs that actually call for gels (long + race).
+  // It's ALWAYS shown for those: a minimal week cue like "Practice: sip water" is
+  // surfaced separately as the plan note (planCue), never in place of the options.
+  // Race pushes the ~70g/hr target (a gel every ~22 min); training long runs sit at
+  // the gut-friendlier ~1 gel every 35 min.
+  const isGelRun = isRace || run.type === "long";
+  const clock = (m: number) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+  const startMin = isRace ? 30 : 35;
+  const intervalMin = isRace ? 22 : 35;
+  const times: number[] = [];
+  for (let t = startMin; t <= durationMin - 20; t += intervalMin) times.push(t);
+  if (times.length === 0) times.push(startMin); // always at least one for a long effort
+  const list = times.map(clock).join(", ");
+  const nextMin = times[times.length - 1] + intervalMin;
+  const optional =
+    nextMin < durationMin ? ` Add one more (~${clock(nextMin)}) if you're going longer or feel low.` : "";
 
-  const sodium = `1 SaltStick cap every 30–45 min (~${caps} total) — your cramp lever.`;
+  let during: string | null;
+  let planCue: string | null = null;
+  if (isGelRun) {
+    during = isRace
+      ? `~${times.length} gels at ${list} — about every ${intervalMin} min (≈70g carb/hr). Start before you feel low.${optional}`
+      : `${times.length} gel${times.length > 1 ? "s" : ""} at ${list} — about every ${intervalMin} min. Start before you feel low.${optional} (Race target is 70g/hr; build toward it as your gut adapts.)`;
+    // The plan's progressive cue still matters (gut training, salt, oz/hr) — keep it visible.
+    planCue = run.fueling ?? null;
+  } else {
+    // Long easy / workout efforts that aren't gel runs: defer to the plan cue, or a light default.
+    during = run.fueling ?? "Optional past ~90 min: a gel or a few sips of sports drink. Otherwise just hydrate.";
+  }
+
+  const sodium =
+    isGelRun || durationMin >= 90
+      ? `1 SaltStick cap every 30–45 min (~${caps} total) — your cramp lever.`
+      : null;
 
   const hydration = `${ozLow}–${ozHigh} oz total: sip 4–6 oz every 15–20 min, starting by mile 2–3 (not when you feel thirsty — thirst lags ~30 min).`;
 
@@ -98,6 +124,7 @@ export function fuelingFor(run: Run): FuelPlan {
     durationLabel,
     before,
     during,
+    planCue,
     sodium,
     hydration,
   };
