@@ -112,7 +112,26 @@ export default function PushCard() {
     setMsg(null);
     try {
       const res = await fetch("/api/push/test", { method: "POST" });
-      setMsg(res.ok ? "Test sent — check your lock screen." : "Test failed.");
+      const r = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        subCount?: number;
+        sent?: number;
+        errors?: { status?: number; message: string }[];
+      };
+      if (!res.ok) {
+        setMsg(r.error ?? `Test failed (${res.status}).`);
+        return;
+      }
+      if (!r.subCount) {
+        setMsg("No device registered on the server — tap Turn off, then Enable again.");
+        return;
+      }
+      if (r.sent && (!r.errors || r.errors.length === 0)) {
+        setMsg(`Sent to ${r.sent} device(s) — check your lock screen.`);
+        return;
+      }
+      const e = r.errors?.[0];
+      setMsg(`Push rejected${e?.status ? ` (${e.status})` : ""}: ${e?.message ?? "unknown"}`);
     } catch {
       setMsg("Test failed — network error.");
     } finally {

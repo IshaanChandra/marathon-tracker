@@ -11,6 +11,6 @@ export async function POST() {
   if (!pushConfigured()) {
     return NextResponse.json({ error: "Push not configured (VAPID env unset)" }, { status: 500 });
   }
-  await sendPush({ title: "Nice run, Ishaan 🏃", body: "6.2 mi @ 9:24/mi ✅", url: "/" });
-  return NextResponse.json({ ok: true });
+  const report = await sendPush({ title: "Nice run, Ishaan 🏃", body: "6.2 mi @ 9:24/mi ✅", url: "/" });
+  return NextResponse.json(report);
 }

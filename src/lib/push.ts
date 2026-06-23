@@ -60,14 +60,23 @@ export async function removeSubscription(endpoint: string): Promise<void> {
   await setSetting(SUBS_KEY, kept.length ? kept : null);
 }
 
+export interface SendReport {
+  configured: boolean;
+  subCount: number;
+  sent: number;
+  errors: { status?: number; message: string }[];
+}
+
 /**
- * Push to every owner-registered device. Best-effort: a 404/410 means the browser
- * dropped the subscription (uninstalled / revoked), so we prune it.
+ * Push to every owner-registered device. Returns a report (used by /api/push/test to
+ * surface delivery failures). Best-effort: a 404/410 means the browser dropped the
+ * subscription (uninstalled / revoked), so we prune it.
  */
-export async function sendPush(payload: PushPayload): Promise<void> {
-  if (!pushConfigured()) return;
+export async function sendPush(payload: PushPayload): Promise<SendReport> {
+  if (!pushConfigured()) return { configured: false, subCount: 0, sent: 0, errors: [] };
   const subs = await getSubs();
-  if (!subs.length) return;
+  const report: SendReport = { configured: true, subCount: subs.length, sent: 0, errors: [] };
+  if (!subs.length) return report;
   initVapid();
   const data = JSON.stringify(payload);
   const stale: string[] = [];
@@ -75,9 +84,14 @@ export async function sendPush(payload: PushPayload): Promise<void> {
     subs.map(async (s) => {
       try {
         await webpush.sendNotification(s, data);
+        report.sent++;
       } catch (e) {
-        const code = (e as { statusCode?: number })?.statusCode;
-        if (code === 404 || code === 410) stale.push(s.endpoint);
+        const err = e as { statusCode?: number; body?: string; message?: string };
+        if (err.statusCode === 404 || err.statusCode === 410) stale.push(s.endpoint);
+        report.errors.push({
+          status: err.statusCode,
+          message: (err.body || err.message || String(e)).slice(0, 200),
+        });
       }
     }),
   );
@@ -85,6 +99,7 @@ export async function sendPush(payload: PushPayload): Promise<void> {
     const kept = subs.filter((s) => !stale.includes(s.endpoint));
     await setSetting(SUBS_KEY, kept.length ? kept : null);
   }
+  return report;
 }
 
 const TITLES = [
