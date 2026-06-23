@@ -26,8 +26,10 @@ export interface PushPayload {
   url?: string;
 }
 
+// The public key uses the NEXT_PUBLIC_ prefix because the client also needs it (as the
+// applicationServerKey). NEXT_PUBLIC_ vars are still readable here on the server.
 export function pushConfigured(): boolean {
-  return !!(process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY);
+  return !!(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY);
 }
 
 let vapidSet = false;
@@ -35,7 +37,7 @@ function initVapid() {
   if (vapidSet) return;
   webpush.setVapidDetails(
     process.env.VAPID_SUBJECT || "mailto:ishaanc3@gmail.com",
-    process.env.VAPID_PUBLIC_KEY!,
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!,
   );
   vapidSet = true;
