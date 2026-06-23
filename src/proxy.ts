@@ -27,5 +27,7 @@ export const config = {
     "/api/strava/connect/:path*",
     "/api/strava/subscribe/:path*",
     "/api/strava/test/:path*",
+    "/api/push/subscribe/:path*",
+    "/api/push/test/:path*",
   ],
 };

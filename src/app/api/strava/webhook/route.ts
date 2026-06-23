@@ -1,6 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { stravaToken } from "@/lib/auth";
 import { getAthleteId, getStatus, syncActivityById } from "@/lib/strava";
+import { sendPush, runNotification } from "@/lib/push";
 
 export const dynamic = "force-dynamic";
 
@@ -53,7 +54,12 @@ export async function POST(request: Request) {
       if (athleteId !== null && event.owner_id !== athleteId) return; // not our athlete
       const status = await getStatus();
       if (status?.subscriptionId && event.subscription_id !== status.subscriptionId) return;
-      await syncActivityById(event.object_id!);
+      const result = await syncActivityById(event.object_id!);
+      // Notify the owner's phone(s) only when a run actually logged. Best-effort: a
+      // failed/no-op sync (or no registered devices) silently sends nothing.
+      if (result.applied && typeof result.miles === "number") {
+        await sendPush(runNotification(result.miles, result.pace ?? null));
+      }
     });
   }
   // Always 200 fast — Strava retries on non-200 and gives up after 3 tries.

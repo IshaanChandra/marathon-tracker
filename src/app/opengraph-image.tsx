@@ -41,7 +41,7 @@ export default function OpengraphImage() {
           </span>
         </div>
         <div style={{ display: "flex", fontSize: 38, color: "#aab6d6", marginTop: 16 }}>
-          Road to the NYC Marathon · Nov 1, 2026 · Goal 3:45
+          Road to the NYC Marathon · Nov 1, 2026 · Goal sub-4:00
         </div>
         <div
           style={{

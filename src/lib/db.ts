@@ -154,11 +154,12 @@ export async function getSetting(key: string): Promise<unknown> {
 }
 
 /**
- * Settings holding secrets (Strava OAuth tokens). These must be redacted from the
- * public /api/state response — the site is publicly readable.
+ * Settings holding secrets (Strava OAuth tokens) or owner-only data (push
+ * subscriptions — endpoints that can make us notify a device). These must be redacted
+ * from the public /api/state response — the site is publicly readable.
  */
 export function isSecretSetting(key: string): boolean {
-  return key.startsWith("strava.tokens");
+  return key.startsWith("strava.tokens") || key.startsWith("push.subscriptions");
 }
 
 export async function setSetting(key: string, value: unknown): Promise<void> {

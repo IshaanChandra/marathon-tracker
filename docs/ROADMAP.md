@@ -74,6 +74,17 @@
 - [ ] User to do one-time Strava setup (see `docs/GARMIN_SYNC.md`): create Strava app,
       set `STRAVA_CLIENT_ID`/`STRAVA_CLIENT_SECRET` in Vercel, enable Garmin→Strava,
       then Progress → Connect Strava → Enable auto-sync
+- [x] 2026-06-23 — Stated race goal reworded 3:45 → **sub-4:00** across user-facing chrome
+      (manifest, meta description, OG card, share text, race-day calendar event). Paces and
+      the generated plan/reference data keep 8:35/mi as the race *pacing* target (buffer for
+      bathroom / family stops) — not a plan change.
+- [x] 2026-06-23 — **Mobile run notifications** via Web Push (installed PWA). Owner-only
+      (PIN-gated subscribe; subscriptions redacted from public `/api/state`); fires from the
+      Strava webhook on a synced run: motivational title + "X mi @ pace ✅", taps to Today.
+      New: `public/sw.js`, `src/lib/push.ts`, `/api/push/{subscribe,test}`, `PushCard`.
+- [ ] User to add Vercel env: `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`,
+      `VAPID_SUBJECT` (values in `.env.local`), then on phone: Progress → Enable
+      notifications → Send test
 - [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations

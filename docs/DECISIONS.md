@@ -78,6 +78,33 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   because it maps to the athlete's mental model ("a gel every 30–40 min") and reads as a
   short, scannable line. The plan's week cue stays visible as a separate `planCue`.
 
+- **2026-06-23 — Stated goal is sub-4:00; race pacing stays 8:35/mi (3:45).** Ishaan's
+  core race goal is **sub-4 hours**; the 3:45 pace is the on-course target with deliberate
+  buffer for bathroom stops / greeting family. So the *narrative goal* shown to viewers was
+  reworded 3:45 → sub-4:00 (manifest, meta description, OG card, share text, race-day
+  calendar event), while all training paces and the generated `plan.json`/`reference.json`
+  (which carry the 8:35/mi math) were left unchanged. Not a plan/pace change — only the
+  public goal statement. The plan's `goal` field isn't rendered anywhere, so nothing else
+  surfaces "3:45" to a viewer.
+
+- **2026-06-23 — Mobile run notifications via Web Push, owner-only.** Goal: a phone
+  notification when a run auto-syncs. iOS only delivers Web Push to an *installed* PWA
+  (16.4+), which Ishaan has — so this is the one viable path (no native app). Built a
+  minimal `public/sw.js` (push + notificationclick only; no offline caching — the write
+  queue stays localStorage-based) plus `src/lib/push.ts` (VAPID via the `web-push` lib).
+  **Mobile-only falls out for free**: push subscriptions are per-device, and `PushCard`
+  only offers the toggle in standalone display-mode, so enabling on the phone never touches
+  the laptop. **Only-Ishaan security** mirrors the Strava token model: subscribing is
+  PIN-gated (`/api/push/subscribe` in the proxy matcher) and the stored subscriptions live
+  in the secret `push.subscriptions` setting, redacted from the public `/api/state` — a
+  viewer can neither register a device nor read the endpoints. Delivery hooks the existing
+  Strava webhook `after()`: on `result.applied`, `sendPush(runNotification(...))`. Wording
+  (chosen by Ishaan): motivational title + `"{miles} mi @ {pace}/mi ✅"`, actual-only (no
+  planned-vs-actual), tap → Today. Stale subs (404/410) self-prune. Env:
+  `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (public, inlined), `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`.
+  Rejected earlier (2026-06-12) when iOS PWA push was deemed flaky; revisited now that the
+  app is installed and the Strava sync gives a concrete, low-frequency trigger.
+
 - **2026-06-21 — Garmin auto-sync built on the Strava bridge, not Garmin directly.** Goal:
   a finished run auto-checks-off its day and fills distance/pace. There's no direct watch
   API; of the four pipes (Strava, Apple Health+Shortcut, official Garmin API, unofficial

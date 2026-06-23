@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "NYC 26.2 — Marathon Tracker",
     short_name: "NYC 26.2",
-    description: "Sub-3:45 NYC Marathon training plan tracker",
+    description: "Sub-4:00 NYC Marathon training plan tracker",
     start_url: "/",
     display: "standalone",
     background_color: "#f6f7f9",

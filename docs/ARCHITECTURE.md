@@ -64,6 +64,19 @@ Source-agnostic core: `activityToLogPatch` → `applyActivity` in `src/lib/strav
 Full setup + secret-handling notes: `docs/GARMIN_SYNC.md`. Env: `STRAVA_CLIENT_ID`,
 `STRAVA_CLIENT_SECRET`.
 
+## Run notifications (Web Push)
+
+When a run auto-syncs, the owner's phone gets a notification. The Strava webhook's
+`after()` calls `sendPush(runNotification(miles, pace))` on a successful apply. Web Push
+works only on the **installed iOS PWA** (16.4+), served by a minimal `public/sw.js`
+(push + notificationclick; no offline caching). Owner-only, mirroring the Strava token
+model: `/api/push/subscribe` is PIN-gated (proxy matcher) and the subscriptions live in
+the secret `push.subscriptions` setting, **redacted from the public `/api/state`**
+(`isSecretSetting`). Subscriptions are per-device, so enabling on the phone never notifies
+the laptop, and `PushCard` only shows the toggle in standalone display-mode. Env:
+`NEXT_PUBLIC_VAPID_PUBLIC_KEY` (public, inlined as `applicationServerKey`),
+`VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`.
+
 ## Why these choices
 
 See docs/DECISIONS.md. Short version: one Next.js codebase covers UI + API on Vercel's

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SHARE = {
   title: "NYC 26.2 — Ishaan Chandra's Marathon Training",
-  text: "Follow Ishaan's road to a sub-3:45 at the 2026 NYC Marathon",
+  text: "Follow Ishaan's road to a sub-4:00 at the 2026 NYC Marathon",
 };
 
 /** Native share sheet on mobile; copy-link with feedback on desktop. */

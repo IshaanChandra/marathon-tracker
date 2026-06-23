@@ -97,7 +97,7 @@ export async function GET(request: NextRequest) {
         .filter(Boolean)
         .join("\n");
       if (day.run.type === "race") {
-        events.push(vevent(date, 8, 12, "🗽 RACE DAY — NYC Marathon · 26.2 @ 8:35", "Goal 3:45. This is it."));
+        events.push(vevent(date, 8, 12, "🗽 RACE DAY — NYC Marathon · 26.2 @ 8:35", "Goal sub-4:00 — pacing 8:35/mi for buffer. This is it."));
       } else {
         events.push(vevent(date, 7, 8, `🏃 ${day.run.miles} mi ${label}`, desc));
       }
