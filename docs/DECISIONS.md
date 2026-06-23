@@ -99,8 +99,10 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   in the secret `push.subscriptions` setting, redacted from the public `/api/state` — a
   viewer can neither register a device nor read the endpoints. Delivery hooks the existing
   Strava webhook `after()`: on `result.applied`, `sendPush(runNotification(...))`. Wording
-  (chosen by Ishaan): motivational title + `"{miles} mi @ {pace}/mi ✅"`, actual-only (no
-  planned-vs-actual), tap → Today. Stale subs (404/410) self-prune. Env:
+  (chosen by Ishaan): one compact line `"🏃 {miles} mi · {pace}/mi ✅"` as the title with an
+  empty body, actual-only (no planned-vs-actual), tap → Today. iOS adds its own app-name
+  header line, so a single-line title is the most compact result possible (a longer
+  motivational title was dropped for being too tall). Stale subs (404/410) self-prune. Env:
   `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (public, inlined), `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`.
   Rejected earlier (2026-06-12) when iOS PWA push was deemed flaky; revisited now that the
   app is installed and the Strava sync gives a concrete, low-frequency trigger.

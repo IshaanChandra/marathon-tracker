@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendPush, pushConfigured } from "@/lib/push";
+import { sendPush, pushConfigured, runNotification } from "@/lib/push";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +11,6 @@ export async function POST() {
   if (!pushConfigured()) {
     return NextResponse.json({ error: "Push not configured (VAPID env unset)" }, { status: 500 });
   }
-  const report = await sendPush({ title: "Nice run, Ishaan 🏃", body: "6.2 mi @ 9:24/mi ✅", url: "/" });
+  const report = await sendPush(runNotification(6.2, "9:24"));
   return NextResponse.json(report);
 }

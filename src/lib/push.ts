@@ -64,18 +64,18 @@ export interface SendReport {
   configured: boolean;
   subCount: number;
   sent: number;
-  errors: { status?: number; message: string }[];
+  failed: number;
 }
 
 /**
- * Push to every owner-registered device. Returns a report (used by /api/push/test to
- * surface delivery failures). Best-effort: a 404/410 means the browser dropped the
- * subscription (uninstalled / revoked), so we prune it.
+ * Push to every owner-registered device. Returns a small report so /api/push/test can
+ * tell the owner whether it actually delivered. Best-effort: a 404/410 means the browser
+ * dropped the subscription (uninstalled / revoked), so we prune it.
  */
 export async function sendPush(payload: PushPayload): Promise<SendReport> {
-  if (!pushConfigured()) return { configured: false, subCount: 0, sent: 0, errors: [] };
+  if (!pushConfigured()) return { configured: false, subCount: 0, sent: 0, failed: 0 };
   const subs = await getSubs();
-  const report: SendReport = { configured: true, subCount: subs.length, sent: 0, errors: [] };
+  const report: SendReport = { configured: true, subCount: subs.length, sent: 0, failed: 0 };
   if (!subs.length) return report;
   initVapid();
   const data = JSON.stringify(payload);
@@ -86,12 +86,9 @@ export async function sendPush(payload: PushPayload): Promise<SendReport> {
         await webpush.sendNotification(s, data);
         report.sent++;
       } catch (e) {
-        const err = e as { statusCode?: number; body?: string; message?: string };
-        if (err.statusCode === 404 || err.statusCode === 410) stale.push(s.endpoint);
-        report.errors.push({
-          status: err.statusCode,
-          message: (err.body || err.message || String(e)).slice(0, 200),
-        });
+        report.failed++;
+        const code = (e as { statusCode?: number })?.statusCode;
+        if (code === 404 || code === 410) stale.push(s.endpoint);
       }
     }),
   );
@@ -102,16 +99,11 @@ export async function sendPush(payload: PushPayload): Promise<SendReport> {
   return report;
 }
 
-const TITLES = [
-  "Nice run, Ishaan 🏃",
-  "Strong work, Ishaan 💪",
-  "Another one done 🔥",
-  "Let's go, Ishaan 👟",
-];
-
-/** Notification for an auto-synced run: motivational title + "X mi @ pace ✅". */
+/**
+ * Notification for an auto-synced run: a single compact line under the iOS app-name
+ * header, e.g. "🏃 6.2 mi · 9:24/mi ✅" (no body — keeps it to one line).
+ */
 export function runNotification(miles: number, pace: string | null): PushPayload {
-  const title = TITLES[Math.floor(Math.random() * TITLES.length)];
-  const body = pace ? `${miles} mi @ ${pace}/mi ✅` : `${miles} mi ✅`;
-  return { title, body, url: "/" };
+  const stats = pace ? `${miles} mi · ${pace}/mi` : `${miles} mi`;
+  return { title: `🏃 ${stats} ✅`, body: "", url: "/" };
 }

@@ -116,22 +116,16 @@ export default function PushCard() {
         error?: string;
         subCount?: number;
         sent?: number;
-        errors?: { status?: number; message: string }[];
       };
       if (!res.ok) {
         setMsg(r.error ?? `Test failed (${res.status}).`);
-        return;
+      } else if (!r.subCount) {
+        setMsg("No device registered — tap Turn off, then Enable again.");
+      } else if (r.sent) {
+        setMsg("Sent — check your lock screen.");
+      } else {
+        setMsg("Couldn't deliver — tap Turn off, then Enable again.");
       }
-      if (!r.subCount) {
-        setMsg("No device registered on the server — tap Turn off, then Enable again.");
-        return;
-      }
-      if (r.sent && (!r.errors || r.errors.length === 0)) {
-        setMsg(`Sent to ${r.sent} device(s) — check your lock screen.`);
-        return;
-      }
-      const e = r.errors?.[0];
-      setMsg(`Push rejected${e?.status ? ` (${e.status})` : ""}: ${e?.message ?? "unknown"}`);
     } catch {
       setMsg("Test failed — network error.");
     } finally {
@@ -144,7 +138,7 @@ export default function PushCard() {
       <h2 className="text-sm font-semibold">Run notifications</h2>
       <p className="text-xs text-foreground/55 mt-1">
         Get a phone notification the moment a finished run auto-syncs from Garmin — a quick
-        “{`{distance} @ {pace} ✅`}” so you know it logged.
+        “{`🏃 {distance} · {pace} ✅`}” so you know it logged.
       </p>
 
       {!supported ? (
