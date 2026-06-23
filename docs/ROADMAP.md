@@ -43,18 +43,18 @@
 
 ## Phase 5 — Deploy & polish
 - [x] PWA manifest + icons
-- [x] Deployed to production 2026-06-11: https://marathon-tracker-phi-five.vercel.app
-      (project ishaan-chandra-s-projects/marathon-tracker; env vars APP_PIN,
-      SUPABASE_URL, SUPABASE_SERVICE_KEY set; PIN gate + Supabase sync smoke-tested live)
-- [ ] **User: install Vercel GitHub app so `git push` auto-deploys** —
-      vercel.com/dashboard → marathon-tracker → Settings → Git → Connect GitHub repo
-- [ ] Add-to-Home-Screen tested on real iPhone
+- [x] Deployed to production 2026-06-11; renamed 2026-06-21 →
+      https://ishaans-nyc-marathon.vercel.app (project ishaan-chandra-s-projects/
+      marathon-tracker; env vars APP_PIN, SUPABASE_URL, SUPABASE_SERVICE_KEY,
+      STRAVA_*, VAPID_* set; PIN gate + Supabase sync smoke-tested live)
+- [x] Vercel GitHub app connected — `git push` auto-deploys
+- [x] Add-to-Home-Screen done on real iPhone (app installed; used for run notifications)
 - [ ] Mobile polish pass after real-device testing
 
 ## Phase 6 — Wrap-up
 - [x] README
 - [x] Claude memory entry (project state + resume instructions)
-- [ ] Push to GitHub (blocked on gh auth)
+- [x] Pushed to GitHub: github.com/IshaanChandra/marathon-tracker
 
 ---
 
@@ -68,12 +68,10 @@
 - [x] 2026-06-12 — Live webcal calendar feed (runs 7–8 AM, lifts 8–9 AM ET)
 - [x] 2026-06-21 — Lift plan → 3-day split (Mon Chest/Tri · Wed Back/Bi · Sun Legs) via
       converter remap; optional per-day stretch/recover add-on with its own check-off
-- [ ] User to run the `addon_done` column migration in Supabase (in `supabase/schema.sql`)
+- [x] 2026-06-21 — `addon_done` column migration applied in Supabase
 - [x] 2026-06-21 — Garmin auto-sync via Strava: OAuth connect, webhook, auto check-off +
       fill distance/pace (mapping → OAuth → webhook → docs). See `docs/GARMIN_SYNC.md`.
-- [ ] User to do one-time Strava setup (see `docs/GARMIN_SYNC.md`): create Strava app,
-      set `STRAVA_CLIENT_ID`/`STRAVA_CLIENT_SECRET` in Vercel, enable Garmin→Strava,
-      then Progress → Connect Strava → Enable auto-sync
+- [x] 2026-06-21 — One-time Strava setup done; auto-sync confirmed live on phone
 - [x] 2026-06-23 — Stated race goal reworded 3:45 → **sub-4:00** across user-facing chrome
       (manifest, meta description, OG card, share text, race-day calendar event). Paces and
       the generated plan/reference data keep 8:35/mi as the race *pacing* target (buffer for
@@ -83,7 +81,7 @@
       Strava webhook on a synced run: motivational title + "X mi @ pace ✅", taps to Today.
       New: `public/sw.js`, `src/lib/push.ts`, `/api/push/{subscribe,test}`, `PushCard`.
 - [ ] User to add Vercel env: `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`,
-      `VAPID_SUBJECT` (values in `.env.local`), then on phone: Progress → Enable
+      `VAPID_SUBJECT` (values in `.env.local`), redeploy, then on phone: Progress → Enable
       notifications → Send test
 - [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
@@ -97,3 +95,10 @@
   sync API with local fallback). Production build passes; smoke-tested pages, log API
   round-trip, and PIN flow. Remaining: user account steps (GitHub auth → push, Supabase
   project, Vercel import) and real-device testing.
+- **2026-06-21** — Lift plan → 3-day split + optional add-on; adaptive fueling (Model 1);
+  Garmin→Strava auto-sync (OAuth + webhook); site renamed to ishaans-nyc-marathon; logo
+  icons + favicon. All shipped and confirmed live (auto-sync on, app on home screen).
+- **2026-06-23** — Goal wording 3:45 → sub-4:00 across user-facing chrome (paces unchanged).
+  Mobile run notifications via Web Push: owner-only (PIN-gated, redacted subscriptions),
+  fires from the Strava webhook, mobile-only by construction. Build green; pushed. Pending:
+  user adds VAPID env in Vercel + redeploy, then enables on phone.

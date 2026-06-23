@@ -93,6 +93,19 @@ settings (
 )
 ```
 
+### Settings keys
+
+| Key | Value | Visibility |
+| --- | --- | --- |
+| `travel.italy`, `travel.wedding` | `{scenario}` travel-week pick | public |
+| `strava.status` | non-secret mirror: connected/subscribed flags, last sync | public |
+| `strava.tokens` | Strava OAuth `{access_token, refresh_token, expires_at, athlete_id}` | **secret** |
+| `push.subscriptions` | array of owner devices' Web Push subscriptions | **secret** |
+
+Keys flagged **secret** match `isSecretSetting()` (`src/lib/db.ts`) and are stripped from
+the public `GET /api/state` — the site is publicly readable, so tokens and push endpoints
+must never leave the server.
+
 ### Override semantics
 
 - Edit: `patch` carries replacement `run`/`lift`/`addon` fields; merge is shallow per

@@ -20,7 +20,7 @@ const SITE_DESCRIPTION =
   "Following Ishaan's 20-week road to a sub-4:00 at the 2026 NYC Marathon.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://marathon-tracker-phi-five.vercel.app"),
+  metadataBase: new URL("https://ishaans-nyc-marathon.vercel.app"),
   title: "Ishaan's NYC 26.2",
   description: SITE_DESCRIPTION,
   manifest: "/manifest.webmanifest",
