@@ -97,6 +97,11 @@
       plan week — faint = planned, solid = logged, current week in orange. Hover (or tap on
       mobile) previews any week's stats in the header; y-axis ticks 0/20/30/40/50 aligned to
       gridlines, labeled x-axis. Sits above the Race day card. New: `WeeklyTrendCard`.
+- [x] 2026-08-29 — Fueling overhaul: distance-based gels (1 × 24 g every 2.5 mi, first at
+      mile 2.5, none in the last quarter-mile) replacing the old under-fueling time-based
+      schedule. Long runs + race use the same model (race-rehearsed); a new `Carbs` row shows
+      the total carb goal (gels × 24 g) and g/hr. Before-run: ~50 g for long runs, ~120 g
+      breakfast + pre-gel for the race. See `docs/DECISIONS.md` (2026-08-29).
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations
 

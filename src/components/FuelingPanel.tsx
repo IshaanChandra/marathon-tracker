@@ -38,6 +38,7 @@ export default function FuelingPanel({ run, actuals }: { run: Run; actuals?: Fue
       <div className="space-y-2">
         <Row label="Before" body={fuel.before} />
         {fuel.during && <Row label="During" body={fuel.during} />}
+        {fuel.carbGoal && <Row label="Carbs" body={fuel.carbGoal} />}
         {fuel.planCue && <Row label="Plan" body={fuel.planCue} />}
         {fuel.sodium && <Row label="Sodium" body={fuel.sodium} />}
         <Row label="Water" body={fuel.hydration} />

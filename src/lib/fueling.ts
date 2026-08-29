@@ -7,11 +7,10 @@ import type { Run } from "./types";
  * pace estimate. Pace comes from the logged actual pace when available (so a logged
  * run recomputes against what you really ran), otherwise a per-type default.
  *
- * Gel guidance for long runs and races uses an interval model (Model 1): first gel
- * at ~0:40 (race ~0:30), then one every ~35 min (race ~30). Gels that land in the
- * final ~25 min are shown as "by feel" rather than required — no point fuelling
- * right before you stop. Training long runs sit at the gut-friendly ~40 g/hr end
- * (~1 gel / 35 min); race spacing tightens toward the 60-90 g/hr target.
+ * Gel guidance for long runs and races is distance-based: one 24 g gel every 2.5 mi,
+ * which at long-run pace (~9:30/mi) works out to ~60 g/hr, a bit more at race pace
+ * (~8:35/mi). First gel at mile 2.5, none in the final quarter-mile. The panel also
+ * surfaces the total carb goal for the run (gels × 24 g) and the resulting g/hr.
  *
  * The plan's own week-specific cue (run.fueling — e.g. "Practice: sip water", gut
  * training) is surfaced as a separate `planCue`, alongside — never in place of —
@@ -33,6 +32,10 @@ const PACE_MIN_PER_MI: Record<string, number> = {
   race: 8.583, // MP 8:35
 };
 
+// Fueling model: one gel every GEL_MI miles, GEL_CARBS grams each (~60 g/hr at easy pace).
+const GEL_CARBS = 24;
+const GEL_MI = 2.5;
+
 export type FuelLevel = "none" | "light" | "full";
 
 /** The bits of a day's log that make the plan adaptive to what was actually run. */
@@ -49,6 +52,8 @@ export interface FuelPlan {
   fromActuals: boolean;
   before: string;
   during: string | null;
+  /** Total carb goal for gel runs, e.g. "120 g on the run · ~60 g/hr"; null otherwise. */
+  carbGoal: string | null;
   /** The plan's week-specific fueling cue (e.g. "Practice: sip water"), shown
    *  alongside — never in place of — the derived gel guidance. */
   planCue: string | null;
@@ -71,8 +76,6 @@ function parsePace(s: string | null | undefined): number | null {
   if (!m) return null;
   return Number(m[1]) + Number(m[2]) / 60;
 }
-
-const clock = (m: number) => `${Math.floor(m / 60)}:${String(Math.round(m) % 60).padStart(2, "0")}`;
 
 export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
   const loggedMiles = actuals?.actualMiles && actuals.actualMiles > 0 ? actuals.actualMiles : null;
@@ -98,6 +101,7 @@ export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
           ? "Nothing needed — don't head out totally empty."
           : "Optional: a small carb snack if you haven't eaten in a while.",
       during: null,
+      carbGoal: null,
       planCue: null,
       sodium: null,
       hydration:
@@ -113,39 +117,27 @@ export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
   const ozHigh = Math.round(hours * 24);
 
   const before = isRace
-    ? "Big carb breakfast 2–3 hr before (~150g). 1 gel 15 min pre."
-    : "~30g carb 30–60 min before (banana / toast+honey). Don't run fasted.";
+    ? "~120 g breakfast 2.5–3 hr before + 1 gel (24 g) ~15 min pre."
+    : "~50 g carb 60–90 min before — banana + toast w/ honey, or a bagel.";
 
-  // Model 1 gel schedule — only for the runs that actually call for gels (long + race).
+  // Distance-based gels: one 24 g gel every 2.5 mi. First gel at mile 2.5, none in the
+  // final quarter-mile. Long runs + race only. ~60 g/hr at long-run pace, more at race pace.
   const isGelRun = isRace || run.type === "long";
-  const first = isRace ? 30 : 40;
-  const interval = isRace ? 30 : 35;
-  const noGelTail = 10; // don't fuel inside the last 10 min
-  const recTail = isRace ? 15 : 25; // a gel in the last recTail min is "by feel", not required
-
   let during: string | null;
+  let carbGoal: string | null = null;
   let planCue: string | null = null;
 
   if (isGelRun) {
-    const pts: number[] = [];
-    for (let t = first; t <= durationMin - noGelTail; t += interval) pts.push(t);
-    // One "stretch" gel just past the end, if you're within ~12 min of reaching it.
-    const next = (pts.length ? pts[pts.length - 1] : first) + interval;
-    if (next > durationMin - noGelTail && next <= durationMin + 12) pts.push(next);
-
-    const rec = pts.filter((t) => t <= durationMin - recTail);
-    const opt = pts.filter((t) => t > durationMin - recTail);
-    const recList = rec.map(clock).join(", ");
-    const optList = opt.map(clock).join(", ");
-
-    if (recList) {
-      during = `${rec.length} gel${rec.length > 1 ? "s" : ""}: ${recList}`;
-      if (optList) during += ` (+${optList} by feel)`;
+    const count = Math.max(0, Math.floor((miles - 0.25) / GEL_MI));
+    if (count > 0) {
+      const grams = count * GEL_CARBS;
+      const perHour = Math.round((GEL_CARBS / (GEL_MI * pace)) * 60);
+      during = `1 gel (${GEL_CARBS} g) every ${GEL_MI} mi → ${count} gel${count > 1 ? "s" : ""}`;
+      carbGoal = `${grams} g on the run · ~${perHour} g/hr`;
     } else {
-      // Edge: a short long run where every gel falls in the by-feel window.
-      during = `1 gel by feel: ${optList}`;
+      during = "Too short for gels — sip a sports drink if you want a few carbs.";
     }
-    // The plan's progressive week cue still matters (gut training, salt, oz/hr) — keep it visible.
+    // The plan's progressive week cue still matters (gut training, salt) — keep it visible.
     planCue = run.fueling ?? null;
   } else {
     // Long easy / workout efforts that aren't gel runs: defer to the plan cue, or a light default.
@@ -164,6 +156,7 @@ export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
     fromActuals,
     before,
     during,
+    carbGoal,
     planCue,
     sodium,
     hydration,

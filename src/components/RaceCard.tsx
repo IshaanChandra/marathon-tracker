@@ -89,6 +89,12 @@ export default function RaceCard() {
             {fuel.during}
           </div>
         )}
+        {fuel.carbGoal && (
+          <div>
+            <span className="text-foreground/45">Carbs · </span>
+            {fuel.carbGoal}
+          </div>
+        )}
         <div>
           <span className="text-foreground/45">Before · </span>
           {fuel.before}

@@ -122,3 +122,19 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   public-read); the unsigned webhook is guarded by a salted `?t=` secret + `owner_id` +
   our-token-only fetches; the 2-second ack rule is met by doing the fetch+apply in Next
   `after()`. Built and shipped in 4 phases (mapping core → OAuth → webhook → docs).
+
+
+- **2026-08-29 — Fueling model: distance-based gels (1 × 24 g every 2.5 mi), race-consistent.**
+  The old time-based gel schedule read as under-fueling and disagreed with how Ishaan
+  actually fuels. New model, applied identically to long runs and the race: one 24 g gel
+  every 2.5 mi (first at mile 2.5, none in the final quarter-mile), which at long-run pace
+  (~9:30/mi) lands ~60 g/hr and a bit more at race pace (~8:35/mi). The panel now also
+  surfaces the **total carb goal** for the run (gels × 24 g) and the resulting g/hr as a
+  separate `Carbs` row, so the target is explicit rather than implied. Before-run guidance:
+  ~50 g carb 60–90 min prior for long runs (moderate top-up, not a full race breakfast),
+  vs. the race's ~120 g breakfast + a pre-gel. The plan's own week cue (`run.fueling`, e.g.
+  gut-training notes) is kept as a separate `planCue` row alongside — never in place of —
+  the derived schedule. Rationale (chosen by Ishaan via prompt): consistency between long
+  runs and race day so race fueling is rehearsed, and a moderate ~50 g pre-run target.
+  Implemented in `src/lib/fueling.ts` (GEL_CARBS/GEL_MI constants, `carbGoal` field),
+  surfaced by `FuelingPanel` (Carbs row) and `RaceCard` (Gels/Carbs rows).
