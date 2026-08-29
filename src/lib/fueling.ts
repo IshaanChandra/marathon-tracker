@@ -137,8 +137,10 @@ export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
     } else {
       during = "Too short for gels — sip a sports drink if you want a few carbs.";
     }
-    // The plan's progressive week cue still matters (gut training, salt) — keep it visible.
-    planCue = run.fueling ?? null;
+    // The distance-based model is now the single source of truth for gels/carbs, so the
+    // plan's old per-week gel-count cue (run.fueling) is deliberately NOT surfaced here —
+    // it would contradict the schedule above (e.g. "5 gels" vs the model's 7). One number
+    // everywhere. planCue stays null for gel runs.
   } else {
     // Long easy / workout efforts that aren't gel runs: defer to the plan cue, or a light default.
     during = run.fueling ?? "Optional past ~90 min: a gel or sports drink. Otherwise just hydrate.";

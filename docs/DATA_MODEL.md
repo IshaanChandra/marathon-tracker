@@ -132,4 +132,13 @@ never hand-edit `plan.json`.
 
 ## Manual corrections log
 
-(Document any hand-edits to generated JSON here. None yet.)
+(Document any hand-edits to generated JSON here.)
+
+- **2026-08-29 — `reference.json` fueling → "Race week / race day" → "During race".**
+  Changed the gel cadence from "Gel every 20-25 min (~5-6 total)" to the distance-based
+  model now used app-wide: "1 gel (24 g) every 2.5 mi → ~10 total, ≈ 60–67 g/hr. SaltStick
+  every 30–45 min (~6 total). Water 4–6 oz every 15–20 min." Reason: the app's fueling
+  engine (`src/lib/fueling.ts`) is now the single source of truth for gels/carbs, and the
+  old guide line contradicted the Fueling panel + Race card (see DECISIONS 2026-08-29).
+  **If the converter is re-run, re-apply this edit** (the source xlsx nutrition sheet still
+  carries the old wording).

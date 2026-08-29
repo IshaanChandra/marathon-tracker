@@ -1,7 +1,7 @@
 {
   "travel": [
     {
-      "heading": "TRAVEL ADJUSTMENTS \u2014 Italy (Jul 2-12) + Wedding (Aug 14-25)",
+      "heading": "TRAVEL ADJUSTMENTS — Italy (Jul 2-12) + Wedding (Aug 14-25)",
       "items": []
     },
     {
@@ -25,27 +25,27 @@
       ]
     },
     {
-      "heading": "TRIP 1: ITALY \u2014 Jul 2 (night) to Jul 12",
+      "heading": "TRIP 1: ITALY — Jul 2 (night) to Jul 12",
       "items": [
         {
           "term": "Weeks affected",
-          "body": "Wk 3 (Jun 29-Jul 5): partial \u2014 at home Mon-Thu, travel Thu night, in Italy Fri-Sun. Wk 4 (Jul 6-12): all in Italy.",
+          "body": "Wk 3 (Jun 29-Jul 5): partial — at home Mon-Thu, travel Thu night, in Italy Fri-Sun. Wk 4 (Jul 6-12): all in Italy.",
           "sub": false
         },
         {
           "term": "Lift access",
-          "body": "No gym \u2014 bodyweight only. Push-ups, pull-ups (find a bar/doorway), squats, lunges, plank, glute bridges. 20-30 min, 3-4x during the trip.",
+          "body": "No gym — bodyweight only. Push-ups, pull-ups (find a bar/doorway), squats, lunges, plank, glute bridges. 20-30 min, 3-4x during the trip.",
           "sub": false
         },
         {
           "term": "Wk 3 adjusted target",
-          "body": "25-28 mi (vs original 30). Get Mon-Thu morning runs done at home as planned. Sat long run in Italy at 8-10 mi (shorter than planned 13 \u2014 jetlag, exploring).",
+          "body": "25-28 mi (vs original 30). Get Mon-Thu morning runs done at home as planned. Sat long run in Italy at 8-10 mi (shorter than planned 13 — jetlag, exploring).",
           "sub": false
         }
       ]
     },
     {
-      "heading": "Wk 4 \u2014 pick the scenario that fits your trip",
+      "heading": "Wk 4 — pick the scenario that fits your trip",
       "items": [
         {
           "term": "Scenario A (Good)",
@@ -64,18 +64,18 @@
         },
         {
           "term": "Coming back (Wk 5)",
-          "body": "Resume planned 31 mi. Don't try to make up Italy. Easy days the first 3-4 days back will feel harder due to jetlag \u2014 HR will be higher at same pace, so pace will be slower. That's correct, not a problem.",
+          "body": "Resume planned 31 mi. Don't try to make up Italy. Easy days the first 3-4 days back will feel harder due to jetlag — HR will be higher at same pace, so pace will be slower. That's correct, not a problem.",
           "sub": false
         },
         {
           "term": "Italy-specific tips",
-          "body": "Hot in July. Run early morning (cooler + before tourist crowds). Hydration discipline \u2014 easy to under-drink on vacation. Practice gel + water on long run if you can carry it.",
+          "body": "Hot in July. Run early morning (cooler + before tourist crowds). Hydration discipline — easy to under-drink on vacation. Practice gel + water on long run if you can carry it.",
           "sub": false
         }
       ]
     },
     {
-      "heading": "TRIP 2: WEDDING \u2014 Aug 14-25 (STRUCTURAL REDESIGN)",
+      "heading": "TRIP 2: WEDDING — Aug 14-25 (STRUCTURAL REDESIGN)",
       "items": [
         {
           "term": "Why this is different",
@@ -84,11 +84,11 @@
         },
         {
           "term": "The swap",
-          "body": "Old: Wk 9 cutback (29) \u2192 Wk 10 peak hills (37) \u2192 Wk 11 build (38). New: Wk 9 peak hills (37) \u2192 Wk 10 travel cutback (15-25) \u2192 Wk 11 conservative bounce (33).",
+          "body": "Old: Wk 9 cutback (29) → Wk 10 peak hills (37) → Wk 11 build (38). New: Wk 9 peak hills (37) → Wk 10 travel cutback (15-25) → Wk 11 conservative bounce (33).",
           "sub": false
         },
         {
-          "term": "Wk 9 \u2014 DO HARD WORK BEFORE TRIP",
+          "term": "Wk 9 — DO HARD WORK BEFORE TRIP",
           "body": "Move the peak hill workout to Wednesday and the long run to Thursday so they're done before you fly Friday Aug 14. If you can only manage one before leaving, prioritize the LONG RUN over the hill workout (long run is harder to replace on the road).",
           "sub": false
         },
@@ -99,13 +99,13 @@
         },
         {
           "term": "Lift access on trip",
-          "body": "Hotel gym available. Do Chest/Tri and Back/Bi if energy allows. SKIP LEGS this week \u2014 they need rest from Wk 9's hill work anyway.",
+          "body": "Hotel gym available. Do Chest/Tri and Back/Bi if energy allows. SKIP LEGS this week — they need rest from Wk 9's hill work anyway.",
           "sub": false
         }
       ]
     },
     {
-      "heading": "Wk 10 \u2014 pick the scenario",
+      "heading": "Wk 10 — pick the scenario",
       "items": [
         {
           "term": "Scenario A (Good)",
@@ -128,7 +128,7 @@
           "sub": false
         },
         {
-          "term": "Wk 11 \u2014 RECONSERVATIVE BOUNCE",
+          "term": "Wk 11 — RECONSERVATIVE BOUNCE",
           "body": "Reduced from original 38 mi to 33 mi. Long run drops from 16 to 12 mi. Threshold workout shortened from 3 x 1 mi to 2 x 1 mi. Don't snap back to full volume.",
           "sub": false
         },
@@ -148,13 +148,13 @@
           "sub": false
         },
         {
-          "term": "Treadmill \u2260 outdoor",
-          "body": "Treadmill is fine for easy mileage. Set 1% incline to roughly approximate outdoor effort. Don't try hard workouts on treadmills in hotel gyms \u2014 they're often low quality and uneven.",
+          "term": "Treadmill ≠ outdoor",
+          "body": "Treadmill is fine for easy mileage. Set 1% incline to roughly approximate outdoor effort. Don't try hard workouts on treadmills in hotel gyms — they're often low quality and uneven.",
           "sub": false
         },
         {
           "term": "Heat / time zone adjustments",
-          "body": "Run early morning when traveling east (your body still thinks it's earlier \u2014 easier to wake up). Hydrate aggressively the first 2-3 days; jetlag dehydrates. Don't try to PR a workout in the first 4-5 days.",
+          "body": "Run early morning when traveling east (your body still thinks it's earlier — easier to wake up). Hydrate aggressively the first 2-3 days; jetlag dehydrates. Don't try to PR a workout in the first 4-5 days.",
           "sub": false
         },
         {
@@ -164,13 +164,13 @@
         },
         {
           "term": "When to call it",
-          "body": "If you're getting <5 hours sleep, traveling all day, or hungover from wedding \u2014 REST. A skipped run on poor sleep is better than a run that wrecks tomorrow.",
+          "body": "If you're getting <5 hours sleep, traveling all day, or hungover from wedding — REST. A skipped run on poor sleep is better than a run that wrecks tomorrow.",
           "sub": false
         }
       ]
     },
     {
-      "heading": "RED FLAGS \u2014 STOP AND ADJUST",
+      "heading": "RED FLAGS — STOP AND ADJUST",
       "items": [
         {
           "term": "Pain that doesn't fade",
@@ -192,7 +192,7 @@
   ],
   "fueling": [
     {
-      "heading": "NUTRITION & FUELING \u2014 172 lb / 6 ft",
+      "heading": "NUTRITION & FUELING — 172 lb / 6 ft",
       "items": []
     },
     {
@@ -205,7 +205,7 @@
         },
         {
           "term": "Sodium",
-          "body": "400-500 mg/hour. THIS IS YOUR CRAMP LEVER \u2014 currently likely <100 mg/hr.",
+          "body": "400-500 mg/hour. THIS IS YOUR CRAMP LEVER — currently likely <100 mg/hr.",
           "sub": false
         },
         {
@@ -221,7 +221,7 @@
       ]
     },
     {
-      "heading": "GEL OPTIONS \u2014 CURRENT AND ALTERNATIVES",
+      "heading": "GEL OPTIONS — CURRENT AND ALTERNATIVES",
       "items": [
         {
           "term": "Huma Standard (current)",
@@ -240,7 +240,7 @@
         },
         {
           "term": "SiS Beta Fuel",
-          "body": "40g carb per gel \u2014 highest mainstream. Thick, sweet, divisive. Only if you want to push to 80-120g/hr.",
+          "body": "40g carb per gel — highest mainstream. Thick, sweet, divisive. Only if you want to push to 80-120g/hr.",
           "sub": false
         },
         {
@@ -256,7 +256,7 @@
       ]
     },
     {
-      "heading": "SODIUM \u2014 WHAT TO TRY",
+      "heading": "SODIUM — WHAT TO TRY",
       "items": [
         {
           "term": "Why it matters for YOU",
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "heading": "HYDRATION \u2014 STARTING FROM ZERO",
+      "heading": "HYDRATION — STARTING FROM ZERO",
       "items": [
         {
           "term": "Current state",
@@ -325,7 +325,7 @@
         },
         {
           "term": "Equipment options",
-          "body": "HANDHELD BOTTLE (Nathan/Salomon, 12-20 oz): simplest, fine up to ~12 mi. HYDRATION VEST (Salomon ADV Skin 5, Nathan Pinnacle 4L): needed for 15+ mi solo runs. NYC race day has aid stations every mile \u2014 no vest needed for race.",
+          "body": "HANDHELD BOTTLE (Nathan/Salomon, 12-20 oz): simplest, fine up to ~12 mi. HYDRATION VEST (Salomon ADV Skin 5, Nathan Pinnacle 4L): needed for 15+ mi solo runs. NYC race day has aid stations every mile — no vest needed for race.",
           "sub": false
         },
         {
@@ -336,7 +336,7 @@
       ]
     },
     {
-      "heading": "GUT TRAINING \u2014 8-12 WEEK BUILD",
+      "heading": "GUT TRAINING — 8-12 WEEK BUILD",
       "items": [
         {
           "term": "Why",
@@ -375,12 +375,12 @@
         },
         {
           "term": "During race",
-          "body": "Gel every 20-25 min (~5-6 total). SaltStick at 45 min and every 45 min after (~4-5 total). Water at most aid stations, ~4-6 oz each.",
+          "body": "1 gel (24 g) every 2.5 mi → ~10 total, ≈ 60–67 g/hr. SaltStick every 30–45 min (~6 total). Water 4–6 oz every 15–20 min at aid stations. (Matches the Fueling panel + Race card in the app.)",
           "sub": false
         },
         {
           "term": "Caffeine plan (race day)",
-          "body": "Total ~250-350 mg. Coffee morning of (~100mg) + 1-2 caffeinated gels late race (Huma Plus or similar). Don't stack too high \u2014 GI risk.",
+          "body": "Total ~250-350 mg. Coffee morning of (~100mg) + 1-2 caffeinated gels late race (Huma Plus or similar). Don't stack too high — GI risk.",
           "sub": false
         }
       ]
@@ -403,7 +403,7 @@
   ],
   "paces": [
     {
-      "heading": "SUB-3:45 NYC MARATHON \u2014 KEY, PACES & RATIONALE",
+      "heading": "SUB-3:45 NYC MARATHON — KEY, PACES & RATIONALE",
       "items": [
         {
           "term": "Goal",
@@ -412,7 +412,7 @@
         },
         {
           "term": "Race",
-          "body": "Sunday Nov 1, 2026 \u2014 NYC Marathon",
+          "body": "Sunday Nov 1, 2026 — NYC Marathon",
           "sub": false
         },
         {
@@ -437,7 +437,7 @@
         },
         {
           "term": "Easy / Recovery",
-          "body": "~9:45-10:45/mile \u2014 GOVERNED BY HR 135-145 bpm, not pace",
+          "body": "~9:45-10:45/mile — GOVERNED BY HR 135-145 bpm, not pace",
           "sub": false
         },
         {
@@ -458,7 +458,7 @@
       ]
     },
     {
-      "heading": "WEEKLY MILEAGE \u2014 CORRECTED CURVE",
+      "heading": "WEEKLY MILEAGE — CORRECTED CURVE",
       "items": [
         {
           "term": "Shape",
@@ -467,112 +467,112 @@
         },
         {
           "term": "Weeks at 40+ mi",
-          "body": "3 (Wks 12, 15, 17) \u2014 same count as reference PDF.",
+          "body": "3 (Wks 12, 15, 17) — same count as reference PDF.",
           "sub": false
         },
         {
-          "term": "Long runs \u2265 20 mi",
+          "term": "Long runs ≥ 20 mi",
           "body": "1 (Wk 17 only). Second peak long run is 18 mi at Wk 18.",
           "sub": false
         },
         {
           "term": "Wk 1",
-          "body": "Base | 26 mi \u2014 Open at current fitness (~25).",
+          "body": "Base | 26 mi — Open at current fitness (~25).",
           "sub": false
         },
         {
           "term": "Wk 2",
-          "body": "Base | 28 mi \u2014 +2 build.",
+          "body": "Base | 28 mi — +2 build.",
           "sub": false
         },
         {
           "term": "Wk 3",
-          "body": "Base | 30 mi \u2014 +2 build. First long run with fueling practice.",
+          "body": "Base | 30 mi — +2 build. First long run with fueling practice.",
           "sub": false
         },
         {
           "term": "Wk 4",
-          "body": "Base | 26 mi \u2014 CUTBACK -13%.",
+          "body": "Base | 26 mi — CUTBACK -13%.",
           "sub": false
         },
         {
           "term": "Wk 5",
-          "body": "Base | 31 mi \u2014 New high after cutback.",
+          "body": "Base | 31 mi — New high after cutback.",
           "sub": false
         },
         {
           "term": "Wk 6",
-          "body": "Base | 33 mi \u2014 Last pure-base week. First long run with sodium practice.",
+          "body": "Base | 33 mi — Last pure-base week. First long run with sodium practice.",
           "sub": false
         },
         {
           "term": "Wk 7",
-          "body": "Hills | 34 mi \u2014 Hill intensity introduced, mileage barely moves.",
+          "body": "Hills | 34 mi — Hill intensity introduced, mileage barely moves.",
           "sub": false
         },
         {
           "term": "Wk 8",
-          "body": "Hills | 36 mi \u2014 Build.",
+          "body": "Hills | 36 mi — Build.",
           "sub": false
         },
         {
           "term": "Wk 9",
-          "body": "Hills | 29 mi \u2014 DEEPER CUTBACK (-19%) before sharper Wk 10.",
+          "body": "Hills | 29 mi — DEEPER CUTBACK (-19%) before sharper Wk 10.",
           "sub": false
         },
         {
           "term": "Wk 10",
-          "body": "Hills | 37 mi \u2014 Sharpest hills. First MP segment in long run.",
+          "body": "Hills | 37 mi — Sharpest hills. First MP segment in long run.",
           "sub": false
         },
         {
           "term": "Wk 11",
-          "body": "Intervals | 38 mi \u2014 Threshold introduced, hold mileage.",
+          "body": "Intervals | 38 mi — Threshold introduced, hold mileage.",
           "sub": false
         },
         {
           "term": "Wk 12",
-          "body": "Intervals | 40 mi \u2014 VO2 work. First 40+ week.",
+          "body": "Intervals | 40 mi — VO2 work. First 40+ week.",
           "sub": false
         },
         {
           "term": "Wk 13",
-          "body": "Intervals | 35 mi \u2014 CUTBACK -13%.",
+          "body": "Intervals | 35 mi — CUTBACK -13%.",
           "sub": false
         },
         {
           "term": "Wk 14",
-          "body": "Tempo/MP | 39 mi \u2014 Tempo work begins.",
+          "body": "Tempo/MP | 39 mi — Tempo work begins.",
           "sub": false
         },
         {
           "term": "Wk 15",
-          "body": "Tempo/MP | 41 mi \u2014 Heaviest MP volume (5 mi MP workout + 5 mi MP in long run).",
+          "body": "Tempo/MP | 41 mi — Heaviest MP volume (5 mi MP workout + 5 mi MP in long run).",
           "sub": false
         },
         {
           "term": "Wk 16",
-          "body": "Tempo/MP | 36 mi \u2014 CUTBACK -12% before peak.",
+          "body": "Tempo/MP | 36 mi — CUTBACK -12% before peak.",
           "sub": false
         },
         {
           "term": "Wk 17",
-          "body": "Peak | 44 mi \u2014 PEAK WEEK. ONE 20-MILER with full race fueling. Lift drops.",
+          "body": "Peak | 44 mi — PEAK WEEK. ONE 20-MILER with full race fueling. Lift drops.",
           "sub": false
         },
         {
           "term": "Wk 18",
-          "body": "Peak | 37 mi \u2014 Second hard week but lower. Long run 18 mi (not 20).",
+          "body": "Peak | 37 mi — Second hard week but lower. Long run 18 mi (not 20).",
           "sub": false
         },
         {
           "term": "Wk 19",
-          "body": "Taper | 30 mi \u2014 Classic taper week 1.",
+          "body": "Taper | 30 mi — Classic taper week 1.",
           "sub": false
         },
         {
           "term": "Wk 20",
-          "body": "Race | 38 mi \u2014 Includes 26.2 race day.",
+          "body": "Race | 38 mi — Includes 26.2 race day.",
           "sub": false
         }
       ]
@@ -637,12 +637,12 @@
       "items": [
         {
           "term": "Split",
-          "body": "Legs (Mon) / Chest-Tri (Tue) / Back-Bi (Thu \u2014 but no lift Thu in higher weeks) / Sh-Arms (Fri). 4-day.",
+          "body": "Legs (Mon) / Chest-Tri (Tue) / Back-Bi (Thu — but no lift Thu in higher weeks) / Sh-Arms (Fri). 4-day.",
           "sub": false
         },
         {
           "term": "Critical rule",
-          "body": "Legs Monday \u2014 far from Thursday quality + Saturday long run.",
+          "body": "Legs Monday — far from Thursday quality + Saturday long run.",
           "sub": false
         },
         {
