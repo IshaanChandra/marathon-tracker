@@ -88,6 +88,10 @@
       week fraction now sums the actual runs shown (edit-adaptive, not the `targetMiles` preset)
       and reads actual-logged miles over summed-planned to tenths (e.g. `16.5 / 34`). Same
       summed denominator applied to the Progress weekly bars.
+- [x] 2026-08-28 — Race-day pacing card on Progress: 8:35/mi splits (5K→marathon), target
+      finish + cushion under the sub-4:00 goal, and gel/water schedule (reuses `fuelingFor`).
+      Plus small polish: Progress legend swatches match the phase-tinted bars, weekly bar width
+      capped at 100%, and the now-unused `WeekTotals.done` field removed.
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations
 

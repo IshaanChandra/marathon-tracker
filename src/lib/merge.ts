@@ -35,22 +35,19 @@ export function effectiveWeekDays(week: Week, state: AppState): EffectiveDay[] {
 
 export interface WeekTotals {
   planned: number;
-  done: number;
   logged: number; // actual miles where provided, else planned miles of done runs
 }
 
 export function weekTotals(week: Week, state: AppState): WeekTotals {
   let planned = 0;
-  let done = 0;
   let logged = 0;
   for (const day of effectiveWeekDays(week, state)) {
     if (day.run && !day.skipped) planned += day.run.miles;
     if (day.run && day.log?.runDone) {
-      done += day.run.miles;
       logged += day.log.actualMiles ?? day.run.miles;
     }
   }
-  return { planned: round1(planned), done: round1(done), logged: round1(logged) };
+  return { planned: round1(planned), logged: round1(logged) };
 }
 
 function round1(n: number): number {

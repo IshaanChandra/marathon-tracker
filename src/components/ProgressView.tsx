@@ -3,6 +3,7 @@
 import CalendarCard from "./CalendarCard";
 import StravaCard from "./StravaCard";
 import PushCard from "./PushCard";
+import RaceCard from "./RaceCard";
 import { plan, allDates } from "@/lib/plan";
 import { effectiveDay, weekTotals } from "@/lib/merge";
 import { addDays, daysBetween, todayNY } from "@/lib/dates";
@@ -94,6 +95,8 @@ export default function ProgressView() {
         </div>
       </div>
 
+      <RaceCard />
+
       {/* Weekly mileage: planned vs done */}
       <div className="card p-4">
         <h2 className="text-sm font-semibold mb-3">Weekly mileage — planned vs done</h2>
@@ -115,11 +118,11 @@ export default function ProgressView() {
                 <div className="flex-1 h-4 rounded bg-soft relative overflow-hidden">
                   <div
                     className={`absolute inset-y-0 left-0 rounded opacity-30 ${style.dot}`}
-                    style={{ width: `${(planned / maxWeekMiles) * 100}%` }}
+                    style={{ width: `${Math.min(100, (planned / maxWeekMiles) * 100)}%` }}
                   />
                   <div
                     className={`absolute inset-y-0 left-0 rounded ${style.dot}`}
-                    style={{ width: `${(Math.min(totals.logged, planned) / maxWeekMiles) * 100}%` }}
+                    style={{ width: `${Math.min(100, (Math.min(totals.logged, planned) / maxWeekMiles) * 100)}%` }}
                   />
                 </div>
                 <span className="w-16 shrink-0 text-right font-medium text-foreground/55 tabular-nums">
@@ -132,10 +135,10 @@ export default function ProgressView() {
         </div>
         <div className="mt-3 flex gap-4 text-[11px] text-foreground/45">
           <span className="flex items-center gap-1">
-            <span className="w-3 h-2 rounded-sm bg-sky-400 inline-block" /> done
+            <span className="w-3 h-2 rounded-sm bg-foreground/70 inline-block" /> done
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-3 h-2 rounded-sm bg-sky-400/30 inline-block" /> planned
+            <span className="w-3 h-2 rounded-sm bg-foreground/25 inline-block" /> planned
           </span>
         </div>
       </div>
