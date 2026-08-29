@@ -166,23 +166,19 @@ export default function TodayView() {
         <div className="flex items-center justify-between gap-2 text-xs font-semibold">
           <div className="flex items-center gap-1.5 min-w-0">
             {week && (
-              <span className="rounded-full bg-white/15 px-2.5 py-1 whitespace-nowrap">
+              <span className="rounded-full bg-white/15 px-2.5 py-1 min-w-0 truncate">
                 Wk {week.id} · {week.phase}
               </span>
             )}
             {week?.isCutback && (
-              <span className="rounded-full bg-white/15 px-2 py-1">Cutback</span>
+              <span className="rounded-full bg-white/15 px-2 py-1 shrink-0">Cutback</span>
             )}
-            {week?.travel && (
-              <span className="rounded-full bg-white/15 px-2 py-1">
-                {week.travel === "italy" ? "Italy" : "Wedding"}
-              </span>
-            )}
-            <span className="text-white/75 font-medium whitespace-nowrap pl-0.5">
-              {totals?.done ?? 0} / {target?.text ?? ""}
+            <span className="text-white/75 font-medium whitespace-nowrap pl-0.5 shrink-0">
+              {totals?.logged ?? 0} /{" "}
+              {target && target.miles == null ? target.text : (totals?.planned ?? 0)}
             </span>
           </div>
-          <span className="whitespace-nowrap">
+          <span className="whitespace-nowrap shrink-0">
             {daysToRace > 0
               ? `${daysToRace} days to NYC 🗽`
               : daysToRace === 0

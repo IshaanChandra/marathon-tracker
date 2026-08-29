@@ -84,6 +84,10 @@
       `VAPID_SUBJECT` (values in `.env.local`), redeploy, then on phone: Progress → Enable
       notifications → Send test
 - [ ] User to verify on phone: swipe, share sheet, airplane-mode queue, calendar subscribe
+- [x] 2026-08-28 — Today-hero fixes: removed the travel pill (one-line, no mobile overlap);
+      week fraction now sums the actual runs shown (edit-adaptive, not the `targetMiles` preset)
+      and reads actual-logged miles over summed-planned to tenths (e.g. `16.5 / 34`). Same
+      summed denominator applied to the Progress weekly bars.
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations
 

@@ -4,7 +4,7 @@ import CalendarCard from "./CalendarCard";
 import StravaCard from "./StravaCard";
 import PushCard from "./PushCard";
 import { plan, allDates } from "@/lib/plan";
-import { effectiveDay, weekTotals, weekTarget } from "@/lib/merge";
+import { effectiveDay, weekTotals } from "@/lib/merge";
 import { addDays, daysBetween, todayNY } from "@/lib/dates";
 import { phaseStyle } from "@/lib/ui";
 import { useStore } from "@/lib/store";
@@ -100,8 +100,7 @@ export default function ProgressView() {
         <div className="space-y-1.5">
           {plan.weeks.map((w) => {
             const totals = weekTotals(w, state);
-            const target = weekTarget(w, state, plan.scenarios);
-            const planned = target.miles ?? totals.planned;
+            const planned = totals.planned;
             const style = phaseStyle(w.phase);
             const isCurrent = today >= w.weekOf && today <= addDays(w.weekOf, 6);
             return (
