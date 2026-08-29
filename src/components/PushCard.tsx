@@ -107,11 +107,15 @@ export default function PushCard() {
     }
   };
 
-  const sendTest = async () => {
+  const sendTest = async (kind: "run" | "weekly" = "run") => {
     setBusy(true);
     setMsg(null);
     try {
-      const res = await fetch("/api/push/test", { method: "POST" });
+      const res = await fetch("/api/push/test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind }),
+      });
       const r = (await res.json().catch(() => ({}))) as {
         error?: string;
         subCount?: number;
@@ -138,7 +142,8 @@ export default function PushCard() {
       <h2 className="text-sm font-semibold">Run notifications</h2>
       <p className="text-xs text-foreground/55 mt-1">
         Get a phone notification the moment a finished run auto-syncs from Garmin — a quick
-        “{`🏃 {distance} · {pace} ✅`}” so you know it logged.
+        “{`🏃 {distance} · {pace} ✅`}” so you know it logged — plus a Sunday-night recap of
+        the week&apos;s mileage.
       </p>
 
       {!supported ? (
@@ -170,13 +175,22 @@ export default function PushCard() {
               {busy ? "…" : subscribed ? "Turn off" : "Enable notifications"}
             </button>
             {subscribed && (
-              <button
-                onClick={sendTest}
-                disabled={busy}
-                className="rounded-lg border border-edge px-3 py-2 text-xs font-semibold disabled:opacity-50"
-              >
-                Send test
-              </button>
+              <>
+                <button
+                  onClick={() => sendTest("run")}
+                  disabled={busy}
+                  className="rounded-lg border border-edge px-3 py-2 text-xs font-semibold disabled:opacity-50"
+                >
+                  Send test
+                </button>
+                <button
+                  onClick={() => sendTest("weekly")}
+                  disabled={busy}
+                  className="rounded-lg border border-edge px-3 py-2 text-xs font-semibold disabled:opacity-50"
+                >
+                  Test weekly recap
+                </button>
+              </>
             )}
           </div>
         </div>

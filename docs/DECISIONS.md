@@ -138,3 +138,22 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   runs and race day so race fueling is rehearsed, and a moderate ~50 g pre-run target.
   Implemented in `src/lib/fueling.ts` (GEL_CARBS/GEL_MI constants, `carbGoal` field),
   surfaced by `FuelingPanel` (Carbs row) and `RaceCard` (Gels/Carbs rows).
+
+
+- **2026-08-29 — Fueling model is now the single source of truth (drop the per-week cue).**
+  Follow-up to the fueling overhaul: the plan's per-week `run.fueling` gel counts (gut-training
+  ramp, authored in the xlsx) contradicted the distance-based model on the same card (e.g. plan
+  cue "5 gels" vs the model's 7). Chosen: go all-in on the model — for gel runs (long + race)
+  the raw per-week cue is no longer surfaced, so gels/carbs/sodium show one consistent number
+  everywhere. The guide's race-day line was corrected as a documented manual correction (the
+  xlsx source still carries the old wording). Rejected keeping a separate progressive-ramp
+  display — the user wants 60 g/hr as the standing target, rehearsed on every long run.
+
+- **2026-08-29 — Fitness-check (race predictor) uses Riegel off the sharpest recent run.**
+  Projects a marathon time from logged runs so the sub-4:00 goal is grounded in real data.
+  Riegel (T₂=T₁·(D₂/D₁)^1.06) applied to each logged run ≥3 mi in the last 6 weeks; the
+  *fastest* projection is the headline (tracks current fitness, not an average of easy days).
+  Easy-day noise is limited by the ≥3 mi floor + taking the best effort. Framed as a
+  training-run estimate (a tune-up race would sharpen it), with 5K/10K/Half equivalents from
+  the same effort. Rejected VDOT tables (heavier, needs a race result) for the parameter-free
+  Riegel, which is good enough for a personal on-track/behind read.

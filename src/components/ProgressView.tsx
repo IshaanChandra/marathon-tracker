@@ -4,6 +4,7 @@ import CalendarCard from "./CalendarCard";
 import StravaCard from "./StravaCard";
 import PushCard from "./PushCard";
 import RaceCard from "./RaceCard";
+import RacePredictorCard from "./RacePredictorCard";
 import WeeklyTrendCard from "./WeeklyTrendCard";
 import { plan, allDates } from "@/lib/plan";
 import { effectiveDay, weekTotals } from "@/lib/merge";
@@ -16,21 +17,23 @@ export default function ProgressView() {
   const today = todayNY();
 
   // Totals across the whole plan
-  let plannedToDate = 0;
   let totalPlanned = 0;
   let milesDone = 0;
   let runsDone = 0;
   let runsPlannedToDate = 0;
   for (const d of allDates) {
     const day = effectiveDay(d, state);
-    if (!day?.run || day.skipped) continue;
-    totalPlanned += day.run.miles;
-    if (d <= today) {
-      plannedToDate += day.run.miles;
-      runsPlannedToDate += 1;
+    if (!day) continue;
+    if (day.run && !day.skipped) {
+      totalPlanned += day.run.miles;
+      if (d <= today) {
+        runsPlannedToDate += 1;
+      }
     }
+    // Count any logged run, including unplanned ones (synced on a no-run day), so total
+    // miles + run count reflect everything actually run.
     if (day.log?.runDone) {
-      milesDone += day.log.actualMiles ?? day.run.miles;
+      milesDone += day.log.actualMiles ?? day.run?.miles ?? 0;
       runsDone += 1;
     }
   }
@@ -98,6 +101,8 @@ export default function ProgressView() {
 
       <WeeklyTrendCard />
 
+      <RacePredictorCard />
+
       <RaceCard />
 
       {/* Weekly mileage: planned vs done */}
@@ -125,7 +130,7 @@ export default function ProgressView() {
                   />
                   <div
                     className={`absolute inset-y-0 left-0 rounded ${style.dot}`}
-                    style={{ width: `${Math.min(100, (Math.min(totals.logged, planned) / maxWeekMiles) * 100)}%` }}
+                    style={{ width: `${Math.min(100, (totals.logged / maxWeekMiles) * 100)}%` }}
                   />
                 </div>
                 <span className="w-16 shrink-0 text-right font-medium text-foreground/55 tabular-nums">

@@ -26,6 +26,12 @@ const ProgressIcon = ({ className }: IconProps) => (
     <path d="M15 7h6v6" />
   </svg>
 );
+const SummaryIcon = ({ className }: IconProps) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="9" r="6" />
+    <path d="M8.5 13.5 7 21l5-3 5 3-1.5-7.5" />
+  </svg>
+);
 const GuideIcon = ({ className }: IconProps) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M2 4h6a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2z" />
@@ -37,6 +43,7 @@ const TABS = [
   { href: "/", label: "Today", Icon: HomeIcon },
   { href: "/plan", label: "Plan", Icon: CalendarIcon },
   { href: "/progress", label: "Progress", Icon: ProgressIcon },
+  { href: "/summary", label: "Summary", Icon: SummaryIcon },
   { href: "/guide/travel", label: "Guide", Icon: GuideIcon },
 ];
 
@@ -65,14 +72,14 @@ export default function Nav() {
     <>
       {/* Desktop top bar */}
       <header className="hidden sm:block sticky top-0 z-20 bg-card/80 backdrop-blur border-b border-edge">
-        <div className="mx-auto max-w-3xl px-4 h-14 flex items-center gap-6">
-          <span className="flex items-baseline gap-2.5">
+        <div className="mx-auto max-w-3xl px-4 h-14 flex items-center gap-4">
+          <span className="flex items-baseline gap-2.5 shrink-0 whitespace-nowrap">
             <span className="font-semibold tracking-tight">
               NYC <span className="text-accent font-bold">26.2</span>
             </span>
-            <span className="text-xs font-medium text-foreground/45">Ishaan Chandra</span>
+            <span className="hidden lg:inline text-xs font-medium text-foreground/45">Ishaan Chandra</span>
           </span>
-          <nav className="flex gap-1">
+          <nav className="flex gap-0.5">
             {TABS.map(({ href, label, Icon }) => (
               <Link
                 key={href}

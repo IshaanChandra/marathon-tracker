@@ -102,7 +102,28 @@
       schedule. Long runs + race use the same model (race-rehearsed); a new `Carbs` row shows
       the total carb goal (gels × 24 g) and g/hr. Before-run: ~50 g for long runs, ~120 g
       breakfast + pre-gel for the race. See `docs/DECISIONS.md` (2026-08-29).
-- [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
+- [x] 2026-08-29 — Fitness-check card on Progress: Riegel projection of marathon finish
+      from your sharpest logged run in the last 6 weeks (≥3 mi), vs the sub-4:00 goal + 8:35
+      plan pace, with 5K/10K/Half equivalents. New: `RacePredictorCard`.
+- [x] 2026-08-29 — Sweep bug-fixes: (1) fueling now single-source — the stale per-week gel
+      cue is no longer shown on gel runs (was contradicting the model, e.g. "5 gels" vs 7);
+      guide race-day line corrected (see DATA_MODEL manual-corrections). (2) Day editor
+      Pace/HR field routes to pace vs HR and clears the other (no stale HR row / broken
+      fueling pace parse). (3) Strava sync sums multiple same-day runs idempotently (by
+      activity id) instead of the later one clobbering the earlier; runs logged on a no-plan
+      day are now counted (week + Progress totals) and shown as an "Extra run" card. (4)
+      Progress weekly bars no longer clamp the done bar at planned, so over-runs are visible.
+- [x] 2026-08-29 — Weekly recap (was deferred): Empire-gradient summary card (logged/planned
+      mi + %, runs, longest, time on feet) wired to the native share sheet / copy-link. Lives
+      on **Today, surfaced Sat–Mon only** (the wrapping / just-ended week) — not Progress, to
+      avoid clutter. Plus a **Sunday-night push** of the same stats via a Vercel weekly cron
+      (`vercel.json`, Mon 00:00 UTC = Sun ~8 PM ET) → `/api/push/weekly` (CRON_SECRET-guarded).
+      Shared pure `weekRecap()` in `src/lib/weekStats.ts` powers both card + push so numbers
+      match. Testable on-device via a new "Test weekly recap" button on `PushCard`. New:
+      `WeeklyRecapCard`, `weekStats.ts`, `/api/push/weekly`.
+- [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
+      `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
+- [ ] Deferred (re-evaluate late July): training journal,
       race-day pacing card (build during taper), milestone celebrations
 
 ## Session log

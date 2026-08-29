@@ -73,15 +73,43 @@ export interface ApplyResult {
 }
 
 /**
- * Check off the matching day's run and fill in distance/pace. Overwrites those run
- * fields (watch is authoritative) while preserving notes/lift/addon. Idempotent —
- * re-applying the same activity yields the same log.
+ * Per-date record of every Strava activity applied to a day, keyed by activity id, so a
+ * day with two runs sums them instead of the later one clobbering the earlier. Keyed by
+ * id → re-delivery of the same activity (Strava fires create *and* update) replaces its
+ * own entry, keeping the day total idempotent.
+ */
+const APPLIED_KEY = "strava.applied";
+type AppliedMap = Record<string, Record<string, { miles: number; timeMin: number }>>;
+
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
+/**
+ * Check off the matching day's run and fill in distance/pace. The watch is authoritative
+ * for distance/pace (they overwrite) while notes/lift/addon are preserved. Multiple runs
+ * on one day sum (miles added, pace recomputed from combined time); re-applying the same
+ * activity id yields the same totals.
  */
 export async function applyActivity(a: StravaActivity): Promise<ApplyResult> {
   if (!isRunActivity(a)) return { applied: false, reason: "not a run" };
   const { date, miles, pace } = activityToLogPatch(a);
+  const timeMin = a.moving_time > 0 ? a.moving_time / 60 : miles * 10;
+
+  // Record this activity under its date; recompute the day's totals from all of them.
+  const applied = ((await getSetting(APPLIED_KEY)) as AppliedMap | null) ?? {};
+  const dayRuns = { ...(applied[date] ?? {}) };
+  dayRuns[String(a.id)] = { miles, timeMin };
+  applied[date] = dayRuns;
+
+  const runs = Object.values(dayRuns);
+  const totalMiles = round2(runs.reduce((s, r) => s + r.miles, 0));
+  const totalTime = runs.reduce((s, r) => s + r.timeMin, 0);
+  const dayPace = totalMiles > 0 && totalTime > 0 ? fmtPace(totalTime / totalMiles) : pace;
+
   const existing = (await getDayLog(date)) ?? EMPTY_LOG;
-  await setLog(date, { ...existing, runDone: true, actualMiles: miles, actualPace: pace });
+  await setLog(date, { ...existing, runDone: true, actualMiles: totalMiles, actualPace: dayPace });
+  await setSetting(APPLIED_KEY, applied);
+  // The notification and status mirror the run that just synced (this activity), not the
+  // day total — that's the run the athlete just finished.
   await mergeStatus({ lastSyncAt: new Date().toISOString(), lastRun: { date, miles, pace } });
   return { applied: true, date, miles, pace };
 }

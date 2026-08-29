@@ -161,7 +161,15 @@ export default function DayEditor({
                 <input
                   type="text"
                   value={run.pace ?? run.hrZone ?? ""}
-                  onChange={(e) => patchRun({ pace: e.target.value || null })}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    // Route the single field to the right target and clear the other, so a
+                    // HR-only run (e.g. "HR 135-145") isn't left with a stale pace/HR pair.
+                    if (!v) patchRun({ pace: null, hrZone: null });
+                    else if (/hr|bpm|\d{2,3}\s*[–-]\s*\d{2,3}/i.test(v))
+                      patchRun({ hrZone: v, pace: null });
+                    else patchRun({ pace: v, hrZone: null });
+                  }}
                   placeholder="e.g. 8:35 or HR 135-145"
                   className="mt-1 w-full rounded-lg border border-edge px-3 py-2 text-sm"
                 />

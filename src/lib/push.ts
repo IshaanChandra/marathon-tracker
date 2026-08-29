@@ -107,3 +107,23 @@ export function runNotification(miles: number, pace: string | null): PushPayload
   const stats = pace ? `${miles} mi · ${pace}/mi` : `${miles} mi`;
   return { title: `🏃 ${stats} ✅`, body: "", url: "/" };
 }
+
+/**
+ * Sunday-night weekly recap: a title line + a stats body (the iOS notification shows both).
+ * Taps open the Summary tab, where the recap card lives. e.g.
+ * "🗽 Week 11 wrapped" / "30.2/34 mi · 89% · 4 runs · longest 13.2 mi".
+ */
+export function weeklyRecapNotification(r: {
+  weekId: string;
+  logged: number;
+  planned: number;
+  pct: number;
+  runs: number;
+  longest: number;
+}): PushPayload {
+  return {
+    title: `🗽 Week ${r.weekId} wrapped`,
+    body: `${r.logged}/${r.planned} mi · ${r.pct}% · ${r.runs} run${r.runs === 1 ? "" : "s"} · longest ${r.longest} mi`,
+    url: "/summary",
+  };
+}

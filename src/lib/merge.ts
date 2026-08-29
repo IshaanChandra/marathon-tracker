@@ -43,8 +43,10 @@ export function weekTotals(week: Week, state: AppState): WeekTotals {
   let logged = 0;
   for (const day of effectiveWeekDays(week, state)) {
     if (day.run && !day.skipped) planned += day.run.miles;
-    if (day.run && day.log?.runDone) {
-      logged += day.log.actualMiles ?? day.run.miles;
+    // Count any logged run — including one on a day with no planned run (an unplanned
+    // run synced from Strava) — so its miles don't silently vanish from the week total.
+    if (day.log?.runDone) {
+      logged += day.log.actualMiles ?? day.run?.miles ?? 0;
     }
   }
   return { planned: round1(planned), logged: round1(logged) };

@@ -154,12 +154,18 @@ export async function getSetting(key: string): Promise<unknown> {
 }
 
 /**
- * Settings holding secrets (Strava OAuth tokens) or owner-only data (push
- * subscriptions — endpoints that can make us notify a device). These must be redacted
- * from the public /api/state response — the site is publicly readable.
+ * Settings holding secrets (Strava OAuth tokens), owner-only data (push subscriptions —
+ * endpoints that can make us notify a device), or internal bookkeeping (strava.applied —
+ * per-day activity ids used to sum same-day runs). These must be redacted from the public
+ * /api/state response — the site is publicly readable. (strava.status stays public: it's
+ * the connected flag + last-sync the UI shows.)
  */
 export function isSecretSetting(key: string): boolean {
-  return key.startsWith("strava.tokens") || key.startsWith("push.subscriptions");
+  return (
+    key.startsWith("strava.tokens") ||
+    key.startsWith("strava.applied") ||
+    key.startsWith("push.subscriptions")
+  );
 }
 
 export async function setSetting(key: string, value: unknown): Promise<void> {
