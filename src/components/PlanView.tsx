@@ -69,7 +69,11 @@ function WeekBlock({ week, defaultOpen }: { week: Week; defaultOpen: boolean }) 
   const totals = weekTotals(week, state);
   const target = weekTarget(week, state, plan.scenarios);
   const today = todayNY();
-  const pct = target.miles ? Math.min(100, (totals.done / target.miles) * 100) : 0;
+  // Numeric weeks use the summed (edit-adaptive) planned total; scenario weeks keep their
+  // range text. Numerator is actual logged miles — matches Today and Progress.
+  const plannedNum = target.miles == null ? null : totals.planned;
+  const denomText = plannedNum == null ? target.text : `${plannedNum} mi`;
+  const pct = plannedNum && plannedNum > 0 ? Math.min(100, (totals.logged / plannedNum) * 100) : 0;
 
   return (
     <div className="card overflow-hidden">
@@ -89,13 +93,13 @@ function WeekBlock({ week, defaultOpen }: { week: Week; defaultOpen: boolean }) 
         </div>
         <div className="flex items-center gap-2 shrink-0 text-sm">
           <span className="font-semibold text-foreground/70">
-            {totals.done > 0 ? `${totals.done} / ` : ""}
-            {target.text}
+            {totals.logged > 0 ? `${totals.logged} / ` : ""}
+            {denomText}
           </span>
           <span className="text-foreground/30">{open ? "▾" : "▸"}</span>
         </div>
       </button>
-      {totals.done > 0 && (
+      {totals.logged > 0 && (
         <div className="h-1 bg-soft">
           <div className={`h-full ${style.dot}`} style={{ width: `${pct}%` }} />
         </div>
