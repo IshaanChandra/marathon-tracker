@@ -4,6 +4,7 @@ import CalendarCard from "./CalendarCard";
 import StravaCard from "./StravaCard";
 import PushCard from "./PushCard";
 import RaceCard from "./RaceCard";
+import WeeklyTrendCard from "./WeeklyTrendCard";
 import { plan, allDates } from "@/lib/plan";
 import { effectiveDay, weekTotals } from "@/lib/merge";
 import { addDays, daysBetween, todayNY } from "@/lib/dates";
@@ -94,6 +95,8 @@ export default function ProgressView() {
           <div className="h-full bg-success" style={{ width: `${pctTime}%` }} />
         </div>
       </div>
+
+      <WeeklyTrendCard />
 
       <RaceCard />
 

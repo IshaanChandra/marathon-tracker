@@ -92,6 +92,11 @@
       finish + cushion under the sub-4:00 goal, and gel/water schedule (reuses `fuelingFor`).
       Plus small polish: Progress legend swatches match the phase-tinted bars, weekly bar width
       capped at 100%, and the now-unused `WeekTotals.done` field removed.
+- [x] 2026-08-28 — Weekly-mileage trend card on Progress (Strava-style): a "this week"
+      summary (distance · time · runs, time derived from logged pace) over a vertical bar per
+      plan week — faint = planned, solid = logged, current week in orange. Hover (or tap on
+      mobile) previews any week's stats in the header; y-axis ticks 0/20/30/40/50 aligned to
+      gridlines, labeled x-axis. Sits above the Race day card. New: `WeeklyTrendCard`.
 - [ ] Deferred (re-evaluate late July): weekly recap share card, training journal,
       race-day pacing card (build during taper), milestone celebrations
 
