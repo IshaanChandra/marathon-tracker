@@ -121,6 +121,15 @@
       Shared pure `weekRecap()` in `src/lib/weekStats.ts` powers both card + push so numbers
       match. Testable on-device via a new "Test weekly recap" button on `PushCard`. New:
       `WeeklyRecapCard`, `weekStats.ts`, `/api/push/weekly`.
+- [x] 2026-09-01 — Summary tab: **week ⇄ month recap**. The recap card gained a `W | M`
+      segmented toggle plus `‹ ›` stepping through periods (this week / last week / … and
+      this month / last month / …), stopping at the period containing today; the history
+      list below mirrors the mode ("Earlier weeks" / "Earlier months") and its rows are
+      tappable to promote a period into the hero card. Months are calendar months clipped to
+      the plan range, labelled with the phases they span ("Hills → Intervals"). New:
+      `src/lib/periods.ts` (`Period`, `periodsFor`, `currentPeriodIndex`, `periodRecap`);
+      `weekStats.ts` grew `recapDays()` / `rangeRecap()` with `weekRecap()` unchanged so the
+      Sunday push still matches; `WeeklyRecapCard` → `RecapCard`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred (re-evaluate late July): training journal,

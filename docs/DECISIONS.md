@@ -157,3 +157,16 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   training-run estimate (a tune-up race would sharpen it), with 5K/10K/Half equivalents from
   the same effort. Rejected VDOT tables (heavier, needs a race result) for the parameter-free
   Riegel, which is good enough for a personal on-track/behind read.
+
+- **2026-09-01 — Summary periods are calendar months, and stepping stops at today.**
+  Adding a monthly view to the Summary tab raised two choices. (1) *Calendar months vs
+  4-week blocks*: calendar months won — "September" is how the athlete thinks and talks
+  about a training block, and `monthKey` / `monthLabel` already existed in `src/lib/dates.ts`.
+  The cost is that a month's mileage is not the sum of whole weeks (weeks straddle month
+  ends); that's accepted and deliberately not disclaimed in the UI. Months at the plan's
+  edges are clipped to its range (May is May 25–31). (2) *Forward stepping*: the `›` arrow
+  is disabled once you're back at the period containing today, since a future period is
+  always 0% logged and reads as a failure rather than a preview — the Plan tab is where
+  upcoming weeks belong. Both period kinds share one model in `src/lib/periods.ts` so the
+  hero card and the history list can't disagree; `weekRecap()` keeps its exact signature so
+  `/api/push/weekly` still reports the same numbers the card shows.

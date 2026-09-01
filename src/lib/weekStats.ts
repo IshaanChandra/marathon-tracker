@@ -1,11 +1,11 @@
-import type { AppState, Week } from "./types";
+import type { AppState, EffectiveDay, Week } from "./types";
 import { plan } from "./plan";
-import { effectiveWeekDays } from "./merge";
+import { effectiveDay, effectiveWeekDays } from "./merge";
 import { addDays, formatWeekday } from "./dates";
 
 /**
- * Pure weekly-recap stats, shared by the on-screen recap card and the Sunday-night push
- * route so both report identical numbers. Client-safe (no db / server-only imports).
+ * Pure recap stats, shared by the on-screen recap card and the Sunday-night push route so
+ * both report identical numbers. Client-safe (no db / server-only imports).
  */
 
 export interface WeekRecap {
@@ -24,13 +24,14 @@ function parsePace(s: string | null | undefined): number | null {
 }
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
-export function weekRecap(week: Week, state: AppState): WeekRecap {
+/** The stat loop itself — works over any set of days (a week, a month, any range). */
+export function recapDays(days: EffectiveDay[]): WeekRecap {
   let planned = 0;
   let logged = 0;
   let runs = 0;
   let longest = 0;
   let timeMin = 0;
-  for (const day of effectiveWeekDays(week, state)) {
+  for (const day of days) {
     if (day.run && !day.skipped) planned += day.run.miles;
     if (day.log?.runDone) {
       const mi = day.log.actualMiles ?? day.run?.miles ?? 0;
@@ -44,6 +45,17 @@ export function weekRecap(week: Week, state: AppState): WeekRecap {
   const p = round1(planned);
   const l = round1(logged);
   return { planned: p, logged: l, runs, longest: round1(longest), timeMin, pct: p > 0 ? Math.round((l / p) * 100) : 0 };
+}
+
+export function weekRecap(week: Week, state: AppState): WeekRecap {
+  return recapDays(effectiveWeekDays(week, state));
+}
+
+/** Recap over an arbitrary list of plan dates (used by calendar-month periods). */
+export function rangeRecap(dates: string[], state: AppState): WeekRecap {
+  return recapDays(
+    dates.map((d) => effectiveDay(d, state)).filter((d): d is EffectiveDay => d !== null),
+  );
 }
 
 function weekContaining(date: string): Week | null {
