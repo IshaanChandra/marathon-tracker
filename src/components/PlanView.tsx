@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { plan, getWeek, weekDates, weekForDate, allDates, RUN_TYPE_LABELS } from "@/lib/plan";
+import { plan, weekDates, weekForDate, allDates, RUN_TYPE_LABELS } from "@/lib/plan";
 import { effectiveDay, weekTotals, weekTarget } from "@/lib/merge";
 import { formatShort, monthKey, monthLabel, todayNY } from "@/lib/dates";
 import { phaseStyle, RUN_TYPE_CHIP, RUN_TYPE_EDGE } from "@/lib/ui";

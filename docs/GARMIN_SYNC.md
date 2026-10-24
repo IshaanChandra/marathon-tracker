@@ -58,4 +58,7 @@ and stretch check-offs are never touched. Only **runs** are applied (rides/walks
   callback URL.
 - **Wrong day:** the run is matched by its start time converted to America/New_York. A run
   recorded abroad still maps to the NY calendar day (intended — the plan is NY-dated).
-- **Two runs same day:** the later sync overwrites; adjust by hand if needed.
+- **Two runs same day:** they sum — miles added, pace recomputed from combined time. Each
+  applied activity is recorded by id in the secret `strava.applied` setting, so Strava's
+  create + update re-deliveries don't double-count. A run on a no-plan day still logs and
+  shows as an "Extra run" card.

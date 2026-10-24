@@ -125,7 +125,7 @@ export function fuelingFor(run: Run, actuals?: FuelActuals | null): FuelPlan {
   const isGelRun = isRace || run.type === "long";
   let during: string | null;
   let carbGoal: string | null = null;
-  let planCue: string | null = null;
+  const planCue: string | null = null;
 
   if (isGelRun) {
     const count = Math.max(0, Math.floor((miles - 0.25) / GEL_MI));

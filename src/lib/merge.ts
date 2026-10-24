@@ -1,5 +1,5 @@
 import type { AppState, EffectiveDay, PlanDay, Week } from "./types";
-import { getDay, getWeek, weekDates } from "./plan";
+import { getDay, weekDates } from "./plan";
 
 /**
  * The core merge: planned day ⊕ override, annotated with log state.

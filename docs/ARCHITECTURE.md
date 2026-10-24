@@ -12,7 +12,9 @@
 │  Vercel — Next.js 16 App Router                          │
 │  middleware: PIN gate (httpOnly cookie vs APP_PIN env)   │
 │  pages: server components read src/data/*.json           │
-│  api routes: /api/log /api/override /api/settings        │
+│  api routes: /api/{state,log,override,settings,pin,auth} │
+│    /api/strava/* · /api/push/* · /api/calendar           │
+│  cron: /api/push/weekly (Mon 01:00 UTC, vercel.json)     │
 └──────────────┬──────────────────────────────────────────┘
                │ supabase-js (service key, server-only)
 ┌──────────────▼──────────────────────────────────────────┐
@@ -39,8 +41,9 @@
 ## Auth
 
 Public-read, PIN-to-write. Anyone with the URL can view every page and `GET /api/state`.
-`src/proxy.ts` (Next 16's middleware) gates only the mutating routes (`/api/log`,
-`/api/override`, `/api/settings`) behind the `mt_auth` httpOnly cookie. `/api/auth` tells
+`src/proxy.ts` (Next 16's middleware) gates only the mutating / owner-only routes
+(`/api/log`, `/api/override`, `/api/settings`, `/api/strava/{connect,subscribe,test}`,
+`/api/push/{subscribe,test}`) behind the `mt_auth` httpOnly cookie. `/api/auth` tells
 the client whether the device is unlocked; un-authed visitors who try to make a change get
 an in-page PIN modal (`PinModal`, wired through the store's mutation queue), and a
 "View only" chip in the nav opens the same prompt proactively. `/api/pin` validates
@@ -48,10 +51,18 @@ against the `APP_PIN` env var and sets the cookie (year expiry — once per devi
 
 ## Views
 
-- `/` Today — today's run + lift cards, fueling cues, check-offs, race countdown
+Bottom nav: Today · Plan · Progress · Summary · Guide.
+
+- `/` Today — gradient hero (date nav, week fraction, countdown), run + lift + add-on
+  cards, derived fueling (`FuelingPanel`), check-offs, tomorrow preview, swipe nav
 - `/plan` — Week / Month / Full toggleable views
-- `/travel`, `/fueling`, `/paces` — reference content from `src/data/reference.json`
-- `/progress` — stats: % complete, streak, weekly planned-vs-actual mileage
+- `/progress` — stats tiles, weekly-mileage trend (`WeeklyTrendCard`), Fitness check
+  (`RacePredictorCard`), race-day pacing (`RaceCard`), weekly bars, then the
+  Strava / Push / Calendar connect cards
+- `/summary` — week ⇄ month recap hero (`RecapCard`, shareable) + earlier-period history
+  (`src/lib/periods.ts`, `weekStats.ts`)
+- `/guide/travel`, `/guide/fueling`, `/guide/paces` — reference content from
+  `src/data/reference.json` (travel has the A/B/C `ScenarioPicker`)
 
 ## Garmin auto-sync (Strava bridge)
 
@@ -76,6 +87,11 @@ the secret `push.subscriptions` setting, **redacted from the public `/api/state`
 the laptop, and `PushCard` only shows the toggle in standalone display-mode. Env:
 `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (public, inlined as `applicationServerKey`),
 `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`.
+
+**Weekly recap push.** A Vercel cron (`vercel.json`, `0 1 * * 1` = Sun 9 PM EDT) hits
+`/api/push/weekly`, which sends the wrapping week's `weekRecap()` (same function the
+Summary card uses, so numbers match). The route is open to the proxy and guarded by
+`CRON_SECRET` (`Authorization: Bearer …`) when that env var is set.
 
 ## Why these choices
 

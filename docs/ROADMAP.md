@@ -115,9 +115,10 @@
       Progress weekly bars no longer clamp the done bar at planned, so over-runs are visible.
 - [x] 2026-08-29 — Weekly recap (was deferred): Empire-gradient summary card (logged/planned
       mi + %, runs, longest, time on feet) wired to the native share sheet / copy-link. Lives
-      on **Today, surfaced Sat–Mon only** (the wrapping / just-ended week) — not Progress, to
-      avoid clutter. Plus a **Sunday-night push** of the same stats via a Vercel weekly cron
-      (`vercel.json`, Mon 00:00 UTC = Sun ~8 PM ET) → `/api/push/weekly` (CRON_SECRET-guarded).
+      on its own **Summary** tab (current-week hero + "Earlier weeks" history) — not Today or
+      Progress, to avoid clutter. Plus a **Sunday-night push** of the same stats via a Vercel
+      weekly cron (`vercel.json`, Mon 01:00 UTC = Sun 9 PM EDT) → `/api/push/weekly`
+      (CRON_SECRET-guarded), deep-linking to Summary.
       Shared pure `weekRecap()` in `src/lib/weekStats.ts` powers both card + push so numbers
       match. Testable on-device via a new "Test weekly recap" button on `PushCard`. New:
       `WeeklyRecapCard`, `weekStats.ts`, `/api/push/weekly`.
@@ -132,8 +133,8 @@
       Sunday push still matches; `WeeklyRecapCard` → `RecapCard`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
-- [ ] Deferred (re-evaluate late July): training journal,
-      race-day pacing card (build during taper), milestone celebrations
+- [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped
+      2026-08-28)
 
 ## Session log
 
@@ -150,3 +151,14 @@
   Mobile run notifications via Web Push: owner-only (PIN-gated, redacted subscriptions),
   fires from the Strava webhook, mobile-only by construction. Build green; pushed. Pending:
   user adds VAPID env in Vercel + redeploy, then enables on phone.
+- **2026-08-28** — Today-hero fixes (edit-adaptive week fraction), race-day pacing card,
+  and the Strava-style weekly-mileage trend card on Progress.
+- **2026-08-29** — Fueling overhaul (distance-based gels, single source of truth), Fitness
+  check (Riegel), bug sweep (Strava same-day sums, extra-run card, Pace/HR editor routing),
+  weekly recap on a new Summary tab + Sunday-night push cron.
+- **2026-09-01** — Summary tab: week ⇄ month recap with period stepping (`periods.ts`).
+- **2026-10-24** — Docs audit: synced README / ARCHITECTURE / DATA_MODEL / GARMIN_SYNC and
+  this roadmap with the shipped code (Summary tab, `strava.applied`, cron time, same-day
+  run summing). Found + fixed iCloud-evicted `node_modules` (hung lint; `npm ci`), removed
+  `.next 2` conflict copy, cleared 4 trivial lint issues. Build green; 7 pre-existing
+  react-hooks lint errors remain (intentional mount-time localStorage reads). Race in 8 days.

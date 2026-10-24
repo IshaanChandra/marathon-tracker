@@ -53,6 +53,14 @@ is revertible.
 - Never run `npm run build` while a dev server is running in another terminal — they
   share `.next` and corrupt each other. If you see `Cannot find module …turbopack…`,
   `rm -rf .next` and rebuild.
+- **iCloud evicts repo files (likely root cause of the SIGBUS below).** The repo lives in
+  `~/Desktop`, which is iCloud-synced with "Optimize Mac Storage": idle files become
+  *dataless* placeholders (2026-10-24: 26k files in `node_modules`, plus some `.git`/`.next`).
+  Reading one blocks on a download — symptom: `eslint`/`next` hang at 0% CPU, or SIGBUS on
+  mmap. Check: `find node_modules -flags +dataless | wc -l`. Fix: `rm -rf node_modules .next
+  && npm ci`. iCloud also leaves conflict copies like `.next 2/` or `.git/index 2` — `.next 2`
+  must be deleted (eslint lints it → hundreds of bogus errors). Permanent fix: move the repo
+  out of `~/Desktop` (e.g. `~/code`).
 - **SIGBUS (signal 10) / "Invalid package config" / `pack-objects died of signal 10`:**
   seen 2026-06-12 — the machine intermittently faults on multi-threaded memory-mapped
   I/O. Workarounds applied: `npm ci` (clears any half-written cache) fixes build crashes;
@@ -87,7 +95,7 @@ is revertible.
 
 - Mobile-first: design at 390px width first, then widen. The primary device is an iPhone.
 - Dates are plan-local: use `YYYY-MM-DD` strings in **America/New_York** semantics; never
-  use raw `Date` UTC parsing for plan dates (see `src/lib/dates.ts` once it exists).
+  use raw `Date` UTC parsing for plan dates (see `src/lib/dates.ts`).
 - All Supabase access goes through API routes under `src/app/api/`; client components call
   those routes. Never expose the service key to the client.
 - After finishing a unit of work: update `docs/ROADMAP.md`, run `npm run build`, commit

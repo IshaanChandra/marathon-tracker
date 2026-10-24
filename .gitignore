@@ -15,6 +15,8 @@
 
 # next.js
 /.next/
+# iCloud conflict copies (e.g. ".next 2") — see AGENTS.md
+/.next */
 /out/
 
 # production

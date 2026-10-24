@@ -1,6 +1,6 @@
 "use client";
 
-import { plan, allDates, RUN_TYPE_LABELS } from "@/lib/plan";
+import { allDates, RUN_TYPE_LABELS } from "@/lib/plan";
 import { effectiveDay } from "@/lib/merge";
 import { todayNY, addDays, formatShort } from "@/lib/dates";
 import { useStore } from "@/lib/store";
