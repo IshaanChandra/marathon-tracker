@@ -3,6 +3,7 @@ import {
   TBD,
   UPDATED,
   race,
+  tracking,
   outfit,
   stops,
   finish,
@@ -214,7 +215,7 @@ function AtAGlance() {
         ))}
       </ol>
       <p className="mt-3 pt-3 border-t border-edge text-xs text-foreground/80">
-        Finish ~{finish.eta.replace("~", "")} · Bib <strong>{race.bib}</strong> · Live dot beats these times after mile 10
+        Finish ~{finish.eta.replace("~", "")} · Bib <strong>{race.bib}</strong>
       </p>
     </section>
   );
@@ -265,12 +266,33 @@ export default function SpectatorGuide() {
       </header>
 
       <section className="rounded-2xl border-2 border-accent bg-accent/10 p-4">
-        <div className="text-sm font-bold uppercase tracking-wide text-accent">⚠️ Times are estimates</div>
-        <p className="mt-1.5 text-[15px] leading-relaxed text-foreground/90">{race.warning}</p>
-        <div className="mt-2 text-sm text-foreground/90">
-          <span className="font-semibold">App name in the App Store: </span>
-          <Val value={race.appName} />
-        </div>
+        <div className="text-sm font-bold uppercase tracking-wide text-accent">📍 {tracking.title}</div>
+        <ol className="mt-3 space-y-4">
+          {tracking.steps.map((step, i) => (
+            <li key={i} className="flex gap-3">
+              <span className="shrink-0 h-7 w-7 grid place-items-center rounded-full bg-accent text-white text-sm font-bold">
+                {i + 1}
+              </span>
+              <div className="min-w-0 flex-1 space-y-2">
+                <p className="text-[15px] leading-relaxed text-foreground/90">
+                  <Rich text={step.text} />
+                </p>
+                {step.image?.src && (
+                  /* eslint-disable-next-line @next/next/no-img-element -- static screenshot, natural aspect */
+                  <img
+                    src={step.image.src}
+                    alt={step.image.label}
+                    className="w-full max-w-xs rounded-xl border border-edge"
+                  />
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-4 pt-3 border-t border-accent/30 text-sm leading-relaxed text-foreground/85">
+          <span className="font-semibold">⚠️ Times are estimates. </span>
+          <Rich text={tracking.estimateNote} />
+        </p>
       </section>
 
       {/* 2. How to spot me */}

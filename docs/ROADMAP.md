@@ -138,8 +138,12 @@
       next-stop directions), after-the-finish, spectator rules, full mile-by-mile ETAs with
       stops slotted in. All content in hand-edited `src/data/spectator.ts`; open items are the
       `TBD` sentinel (shown as a dashed chip). Guide header now wraps on narrow screens.
-- [ ] Before race day: fill `TBD`s in `src/data/spectator.ts` (app name, meeting spot, MTA
-      changes), add photos to `public/spectator/`, bump `UPDATED`.
+- [x] 2026-10-25 — Spectator guide: warning block reworked into **How to track me** (New
+      York Road Runners app, search event + runner name, two cropped app screenshots in
+      `public/spectator/`); shortened estimate note; dropped the "live dot" line from the
+      at-a-glance footer.
+- [ ] Before race day: fill `TBD`s in `src/data/spectator.ts` (meeting spot, MTA changes),
+      add stop + outfit photos to `public/spectator/`, bump `UPDATED`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped

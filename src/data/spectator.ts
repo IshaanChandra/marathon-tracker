@@ -13,7 +13,8 @@
  * Photos: drop image files into `public/spectator/` and set the matching `src`, e.g.
  *   src: "/spectator/stop1-street.jpg"
  * A `src` of null shows a dashed "Photo coming" box. Slots:
- *   outfit.photo                     — full-length photo in the race outfit
+ *   tracking.steps[].image           — app-store.jpg, app-tracking.jpg (done)
+ *   outfit.photo                    — full-length photo in the race outfit
  *   stop 1 (Lafayette)               — street view, DeKalb Av entrance, walking route
  *   stop 2 (1st Ave & 72nd)          — street view, 72 St entrance, walking route 2nd → 1st Ave
  *   stop 3 (Central Park South)      — street view, 57 St–7 Av entrance, walking route
@@ -59,10 +60,28 @@ export const race = {
   corral: "Pink start",
   plannedFinish: "3:47:34",
   half: "1:54:02",
-  warning:
-    "All times are estimates that assume I cross the start at 9:45 AM. My corral may take a few minutes to cross, which pushes every time later. Track me live in the official TCS New York City Marathon app (bib 24816), and set it up the day before. After mile 10, trust the live dot over the times on this page.",
-  /** Exact app name as listed in the App Store — confirm race week. */
-  appName: TBD,
+};
+
+/** "How to track me" section: the official app + live tracking, with two screenshots. */
+export const tracking = {
+  title: "How to track me",
+  appName: "New York Road Runners",
+  searchName: "Ishaan Chandra",
+  steps: [
+    {
+      text: "Download the **New York Road Runners** app.",
+      image: { label: "New York Road Runners app in the App Store", src: "/spectator/app-store.jpg" } as SpectatorImage,
+    },
+    {
+      text: "Open the app, tap **Track**, and search event **2026 TCS New York City Marathon** and runner name: **Ishaan Chandra**. Tap the ⭐ star to save it.",
+      image: { label: "My tracking page in the app", src: "/spectator/app-tracking.jpg" } as SpectatorImage,
+    },
+    {
+      text: "On race day, use the app for more accurate live timings.",
+      image: null,
+    },
+  ],
+  estimateNote: "My corral can take a few minutes to cross.",
 };
 
 export const outfit = {
