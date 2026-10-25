@@ -131,6 +131,15 @@
       `src/lib/periods.ts` (`Period`, `periodsFor`, `currentPeriodIndex`, `periodRecap`);
       `weekStats.ts` grew `recapDays()` / `rangeRecap()` with `weekRecap()` unchanged so the
       Sunday push still matches; `WeeklyRecapCard` → `RecapCard`.
+- [x] 2026-10-25 — **Race Day Spectator Guide** (`/guide/race-day`, Guide tab "Race Day")
+      for parents/friends on race day: header + estimate warning, how to spot me, a
+      screenshot-sized "stops at a glance" list, 3 stop cards + 1 optional (ETA, auto
+      "be in place by" = ETA − 15 min, side of street, subway, Google Maps link, photo slots,
+      next-stop directions), after-the-finish, spectator rules, full mile-by-mile ETAs with
+      stops slotted in. All content in hand-edited `src/data/spectator.ts`; open items are the
+      `TBD` sentinel (shown as a dashed chip). Guide header now wraps on narrow screens.
+- [ ] Before race day: fill `TBD`s in `src/data/spectator.ts` (app name, meeting spot, MTA
+      changes), add photos to `public/spectator/`, bump `UPDATED`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped
@@ -162,3 +171,5 @@
   run summing). Found + fixed iCloud-evicted `node_modules` (hung lint; `npm ci`), removed
   `.next 2` conflict copy, cleared 4 trivial lint issues. Build green; 7 pre-existing
   react-hooks lint errors remain (intentional mount-time localStorage reads). Race in 8 days.
+- **2026-10-25** — Race Day Spectator Guide tab (`/guide/race-day`), built additively; the
+  only changed existing line is the Guide header row (`flex-wrap gap-2`, approved).

@@ -170,3 +170,16 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   upcoming weeks belong. Both period kinds share one model in `src/lib/periods.ts` so the
   hero card and the history list can't disagree; `weekRecap()` keeps its exact signature so
   `/api/push/weekly` still reports the same numbers the card shows.
+
+- **2026-10-25 — Spectator guide content is a hand-edited TS file, not JSON or Supabase.**
+  The race-day guide's details (app name, meeting spot, MTA changes, photos) change during
+  race week, so all of it lives in `src/data/spectator.ts`: typed, with an editing guide in
+  comments (JSON can't hold comments), and outside the xlsx converter, so the "never
+  hand-edit plan.json" rule doesn't apply. Unknowns use a `TBD` sentinel that renders as a
+  visible dashed chip. That makes open items easy to grep and impossible to miss on the page.
+  "Be in place by" is computed (ETA − 15 min), so only the ETA needs editing. Rejected
+  making it editable in-app via Supabase: more surface for a one-week page, and the page
+  stays statically prerendered (fast on congested race-day cell networks). Also rejected
+  deriving ETAs from start time + pace: the brief's times are hand-picked and kept verbatim.
+  Tab label is the short "Race Day" with the page titled "Race Day Spectator Guide". The full
+  label can't fit at 390px, so the Guide header row was allowed to wrap (user-approved edit).

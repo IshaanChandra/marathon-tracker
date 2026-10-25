@@ -63,6 +63,8 @@ Bottom nav: Today · Plan · Progress · Summary · Guide.
   (`src/lib/periods.ts`, `weekStats.ts`)
 - `/guide/travel`, `/guide/fueling`, `/guide/paces` — reference content from
   `src/data/reference.json` (travel has the A/B/C `ScenarioPicker`)
+- `/guide/race-day` — Race Day Spectator Guide for family/friends (`SpectatorGuide`),
+  content from hand-edited `src/data/spectator.ts`; static, no store/auth needed
 
 ## Garmin auto-sync (Strava bridge)
 
