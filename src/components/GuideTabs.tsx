@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const TABS = [
+  { href: "/guide/race-day", label: "Race Day" },
   { href: "/guide/travel", label: "Travel" },
   { href: "/guide/fueling", label: "Fueling" },
   { href: "/guide/paces", label: "Paces" },
-  { href: "/guide/race-day", label: "Race Day" },
 ];
 
 export default function GuideTabs() {

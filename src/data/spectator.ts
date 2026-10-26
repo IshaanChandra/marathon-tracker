@@ -15,10 +15,7 @@
  * A `src` of null shows a dashed "Photo coming" box. Slots:
  *   tracking.steps[].image           — app-store.jpg, app-tracking.jpg (done)
  *   outfit.photo                    — full-length photo in the race outfit
- *   stop 1 (Lafayette)               — street view, DeKalb Av entrance, walking route
- *   stop 2 (1st Ave & 72nd)          — street view, 72 St entrance, walking route 2nd → 1st Ave
- *   stop 3 (Central Park South)      — street view, 57 St–7 Av entrance, walking route
- *   optional stop (Bedford Ave)      — street view, Bedford Av entrance
+ *   stops[].images                   — one course map per stop: stop1/2/3-map.jpg (done)
  */
 
 /** Sentinel for "not known yet" — renders as a visible placeholder chip. */
@@ -100,11 +97,7 @@ export const stops: SpectatorStop[] = [
     station: "DeKalb Av (Q)",
     mapsQuery: "Lafayette Ave & Ashland Pl, Brooklyn, NY",
     notes: [],
-    images: [
-      { label: "Street View of the spot", src: null },
-      { label: "DeKalb Av station entrance", src: null },
-      { label: "Walking route from the station to the spot", src: null },
-    ],
+    images: [{ label: "Course map around Lafayette Ave", src: "/spectator/stop1-map.jpg" }],
     next:
       "Walk to DeKalb Av, take the **Q** uptown to **72 St**, then walk east on 72nd to 1st Ave. Stay on the west side of 1st Ave.",
   },
@@ -121,11 +114,7 @@ export const stops: SpectatorStop[] = [
       "If you're running late, you can go further north on 1st Ave to the 80s. I'll pass there a few minutes later.",
       "Some 72 St stairways may be entrance-only or exit-only on race day.",
     ],
-    images: [
-      { label: "Street View of the spot", src: null },
-      { label: "72 St station entrance", src: null },
-      { label: "Walking route from 2nd Ave to 1st Ave", src: null },
-    ],
+    images: [{ label: "Course map along 1st Ave", src: "/spectator/stop2-map.jpg" }],
     next: "Take the **Q** from 72 St to **57 St–7 Av**, then walk to Central Park South & 7th Ave.",
   },
   {
@@ -138,47 +127,16 @@ export const stops: SpectatorStop[] = [
     station: "57 St–7 Av (N/Q/R)",
     mapsQuery: "Central Park South & 7th Ave, New York, NY",
     notes: [],
-    images: [
-      { label: "Street View of the spot", src: null },
-      { label: "57 St–7 Av station entrance", src: null },
-      { label: "Walking route from the station to the spot", src: null },
-    ],
-    next: "Head to the meeting spot (see After the finish).",
-  },
-  {
-    name: "Bedford Ave near N 7th St",
-    area: "Williamsburg, Brooklyn",
-    short: "Bedford Ave",
-    mile: 11.5,
-    eta: "11:25 AM",
-    side: "The side of Bedford with the Bedford Av L entrance you'll use",
-    station: "Bedford Av (L)",
-    mapsQuery: "Bedford Ave & N 7th St, Brooklyn, NY",
-    notes: [],
-    images: [
-      { label: "Street View of the spot", src: null },
-      { label: "Bedford Av station entrance", src: null },
-    ],
-    next:
-      "Go straight to Central Park South. Take the **L** to **14 St–Union Sq**, then the **Q** to **57 St–7 Av**. (1st Ave can't be reached in time from here.)",
-    optional: true,
-    optionalNote: "If not going to Lafayette",
+    images: [{ label: "Course map around Central Park South", src: "/spectator/stop3-map.jpg" }],
+    next: "Head to the meeting spot: **Central Park West & W 75th St** (see After the finish).",
   },
 ];
 
 export const finish = {
   eta: "~1:33 PM",
-  note: "I'm taking the poncho exit (no bag check), which exits on Central Park West and takes a while to walk out.",
-  meetingSpot: TBD,
-};
-
-export const rules = {
-  items: [
-    "All five bridges are closed to spectators (Verrazzano, Pulaski, Queensboro, Willis Ave, Madison Ave).",
-    "Never step onto or cross the course except where police allow it. Come up from the subway on the side of the street you plan to stand on.",
-  ],
-  /** Race-week MTA marathon service changes — add once the MTA advisory is out. */
-  mtaChanges: TBD,
+  note: "I will exit on Central Park West between 74th-76th. It will take me 20-30 minutes to exit the park after finishing.",
+  meetingSpot: "**Central Park West & W 75th St**",
+  meetingMapsQuery: "Central Park West & W 75th St, New York, NY",
 };
 
 /** Full mile-by-mile ETAs. `mile` is the sort key (Half = 13.1, Finish = 26.2). */

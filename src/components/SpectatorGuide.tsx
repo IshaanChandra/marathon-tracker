@@ -7,7 +7,6 @@ import {
   outfit,
   stops,
   finish,
-  rules,
   miles,
   type SpectatorImage,
   type SpectatorStop,
@@ -172,11 +171,21 @@ function StopCard({ stop }: { stop: SpectatorStop }) {
         📍 Open in Google Maps
       </a>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-        {stop.images.map((img, i) => (
+      {stop.images.map((img, i) =>
+        img.src ? (
+          <figure key={i}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- static map screenshot, natural aspect */}
+            <img
+              src={img.src}
+              alt={img.label}
+              className="mx-auto w-auto max-w-full h-auto max-h-72 rounded-xl border border-edge"
+            />
+            <figcaption className="mt-1 text-xs text-foreground/70">{img.label}</figcaption>
+          </figure>
+        ) : (
           <ImageSlot key={i} image={img} />
-        ))}
-      </div>
+        ),
+      )}
 
       <div className="rounded-xl border-l-4 border-primary bg-soft p-3">
         <div className="text-xs font-bold uppercase tracking-wide text-primary">Next →</div>
@@ -335,26 +344,20 @@ export default function SpectatorGuide() {
           <div className="mt-1 text-[15px] font-semibold">
             <Val value={finish.meetingSpot} />
           </div>
+          {finish.meetingMapsQuery && (
+            <a
+              href={mapsUrl(finish.meetingMapsQuery)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
+            >
+              📍 Open in Google Maps
+            </a>
+          )}
         </div>
       </section>
 
-      {/* 5. Rules for spectators */}
-      <section className="card p-4">
-        <SectionHeading>Rules for spectators</SectionHeading>
-        <ul className="space-y-2 text-[15px] text-foreground/90 list-disc pl-5">
-          {rules.items.map((r, i) => (
-            <li key={i}>
-              <Rich text={r} />
-            </li>
-          ))}
-        </ul>
-        <div className="mt-3 text-sm text-foreground/90">
-          <span className="font-semibold">Race-week MTA service changes: </span>
-          <Val value={rules.mtaChanges} />
-        </div>
-      </section>
-
-      {/* 6. Full mile-by-mile ETAs */}
+      {/* 5. Full mile-by-mile ETAs */}
       <section className="card p-4">
         <SectionHeading>Mile-by-mile ETAs</SectionHeading>
         <div className="overflow-x-auto -mx-1">

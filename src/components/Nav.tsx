@@ -44,7 +44,7 @@ const TABS = [
   { href: "/plan", label: "Plan", Icon: CalendarIcon },
   { href: "/progress", label: "Progress", Icon: ProgressIcon },
   { href: "/summary", label: "Summary", Icon: SummaryIcon },
-  { href: "/guide/travel", label: "Guide", Icon: GuideIcon },
+  { href: "/guide/race-day", label: "Guide", Icon: GuideIcon },
 ];
 
 function isActive(pathname: string, href: string): boolean {

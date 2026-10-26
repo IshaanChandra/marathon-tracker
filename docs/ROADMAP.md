@@ -142,8 +142,12 @@
       York Road Runners app, search event + runner name, two cropped app screenshots in
       `public/spectator/`); shortened estimate note; dropped the "live dot" line from the
       at-a-glance footer.
-- [ ] Before race day: fill `TBD`s in `src/data/spectator.ts` (meeting spot, MTA changes),
-      add stop + outfit photos to `public/spectator/`, bump `UPDATED`.
+- [x] 2026-10-25 — Spectator guide pass 2: one course map per stop (`stop1/2/3-map.jpg`,
+      heights capped so portrait shots don't dominate) replacing the 11 photo slots; meeting
+      spot Central Park West & W 75th St (+ Maps link); new after-finish text; optional
+      Bedford stop and the Rules for spectators section removed. **Race Day is now the first
+      Guide tab and the nav's Guide link opens it** (`/guide/travel` still works).
+- [ ] Before race day: add the outfit photo to `public/spectator/`, bump `UPDATED`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped

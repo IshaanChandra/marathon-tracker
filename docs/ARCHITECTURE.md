@@ -51,6 +51,8 @@ against the `APP_PIN` env var and sets the cookie (year expiry — once per devi
 
 ## Views
 
+The nav's Guide link opens `/guide/race-day` (first Guide tab) since 2026-10-25.
+
 Bottom nav: Today · Plan · Progress · Summary · Guide.
 
 - `/` Today — gradient hero (date nav, week fraction, countdown), run + lift + add-on
