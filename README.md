@@ -20,6 +20,10 @@ live in Supabase as a revertible override layer.
 - **Run notifications** — Web Push to the installed iPhone PWA when a run syncs
 - **Guide** — Travel adjustments (with A/B/C scenario pickers for the Italy and wedding
   weeks), Nutrition & Fueling, Paces & plan rationale
+- **Race Day spectator guide** (`/guide/race-day`, the Guide tab's landing page) — one
+  shareable link for family/friends: how to track me in the app, an outfit flat lay, 3
+  viewing stops with be-there times, maps and subway directions, the post-race meetup
+  spot, and mile-by-mile ETAs. Content lives in `src/data/spectator.ts`.
 - **Edit any day** — change the workout, skip it, swap with another day this week; every
   edit shows an "Adjusted" badge and can be reverted to the original plan
 - **Public to view, PIN to edit** — share the link with anyone; changes prompt for a

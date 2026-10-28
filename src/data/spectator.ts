@@ -22,7 +22,7 @@
 /** Sentinel for "not known yet" — renders as a visible placeholder chip. */
 export const TBD = "TBD";
 
-export const UPDATED = "Oct 25, 2026";
+export const UPDATED = "Oct 27, 2026";
 
 export interface SpectatorImage {
   label: string;

@@ -152,7 +152,9 @@
       labels on the left, tee hem layered over the shorts (~42 KB total). The real outfit
       photo (`outfit.jpg`, mirror selfie flipped) is kept but hidden (`outfit.showPhoto`).
       Meetup map image added to the Meeting spot box.
-- [ ] Before race day: bump `UPDATED` in `src/data/spectator.ts` with any last edits.
+- [x] 2026-10-27 — Spectator guide `UPDATED` → Oct 27; README feature entry added; source
+      images (originals) moved out of the repo folder to the macOS Trash.
+- [ ] If anything changes before race day: edit `src/data/spectator.ts` and bump `UPDATED`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped
@@ -186,3 +188,8 @@
   react-hooks lint errors remain (intentional mount-time localStorage reads). Race in 8 days.
 - **2026-10-25** — Race Day Spectator Guide tab (`/guide/race-day`), built additively; the
   only changed existing line is the Guide header row (`flex-wrap gap-2`, approved).
+- **2026-10-25 → 10-27** — Spectator guide iterated with Ishaan, each pass previewed on a
+  local build before pushing: "How to track me" (NYRR app + screenshots), per-stop course
+  maps, meetup spot + map, Bedford stop and spectator-rules removed, Race Day made the first
+  Guide tab, outfit flat lay from product cutouts. Workflow change: changes are now shown
+  locally for approval before commit/push (push auto-deploys to the live site).
