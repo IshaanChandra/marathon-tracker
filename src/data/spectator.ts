@@ -14,8 +14,9 @@
  *   src: "/spectator/stop1-street.jpg"
  * A `src` of null shows a dashed "Photo coming" box. Slots:
  *   tracking.steps[].image           — app-store.jpg, app-tracking.jpg (done)
- *   outfit.photo                    — full-length photo in the race outfit
+ *   outfit.photo                     — outfit.jpg (done; mirror selfie flipped so text reads right)
  *   stops[].images                   — one course map per stop: stop1/2/3-map.jpg (done)
+ *   finish.meetingImage              — meetup-map.jpg (done)
  */
 
 /** Sentinel for "not known yet" — renders as a visible placeholder chip. */
@@ -83,7 +84,18 @@ export const tracking = {
 
 export const outfit = {
   items: ["Black shorts", "Black Bandit t-shirt", "White New Balance hat", "White shoes"],
-  photo: { label: "Full-length photo of me in the race outfit", src: null } as SpectatorImage,
+  /** Outfit pieces, top to bottom, layered into one "flat lay" with labels on the left.
+   *  Tight transparent WebP cutouts of the product shots. `width` is % of the tee's width
+   *  (so sizes look true to life); `tuck` px pulls a piece up under the one above it. */
+  pieces: [
+    { label: "White New Balance hat", src: "/spectator/fit-hat.webp", width: 50, tuck: 0 },
+    { label: "Black Bandit t-shirt", src: "/spectator/fit-tee.webp", width: 100, tuck: 2 },
+    { label: "Black shorts", src: "/spectator/fit-shorts.webp", width: 74, tuck: 16 },
+    { label: "White shoes", src: "/spectator/fit-shoes.webp", width: 74, tuck: -4 },
+  ] as (SpectatorImage & { width: number; tuck: number })[],
+  photo: { label: "Me in the race outfit", src: "/spectator/outfit.jpg" } as SpectatorImage,
+  /** Set true to show `photo` beside the outfit pieces. */
+  showPhoto: false,
 };
 
 export const stops: SpectatorStop[] = [
@@ -137,6 +149,7 @@ export const finish = {
   note: "I will exit on Central Park West between 74th-76th. It will take me 20-30 minutes to exit the park after finishing.",
   meetingSpot: "**Central Park West & W 75th St**",
   meetingMapsQuery: "Central Park West & W 75th St, New York, NY",
+  meetingImage: { label: "Meeting spot on Central Park West at W 75th St", src: "/spectator/meetup-map.jpg" } as SpectatorImage,
 };
 
 /** Full mile-by-mile ETAs. `mile` is the sort key (Half = 13.1, Finish = 26.2). */

@@ -78,6 +78,12 @@ converter: edit it directly. Exports `race`, `tracking`, `outfit`, `stops[]` (ma
 `UPDATED`, and the `TBD` sentinel for unknown values. Photos go in `public/spectator/` and
 are referenced by `src` (null = "Photo coming" placeholder).
 
+Outfit flat lay: `outfit.pieces[]` are transparent WebP cutouts (`fit-*.webp`), each with
+`width` (% of the 140px tee column) and `tuck` (px pulled up under the piece above). They
+were cut from product shots on flat backgrounds: flood-fill from the border, and for the
+black tee a luminance-keyed alpha in a 3px edge band so edges stay anti-aliased (a binary
+mask gives jagged edges). `outfit.showPhoto` toggles the real outfit photo beside them.
+
 ## Dynamic data (Supabase)
 
 See `supabase/schema.sql`.

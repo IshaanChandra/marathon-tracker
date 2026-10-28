@@ -197,6 +197,35 @@ function StopCard({ stop }: { stop: SpectatorStop }) {
   );
 }
 
+/**
+ * The outfit recreated as one flat lay (hat → tee → shorts → shoes): transparent cutouts
+ * stacked at true-to-life relative sizes, the tee's hem layered over the shorts' waistband,
+ * each label on the left level with its piece. Earlier pieces paint on top (z-index).
+ * Always on a white panel (both themes): the product shots were lit on white, so their
+ * soft floor shadows read naturally there instead of as smudges on the dark card.
+ */
+function OutfitList() {
+  const pieces = outfit.pieces.filter((p) => p.src);
+  return (
+    <ul className="min-w-0 flex-1 rounded-2xl bg-white p-3" aria-label="Outfit">
+      {pieces.map((p, i) => (
+        <li
+          key={p.label}
+          className="relative flex items-center gap-3"
+          style={{ marginTop: i === 0 ? 0 : -p.tuck, zIndex: pieces.length - i }}
+        >
+          <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-[#1f2937]">{p.label}</span>
+          {/* Fixed-width column: the tee is 140px and every piece's `width` is % of that. */}
+          <span className="w-[140px] shrink-0 flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static transparent cutout */}
+            <img src={p.src!} alt="" className="h-auto" style={{ width: `${p.width}%` }} />
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** The screenshot-friendly summary: every stop, one row each. */
 function AtAGlance() {
   return (
@@ -307,18 +336,18 @@ export default function SpectatorGuide() {
       {/* 2. How to spot me */}
       <section className="card p-4">
         <SectionHeading>How to spot me</SectionHeading>
-        <div className="flex gap-4">
-          <ul className="flex-1 space-y-1.5 text-[15px] font-medium text-foreground/90">
-            {outfit.items.map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-accent shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="w-32 shrink-0">
-            <ImageSlot image={outfit.photo} tall />
-          </div>
+        <div className="flex gap-4 items-start">
+          <OutfitList />
+          {outfit.showPhoto && (
+            <div className="w-36 sm:w-44 shrink-0">
+              {outfit.photo.src ? (
+                /* eslint-disable-next-line @next/next/no-img-element -- static photo, natural aspect */
+                <img src={outfit.photo.src} alt={outfit.photo.label} className="w-full h-auto rounded-xl border border-edge" />
+              ) : (
+                <ImageSlot image={outfit.photo} tall />
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -344,6 +373,14 @@ export default function SpectatorGuide() {
           <div className="mt-1 text-[15px] font-semibold">
             <Val value={finish.meetingSpot} />
           </div>
+          {finish.meetingImage?.src && (
+            /* eslint-disable-next-line @next/next/no-img-element -- static map screenshot, natural aspect */
+            <img
+              src={finish.meetingImage.src}
+              alt={finish.meetingImage.label}
+              className="mt-2 mx-auto w-auto max-w-full h-auto max-h-72 rounded-xl border border-edge"
+            />
+          )}
           {finish.meetingMapsQuery && (
             <a
               href={mapsUrl(finish.meetingMapsQuery)}

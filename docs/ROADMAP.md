@@ -147,7 +147,12 @@
       spot Central Park West & W 75th St (+ Maps link); new after-finish text; optional
       Bedford stop and the Rules for spectators section removed. **Race Day is now the first
       Guide tab and the nav's Guide link opens it** (`/guide/travel` still works).
-- [ ] Before race day: add the outfit photo to `public/spectator/`, bump `UPDATED`.
+- [x] 2026-10-27 — Spectator guide pass 3: **How to spot me** is now a flat lay of the outfit
+      (hat → tee → shorts → shoes) from transparent WebP product cutouts on a white panel,
+      labels on the left, tee hem layered over the shorts (~42 KB total). The real outfit
+      photo (`outfit.jpg`, mirror selfie flipped) is kept but hidden (`outfit.showPhoto`).
+      Meetup map image added to the Meeting spot box.
+- [ ] Before race day: bump `UPDATED` in `src/data/spectator.ts` with any last edits.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped
