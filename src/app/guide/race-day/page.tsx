@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SpectatorGuide from "@/components/SpectatorGuide";
+import GuideTabs from "@/components/GuideTabs";
 import { race } from "@/data/spectator";
 
 const DESCRIPTION = `Where to stand, when to be there, and how to get to the next spot — ${race.name}, ${race.dateLabel}. Bib ${race.bib}.`;
@@ -32,5 +33,14 @@ export const metadata: Metadata = {
 };
 
 export default function RaceDayPage() {
-  return <SpectatorGuide />;
+  return (
+    <>
+      <SpectatorGuide />
+      {/* The Guide header row is hidden on this page (see GuideHeader), so the tabs live here. */}
+      <nav aria-label="More from the Guide" className="flex flex-col items-center gap-2 pt-4">
+        <span className="text-xs font-semibold text-foreground/70">More from the Guide</span>
+        <GuideTabs />
+      </nav>
+    </>
+  );
 }

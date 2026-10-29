@@ -1,8 +1,10 @@
 import { Fragment } from "react";
+import FoldControls from "@/components/FoldControls";
 import {
   TBD,
   UPDATED,
   race,
+  hero,
   tracking,
   outfit,
   stops,
@@ -16,6 +18,8 @@ import {
  * Race Day Spectator Guide (/guide/race-day). Written for non-runners on a phone, outdoors,
  * on patchy service: big bold times, high-contrast text, and a compact at-a-glance stop
  * list that fits in one screenshot. All content comes from src/data/spectator.ts.
+ * Sections are collapsible <details> (Fold); with the stop rows closed, "Where to cheer"
+ * is that one-screenshot summary. Look adapted from a friend's mock-up (hero, bib, rows).
  */
 
 const BE_THERE_MIN = 15;
@@ -91,109 +95,229 @@ function ImageSlot({ image, tall = false }: { image: SpectatorImage; tall?: bool
   );
 }
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-sm font-bold uppercase tracking-wide text-foreground/70 mb-3">{children}</h2>;
-}
-
 /** Display label: "Stop 1".."Stop 3" for main stops, "Optional" for the optional one. */
 function stopLabel(stop: SpectatorStop): string {
   if (stop.optional) return "Optional";
   return `Stop ${stops.filter((s) => !s.optional).indexOf(stop) + 1}`;
 }
 
-function StopBadge({ stop }: { stop: SpectatorStop }) {
+/** Round chevron for collapsible rows. `turn` is the group-open rotate class of the owning <details>. */
+function Chevron({ turn }: { turn: string }) {
   return (
-    <span
-      className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold ${
-        stop.optional ? "bg-soft text-foreground/80 border border-edge" : "bg-primary text-primary-contrast"
-      }`}
-    >
-      {stopLabel(stop)}
+    <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-soft text-foreground/70">
+      <svg viewBox="0 0 24 24" className={`h-4 w-4 fill-none stroke-current stroke-[2.3] transition-transform ${turn}`}>
+        <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </span>
   );
 }
 
-function StopCard({ stop }: { stop: SpectatorStop }) {
+/**
+ * A collapsible section card (native <details>, so it works with no JS). `data-rd-fold`
+ * hooks it up to the Expand all / Collapse all control (FoldControls).
+ */
+function Fold({
+  title,
+  open = false,
+  accent = false,
+  id,
+  bodyClassName = "p-4",
+  children,
+}: {
+  title: string;
+  open?: boolean;
+  accent?: boolean;
+  id?: string;
+  bodyClassName?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="card p-4 space-y-3">
-      <div>
-        <div className="flex items-center gap-2 flex-wrap">
-          <StopBadge stop={stop} />
-          <span className="text-sm font-semibold text-foreground/70">Mile ~{stop.mile}</span>
-          {stop.optionalNote && (
-            <span className="text-xs font-medium text-foreground/70">· {stop.optionalNote}</span>
-          )}
-        </div>
-        <h3 className="mt-1.5 text-lg font-bold leading-snug">{stop.name}</h3>
-        <p className="text-sm text-foreground/75">{stop.area}</p>
+    <details
+      id={id}
+      open={open}
+      data-rd-fold
+      className={`group/fold scroll-mt-16 overflow-hidden ${accent ? "rounded-2xl border-2 border-accent bg-card" : "card"}`}
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 active:bg-soft [&::-webkit-details-marker]:hidden">
+        <h2 className={`text-lg font-bold tracking-tight ${accent ? "text-orange-700 dark:text-accent" : ""}`}>{title}</h2>
+        <Chevron turn="group-open/fold:rotate-180" />
+      </summary>
+      <div className={`border-t ${accent ? "border-accent/30" : "border-edge"} ${bodyClassName}`}>{children}</div>
+    </details>
+  );
+}
+
+/** Badge color + line icon per stop, in course order (Brooklyn bridge, Manhattan towers, finish flag). */
+const STOP_STYLE = [
+  { color: "#265fce", icon: "M4 30h32M9 30V13h5v17M26 30V13h5v17M11 16c5 5 13 5 18 0M4 34h32" },
+  { color: "#fa629d", icon: "M4 32h32M7 32V17h8v15M15 32V8h11v24M26 32V15h8v17M19 13h3m-3 6h3m-3 6h3" },
+  { color: "#ff711f", icon: "M9 35V6m1 2h23l-4 7 4 7H10M10 15h19M17 8v7m7 0v7M9 35h15" },
+];
+
+/** Course map with the cartoon runner standing on the spot (`pin` = % of the image box). */
+function StopMap({ image }: { image: SpectatorImage }) {
+  if (!image.src) return <ImageSlot image={image} />;
+  const pin = image.pin;
+  return (
+    <figure>
+      <div className="relative mx-auto w-fit max-w-full overflow-hidden rounded-xl border border-edge">
+        {/* eslint-disable-next-line @next/next/no-img-element -- static map screenshot, natural aspect */}
+        <img src={image.src} alt={image.label} loading="lazy" className="block max-w-full h-auto max-h-72" />
+        {pin && (
+          /* eslint-disable-next-line @next/next/no-img-element -- small decorative sprite */
+          <img
+            src={hero.pin}
+            alt=""
+            loading="lazy"
+            className="pointer-events-none absolute w-[46px] h-auto"
+            style={{
+              left: `${pin.x}%`,
+              top: `${pin.y}%`,
+              transform: `translate(-50%, -95%)${pin.flip ? " scaleX(-1)" : ""}`,
+              filter: "drop-shadow(0 0 3px #fff) drop-shadow(0 2px 3px #0003)",
+            }}
+          />
+        )}
       </div>
+      <figcaption className="mt-1 text-xs text-foreground/70">{image.label}</figcaption>
+    </figure>
+  );
+}
 
-      <div className="grid grid-cols-2 gap-2">
-        <div className="rounded-xl bg-soft p-3">
-          <div className="text-xs font-semibold uppercase tracking-wide text-foreground/70">My ETA</div>
-          <div className="text-2xl font-bold tabular-nums">~{stop.eta}</div>
-        </div>
-        <div className="rounded-xl border-2 border-accent p-3">
-          <div className="text-xs font-semibold uppercase tracking-wide text-accent">Be in place by</div>
-          <div className="text-2xl font-bold tabular-nums">{beBy(stop.eta)}</div>
+/** One stop: the closed row is the at-a-glance summary (each fact once); open adds tips, map and next steps. */
+function StopRow({ stop, index }: { stop: SpectatorStop; index: number }) {
+  const style = STOP_STYLE[index % STOP_STYLE.length];
+  return (
+    <details open data-rd-fold className="group/stop border-t border-edge first:border-t-0">
+      <summary className="grid cursor-pointer list-none grid-cols-[40px_minmax(0,1fr)_32px] gap-x-3 px-4 py-4 active:bg-soft [&::-webkit-details-marker]:hidden">
+        <span
+          role="img"
+          aria-label={`${stopLabel(stop)}, ${stop.area}`}
+          className="relative row-span-2 grid h-10 w-10 place-items-center rounded-[11px] shadow-[inset_0_1px_0_#ffffff55,0_5px_11px_#0003]"
+          style={{ background: style.color }}
+        >
+          <svg viewBox="0 0 40 40" aria-hidden="true" className="h-6 w-6 fill-none stroke-white stroke-[2.4]">
+            <path d={style.icon} strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span
+            aria-hidden="true"
+            className="absolute -top-1.5 -right-1.5 grid h-[18px] w-[18px] place-items-center rounded-full border-2 border-white bg-[#071b3d] text-[10px] font-black text-white"
+          >
+            {stop.optional ? "+" : index + 1}
+          </span>
+        </span>
+        <span className="min-w-0">
+          <span className="block text-xs font-bold uppercase tracking-[0.07em] text-foreground/70">
+            Mile {stop.mile} · {stop.area}
+          </span>
+          <span className="mt-1 block text-lg font-bold leading-snug tracking-tight">{stop.name}</span>
+          {stop.optionalNote && <span className="block text-[13px] text-foreground/80">{stop.optionalNote}</span>}
+          <span className="mt-1 block text-sm text-foreground/85">
+            Stand on <Rich text={stop.side} />
+          </span>
+          <span className="block text-sm text-foreground/85">
+            Subway: <span className="font-semibold text-foreground">{stop.station}</span>
+          </span>
+        </span>
+        <Chevron turn="group-open/stop:rotate-180" />
+        <TimePair
+          times={[
+            { label: "Be there by", value: beBy(stop.eta), tone: "text-orange-700 dark:text-accent" },
+            { label: "I pass", value: `~${stop.eta}`, tone: "text-primary" },
+          ]}
+        />
+      </summary>
+
+      {/* Where, side, subway and times are all in the row above; open adds only what's new. */}
+      <div className="space-y-3 bg-soft px-4 pt-3 pb-4">
+        {stop.notes.length > 0 && (
+          <ul className="space-y-1.5 text-sm text-foreground/85 list-disc pl-5">
+            {stop.notes.map((n, i) => (
+              <li key={i}>
+                <Rich text={n} />
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <a
+          href={mapsUrl(stop.mapsQuery)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
+        >
+          📍 Open in Google Maps
+        </a>
+
+        {stop.images.map((img, i) => (
+          <StopMap key={i} image={img} />
+        ))}
+
+        <div className="rounded-xl border-l-4 border-primary bg-card p-3">
+          <div className="text-xs font-bold uppercase tracking-wide text-primary">Next →</div>
+          <p className="mt-0.5 text-[15px] text-foreground/90">
+            <Rich text={stop.next} />
+          </p>
         </div>
       </div>
+    </details>
+  );
+}
 
-      <dl className="space-y-2 text-[15px]">
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-foreground/70">Stand on</dt>
-          <dd className="text-foreground/90">
-            <Rich text={stop.side} />
-          </dd>
-        </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-foreground/70">Nearest subway</dt>
-          <dd className="text-foreground/90">{stop.station}</dd>
-        </div>
-      </dl>
+/** Two side-by-side times under a row's title, each a colored label over a bold time. */
+function TimePair({ times }: { times: { label: string; value: string; tone: string }[] }) {
+  return (
+    <span className="col-span-2 col-start-2 mt-2 grid grid-cols-2 gap-3 border-t border-edge pt-2">
+      {times.map((t) => (
+        <span key={t.label} className="min-w-0">
+          <span className={`block text-xs font-bold uppercase tracking-[0.07em] ${t.tone}`}>{t.label}</span>
+          <strong className="block text-lg leading-tight tabular-nums">{t.value}</strong>
+        </span>
+      ))}
+    </span>
+  );
+}
 
-      {stop.notes.length > 0 && (
-        <ul className="space-y-1.5 text-sm text-foreground/85 list-disc pl-5">
-          {stop.notes.map((n, i) => (
-            <li key={i}>
-              <Rich text={n} />
-            </li>
-          ))}
-        </ul>
-      )}
+/** Last row of Where to cheer: the post-race meetup (the whole "after the finish" story), so the closed rows cover the day. */
+function MeetupRow() {
+  return (
+    <details open data-rd-fold className="group/meet border-t border-edge">
+      <summary className="grid cursor-pointer list-none grid-cols-[40px_minmax(0,1fr)_32px] gap-x-3 px-4 py-4 active:bg-soft [&::-webkit-details-marker]:hidden">
+        <span aria-hidden="true" className="row-span-2 grid h-10 w-10 place-items-center rounded-[11px] bg-success text-xl">
+          🤝
+        </span>
+        <span className="min-w-0">
+          <span className="block text-xs font-bold uppercase tracking-[0.07em] text-foreground/70">
+            After the finish · Meet up
+          </span>
+          <span className="mt-1 block text-xl font-bold leading-tight tracking-tight">
+            <Val value={finish.meetingShort} />
+          </span>
+          <span className="mt-1 block text-sm text-foreground/85">{finish.note}</span>
+        </span>
+        <Chevron turn="group-open/meet:rotate-180" />
+        <TimePair
+          times={[
+            { label: "Meet at", value: finish.meetingTime, tone: "text-emerald-700 dark:text-success" },
+            { label: "I finish", value: finish.eta, tone: "text-primary" },
+          ]}
+        />
+      </summary>
 
-      <a
-        href={mapsUrl(stop.mapsQuery)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
-      >
-        📍 Open in Google Maps
-      </a>
-
-      {stop.images.map((img, i) =>
-        img.src ? (
-          <figure key={i}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- static map screenshot, natural aspect */}
-            <img
-              src={img.src}
-              alt={img.label}
-              className="mx-auto w-auto max-w-full h-auto max-h-72 rounded-xl border border-edge"
-            />
-            <figcaption className="mt-1 text-xs text-foreground/70">{img.label}</figcaption>
-          </figure>
-        ) : (
-          <ImageSlot key={i} image={img} />
-        ),
-      )}
-
-      <div className="rounded-xl border-l-4 border-primary bg-soft p-3">
-        <div className="text-xs font-bold uppercase tracking-wide text-primary">Next →</div>
-        <p className="mt-0.5 text-[15px] text-foreground/90">
-          <Rich text={stop.next} />
-        </p>
+      <div className="space-y-3 bg-soft px-4 pt-3 pb-4">
+        {finish.meetingImage && <StopMap image={finish.meetingImage} />}
+        {finish.meetingMapsQuery && (
+          <a
+            href={mapsUrl(finish.meetingMapsQuery)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
+          >
+            📍 Open in Google Maps
+          </a>
+        )}
       </div>
-    </section>
+    </details>
   );
 }
 
@@ -218,61 +342,11 @@ function OutfitList() {
           {/* Fixed-width column: the tee is 140px and every piece's `width` is % of that. */}
           <span className="w-[140px] shrink-0 flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element -- static transparent cutout */}
-            <img src={p.src!} alt="" className="h-auto" style={{ width: `${p.width}%` }} />
+            <img src={p.src!} alt="" loading="lazy" className="h-auto" style={{ width: `${p.width}%` }} />
           </span>
         </li>
       ))}
     </ul>
-  );
-}
-
-/** The screenshot-friendly summary: every stop, one row each. */
-function AtAGlance() {
-  return (
-    <section className="card p-4">
-      <SectionHeading>Stops at a glance</SectionHeading>
-      <ol className="divide-y divide-edge">
-        {stops.map((s) => (
-          <li key={s.name} className="py-2.5 first:pt-0 last:pb-0 flex items-start gap-3">
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2">
-                <StopBadge stop={s} />
-                <span className="text-xs font-semibold text-foreground/70">mi {s.mile}</span>
-              </div>
-              <div className="mt-1 font-bold leading-snug">{s.short}</div>
-              <div className="text-xs text-foreground/80">
-                <Rich text={s.side.replace(/\s*\(.*\)$/, "")} /> · {s.station}
-              </div>
-            </div>
-            <div className="text-right shrink-0">
-              <div className="text-xs font-semibold text-accent">be there</div>
-              <div className="text-lg font-bold tabular-nums leading-tight">{beBy(s.eta)}</div>
-              <div className="text-xs text-foreground/70 tabular-nums">I pass ~{s.eta}</div>
-            </div>
-          </li>
-        ))}
-        <li className="py-2.5 last:pb-0 flex items-start gap-3">
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2">
-              <span className="shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold bg-success text-success-contrast">
-                Meet up
-              </span>
-              <span className="text-xs font-semibold text-foreground/70">after the finish</span>
-            </div>
-            <div className="mt-1 font-bold leading-snug">{finish.meetingShort}</div>
-            <div className="text-xs text-foreground/80">I exit the park 20–30 min after finishing</div>
-          </div>
-          <div className="text-right shrink-0">
-            <div className="text-xs font-semibold text-success">meet at</div>
-            <div className="text-lg font-bold tabular-nums leading-tight">{finish.meetingTime}</div>
-            <div className="text-xs text-foreground/70 tabular-nums">I finish {finish.eta}</div>
-          </div>
-        </li>
-      </ol>
-      <p className="mt-3 pt-3 border-t border-edge text-xs text-foreground/80">
-        Bib <strong>{race.bib}</strong>
-      </p>
-    </section>
   );
 }
 
@@ -289,40 +363,104 @@ function mileRows() {
   return rows;
 }
 
+/** Title on a theme-aware sky, with the cartoon runner on an animated road (styles: .rd-* in globals.css). */
+function RaceHero() {
+  return (
+    <header className="rd-hero relative overflow-hidden rounded-2xl shadow-md">
+      <span className="rd-skyline" aria-hidden="true" />
+      <span className="rd-road" aria-hidden="true" />
+      <span className="rd-sign" aria-hidden="true">
+        NYC
+      </span>
+      <div className="relative sm:flex sm:items-end sm:justify-between">
+        <div className="px-5 pt-6 sm:pt-8 sm:pb-16 sm:pl-7">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--rd-eyebrow)]">
+            Race day · {race.dateLabel}
+          </p>
+          <h1 className="mt-2 text-[34px] sm:text-5xl font-extrabold leading-[1.05] tracking-tight">
+            {hero.titleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
+          <p className="mt-2 text-xs font-medium text-[var(--rd-muted)]">Spectator guide · Updated {UPDATED}</p>
+        </div>
+        <div className="flex justify-center pt-3 sm:pt-6 sm:pr-12">
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcSet={hero.runnerStill} />
+            <img src={hero.runner.src ?? hero.runnerStill} alt={hero.runner.label} className="rd-runner" width={288} height={384} />
+          </picture>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+/** Start details styled as the real race bib: always paper-white, like the bib itself. */
+function RaceBib() {
+  return (
+    <section
+      aria-label="My race bib and start details"
+      className="overflow-hidden rounded-xl border-[6px] border-white bg-[#f5f7fb] text-[#111c36] shadow-md ring-1 ring-black/5"
+    >
+      <div className="flex items-center gap-2 border-b-2 border-[#e6eaf1] px-3 pt-2.5 pb-2">
+        <span className="rd-bib-mark shrink-0" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
+        <div className="min-w-0 text-[11px] font-black uppercase leading-tight tracking-[0.06em]">
+          {race.event}
+          <span className="mt-0.5 block font-semibold normal-case tracking-normal text-[#5b6780]">{race.dateLabel}</span>
+        </div>
+        <span className="ml-auto shrink-0 rounded bg-[#fce2ec] px-2 py-1 text-[11px] font-black uppercase tracking-[0.08em] text-[#aa245e]">
+          {race.wave}
+        </span>
+      </div>
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-x-2 px-4 pt-2.5 pb-3">
+        <span className="col-span-2 text-xs font-black uppercase tracking-[0.12em]">{race.fullName}</span>
+        <strong className="text-[clamp(56px,16vw,104px)] font-black leading-none tracking-[-0.06em] tabular-nums">
+          {race.bib}
+        </strong>
+        <span className="flex flex-col gap-1.5 pb-1 text-right">
+          <b className="whitespace-nowrap rounded-sm bg-[#f6a0bd] px-2 py-1 text-xs uppercase tracking-[0.05em] text-[#4f1332]">
+            {race.corral}
+          </b>
+          <b className="whitespace-nowrap rounded-sm bg-[#e5e9ef] px-2 py-1 text-xs tracking-[0.05em] text-[#17223b]">
+            {race.start}
+          </b>
+        </span>
+      </div>
+      <div className="flex justify-between gap-2 bg-[#102d65] px-4 py-2 text-xs text-[#edf5ff]">
+        <span>
+          Planned finish <strong className="text-white tabular-nums">{race.plannedFinish}</strong>
+        </span>
+        <span>
+          Halfway <strong className="text-white tabular-nums">{race.half}</strong>
+        </span>
+      </div>
+    </section>
+  );
+}
+
 export default function SpectatorGuide() {
   const mainStops = stops.filter((s) => !s.optional);
   const optionalStops = stops.filter((s) => s.optional);
 
   return (
     <div className="space-y-4">
-      {/* 1. Header + warning */}
-      <header className="rounded-2xl bg-gradient-to-br from-blue-800 via-blue-700 to-orange-600 dark:from-blue-950 dark:via-blue-900 dark:to-orange-900 text-white shadow-md p-4">
-        <h2 className="text-xl font-bold leading-tight">{race.title}</h2>
-        <p className="mt-1 text-sm font-medium text-white/90">
-          {race.name} · {race.dateLabel}
-        </p>
-        <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-          <div className="rounded-xl bg-white/15 py-2">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-white/85">Bib</div>
-            <div className="text-lg font-bold tabular-nums">{race.bib}</div>
-          </div>
-          <div className="rounded-xl bg-white/15 py-2">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-white/85">{race.wave}</div>
-            <div className="text-lg font-bold tabular-nums">{race.start}</div>
-          </div>
-          <div className="rounded-xl bg-white/15 py-2">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-white/85">Start</div>
-            <div className="text-lg font-bold">{race.corral.replace(/ start$/i, "")}</div>
-          </div>
-        </div>
-        <p className="mt-3 text-xs text-white/90">
-          Planned finish {race.plannedFinish} (halfway {race.half}) · Updated {UPDATED}
-        </p>
-      </header>
+      {/* 1. Hero + race bib */}
+      <RaceHero />
+      <RaceBib />
 
-      <section className="rounded-2xl border-2 border-accent bg-accent/10 p-4">
-        <div className="text-sm font-bold uppercase tracking-wide text-accent">📍 {tracking.title}</div>
-        <ol className="mt-3 space-y-4">
+      <div className="flex justify-end">
+        <FoldControls />
+      </div>
+
+      {/* 2. How to track me (open by default) */}
+      <Fold title={`📍 ${tracking.title}`} open accent>
+        <ol className="space-y-4">
           {tracking.steps.map((step, i) => (
             <li key={i} className="flex gap-3">
               <span className="shrink-0 h-7 w-7 grid place-items-center rounded-full bg-accent text-white text-sm font-bold">
@@ -340,6 +478,16 @@ export default function SpectatorGuide() {
                     className="w-full max-w-xs rounded-xl border border-edge"
                   />
                 )}
+                {"link" in step && step.link && (
+                  <a
+                    href={step.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-11 max-w-xs items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
+                  >
+                    {step.link.label} ↗
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -348,11 +496,21 @@ export default function SpectatorGuide() {
           <span className="font-semibold">⚠️ Times are estimates. </span>
           <Rich text={tracking.estimateNote} />
         </p>
-      </section>
+      </Fold>
 
-      {/* 2. How to spot me */}
-      <section className="card p-4">
-        <SectionHeading>How to spot me</SectionHeading>
+      {/* 3. Where to cheer (open by default): collapse the stop rows for a one-screenshot summary */}
+      <Fold title="Where to cheer" open bodyClassName="">
+        {mainStops.map((s, i) => (
+          <StopRow key={s.name} stop={s} index={i} />
+        ))}
+        {optionalStops.map((s, i) => (
+          <StopRow key={s.name} stop={s} index={mainStops.length + i} />
+        ))}
+        <MeetupRow />
+      </Fold>
+
+      {/* 4. How to spot me */}
+      <Fold title="How to spot me">
         <div className="flex gap-4 items-start">
           <OutfitList />
           {outfit.showPhoto && (
@@ -366,54 +524,10 @@ export default function SpectatorGuide() {
             </div>
           )}
         </div>
-      </section>
-
-      {/* 3. Recommended stops */}
-      <AtAGlance />
-      {mainStops.map((s) => (
-        <StopCard key={s.name} stop={s} />
-      ))}
-      {optionalStops.map((s) => (
-        <StopCard key={s.name} stop={s} />
-      ))}
-
-      {/* 4. After the finish */}
-      <section className="card p-4 space-y-2">
-        <SectionHeading>After the finish</SectionHeading>
-        <div className="text-[15px] text-foreground/90">
-          <span className="font-semibold">My estimated finish:</span>{" "}
-          <span className="text-lg font-bold tabular-nums">{finish.eta}</span>
-        </div>
-        <p className="text-[15px] text-foreground/90">{finish.note}</p>
-        <div className="rounded-xl border-2 border-primary p-3">
-          <div className="text-xs font-bold uppercase tracking-wide text-primary">Meeting spot</div>
-          <div className="mt-1 text-[15px] font-semibold">
-            <Val value={finish.meetingSpot} />
-          </div>
-          {finish.meetingImage?.src && (
-            /* eslint-disable-next-line @next/next/no-img-element -- static map screenshot, natural aspect */
-            <img
-              src={finish.meetingImage.src}
-              alt={finish.meetingImage.label}
-              className="mt-2 mx-auto w-auto max-w-full h-auto max-h-72 rounded-xl border border-edge"
-            />
-          )}
-          {finish.meetingMapsQuery && (
-            <a
-              href={mapsUrl(finish.meetingMapsQuery)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-contrast py-2.5 text-sm font-semibold"
-            >
-              📍 Open in Google Maps
-            </a>
-          )}
-        </div>
-      </section>
+      </Fold>
 
       {/* 5. Full mile-by-mile ETAs */}
-      <section className="card p-4">
-        <SectionHeading>Mile-by-mile ETAs</SectionHeading>
+      <Fold title="Mile-by-mile ETAs">
         <div className="overflow-x-auto -mx-1">
           <table className="w-full text-sm">
             <thead>
@@ -447,7 +561,7 @@ export default function SpectatorGuide() {
             </tbody>
           </table>
         </div>
-      </section>
+      </Fold>
     </div>
   );
 }

@@ -66,7 +66,15 @@ Bottom nav: Today · Plan · Progress · Summary · Guide.
 - `/guide/travel`, `/guide/fueling`, `/guide/paces` — reference content from
   `src/data/reference.json` (travel has the A/B/C `ScenarioPicker`)
 - `/guide/race-day` — Race Day Spectator Guide for family/friends (`SpectatorGuide`),
-  content from hand-edited `src/data/spectator.ts`; static, no store/auth needed
+  content from hand-edited `src/data/spectator.ts`; static, no store/auth needed.
+  Since 2026-10-28: a hero (cartoon runner on an animated road, `.rd-*` styles in
+  `globals.css`) + race-bib card, then collapsible `<details>` sections (`Fold`): How to
+  track me + Where to cheer open, How to spot me + mile table closed, with an Expand/Collapse
+  all button (`FoldControls`, the page's only client JS besides the Guide tabs). Where to
+  cheer = one row per stop (`StopRow`) + the meetup row; each row's closed state is the
+  at-a-glance summary, opening adds tips, Maps link, course map with the runner pinned on
+  the spot, and next-stop directions. The Guide title/tabs row is hidden on this page
+  (`GuideHeader`) and the tabs render at the page's foot instead.
 
 ## Garmin auto-sync (Strava bridge)
 

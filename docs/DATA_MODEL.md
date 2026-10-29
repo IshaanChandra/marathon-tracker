@@ -78,6 +78,14 @@ converter: edit it directly. Exports `race`, `tracking`, `outfit`, `stops[]` (ma
 `UPDATED`, and the `TBD` sentinel for unknown values. Photos go in `public/spectator/` and
 are referenced by `src` (null = "Photo coming" placeholder).
 
+Added 2026-10-28: `hero` (title lines, animated runner `runner-run.webp` + still frame for
+Reduce Motion, map pin sprite `runner-pin.webp`); `race.event` / `race.fullName` for the bib
+card; optional `pin: { x, y, flip? }` on a `SpectatorImage` (course maps + meetup map) = where
+the runner's feet land, in % of the image box (`flip` faces it left, e.g. westbound on
+Central Park South); `finish.meetingShort` / `meetingTime` for the meetup row; optional
+`link: { label, href }` on a tracking step (App Store button). `finish.note` is shown on the
+meetup row (the separate After the finish section was removed).
+
 Outfit flat lay: `outfit.pieces[]` are transparent WebP cutouts (`fit-*.webp`), each with
 `width` (% of the 140px tee column) and `tuck` (px pulled up under the piece above). They
 were cut from product shots on flat backgrounds: flood-fill from the border, and for the

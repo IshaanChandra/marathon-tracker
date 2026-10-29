@@ -154,6 +154,16 @@
       Meetup map image added to the Meeting spot box.
 - [x] 2026-10-27 — Spectator guide `UPDATED` → Oct 27; README feature entry added; source
       images (originals) moved out of the repo folder to the macOS Trash.
+- [x] 2026-10-28 — Spectator guide: meetup moved to **Columbus Ave & W 75th St** (spectators
+      can't reach Central Park West), exit note + Maps link updated, new meetup screenshot.
+- [x] 2026-10-28 — Spectator guide restyle from a friend's mock-up: animated cartoon-runner
+      hero + race-bib card; collapsible sections with Expand/Collapse all; Where to cheer rows
+      (closed = at-a-glance summary, each fact once) + meetup row with map; cartoon runner
+      pinned on every stop map and the meetup map; After the finish merged into the meetup
+      row; App Store button on How to track me; stop 1 renamed "Lafayette Ave at Ashland Pl";
+      stop 3 side "(runners' left)"; Guide header hidden on this page (tabs at the foot);
+      contrast, 44px tap targets, lazy-loaded images. Overview of her code: Claude Doc
+      "Friend's Marathon Guide — Code Review & Revamp Overview".
 - [ ] If anything changes before race day: edit `src/data/spectator.ts` and bump `UPDATED`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
@@ -193,3 +203,7 @@
   maps, meetup spot + map, Bedford stop and spectator-rules removed, Race Day made the first
   Guide tab, outfit flat lay from product cutouts. Workflow change: changes are now shown
   locally for approval before commit/push (push auto-deploys to the live site).
+- **2026-10-28** — Meetup moved to Columbus Ave & 75th. Reviewed a friend's static mock-up
+  (`~/Downloads/ishaan-marathon-guide`) and rebuilt its look into the Race Day page in
+  previewed steps (hero + bib → collapsible rows + map pins → de-duplication → review fixes).
+  Race in 4 days.

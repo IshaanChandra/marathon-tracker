@@ -183,3 +183,18 @@ Append-only. Newest at the bottom. Format: date — decision — why.
   deriving ETAs from start time + pace: the brief's times are hand-picked and kept verbatim.
   Tab label is the short "Race Day" with the page titled "Race Day Spectator Guide". The full
   label can't fit at 390px, so the Guide header row was allowed to wrap (user-approved edit).
+
+- **2026-10-28 — Race Day page restyled from a friend's mock-up by rebuilding, not pasting.**
+  A friend sent a static HTML/CSS version (hero with an animated cartoon of Ishaan, bib card,
+  collapsible stop rows, runner pinned on maps). We ported its look into `SpectatorGuide`,
+  still driven by `spectator.ts`, rather than including her files: her CSS restyled global
+  selectors, was dark-only, used 8–10px text, ~3.4 MB of PNGs, and stale content (old
+  meeting spot). Choices (Ishaan's): follow the site's light/dark toggle (hero sky + bib
+  colors are theme-aware; the road and bib stay fixed); How to track me + Where to cheer
+  open by default, the rest collapsed, with Expand/Collapse all; keep the outfit flat lay;
+  hide the Guide header on this page only (tabs moved to the page foot) instead of a
+  full-screen page, which would have lost the nav's theme toggle. Native `<details>` so
+  folding works without JS. Each fact appears once: the closed stop row holds place, side,
+  subway and times; opening adds only tips, map and directions; After the finish merged into
+  the meetup row. Art re-encoded to WebP (runner APNG 1.06 MB → 150 KB). Orange/green
+  labels use darker shades in light mode for outdoor contrast; buttons are ≥ 44px.

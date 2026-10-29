@@ -27,6 +27,9 @@ export const UPDATED = "Oct 28, 2026";
 export interface SpectatorImage {
   label: string;
   src: string | null;
+  /** Course maps only: where the cartoon runner stands, as % of the image's width/height
+   *  (the runner's feet land on this point). `flip` makes it face left. */
+  pin?: { x: number; y: number; flip?: boolean };
 }
 
 export interface SpectatorStop {
@@ -58,6 +61,19 @@ export const race = {
   corral: "Pink start",
   plannedFinish: "3:47:34",
   half: "1:54:02",
+  /** Full names as printed on the bib card. */
+  event: "2026 TCS New York City Marathon",
+  fullName: "Ishaan Chandra",
+};
+
+/** Hero banner: a cartoon of me (drawn by a friend) running on an animated road. */
+export const hero = {
+  titleLines: ["Ishaan's", "Marathon Guide"],
+  runner: { label: "Cartoon of Ishaan running in his race outfit", src: "/spectator/runner-run.webp" } as SpectatorImage,
+  /** Still frame shown instead when the phone's Reduce Motion setting is on. */
+  runnerStill: "/spectator/runner-still.webp",
+  /** Small runner pinned on each stop's course map (see `pin` on stops[].images). */
+  pin: "/spectator/runner-pin.webp",
 };
 
 /** "How to track me" section: the official app + live tracking, with two screenshots. */
@@ -69,6 +85,7 @@ export const tracking = {
     {
       text: "Download the **New York Road Runners** app.",
       image: { label: "New York Road Runners app in the App Store", src: "/spectator/app-store.jpg" } as SpectatorImage,
+      link: { label: "Open in the App Store", href: "https://apps.apple.com/us/app/new-york-road-runners/id6742177802" },
     },
     {
       text: "Open the app, tap **Track**, and search event **2026 TCS New York City Marathon** and runner name: **Ishaan Chandra**. Tap the ⭐ star to save it.",
@@ -100,7 +117,7 @@ export const outfit = {
 
 export const stops: SpectatorStop[] = [
   {
-    name: "Lafayette Ave between Flatbush Ave and Ashland Pl",
+    name: "Lafayette Ave at Ashland Pl",
     area: "Fort Greene, Brooklyn",
     short: "Lafayette Ave",
     mile: 8.3,
@@ -109,7 +126,7 @@ export const stops: SpectatorStop[] = [
     station: "DeKalb Av (Q)",
     mapsQuery: "Lafayette Ave & Ashland Pl, Brooklyn, NY",
     notes: [],
-    images: [{ label: "Course map around Lafayette Ave", src: "/spectator/stop1-map.jpg" }],
+    images: [{ label: "Course map around Lafayette Ave", src: "/spectator/stop1-map.jpg", pin: { x: 23.9, y: 60.9 } }],
     next:
       "Walk to DeKalb Av, take the **Q** uptown to **72 St**, then walk east on 72nd to 1st Ave. Stay on the west side of 1st Ave.",
   },
@@ -126,7 +143,7 @@ export const stops: SpectatorStop[] = [
       "If you're running late, you can go further north on 1st Ave to the 80s. I'll pass there a few minutes later.",
       "Some 72 St stairways may be entrance-only or exit-only on race day.",
     ],
-    images: [{ label: "Course map along 1st Ave", src: "/spectator/stop2-map.jpg" }],
+    images: [{ label: "Course map along 1st Ave", src: "/spectator/stop2-map.jpg", pin: { x: 62.4, y: 52.5 } }],
     next: "Take the **Q** from 72 St to **57 St–7 Av**, then walk to Central Park South & 7th Ave.",
   },
   {
@@ -135,12 +152,13 @@ export const stops: SpectatorStop[] = [
     short: "Central Park S",
     mile: 25.6,
     eta: "1:28 PM",
-    side: "**South side**",
+    side: "**South side** (runners' left)",
     station: "57 St–7 Av (N/Q/R)",
     mapsQuery: "Central Park South & 7th Ave, New York, NY",
     notes: [],
-    images: [{ label: "Course map around Central Park South", src: "/spectator/stop3-map.jpg" }],
-    next: "Head to the meeting spot: **Columbus Ave & W 75th St** (see After the finish).",
+    // Runners head west along Central Park South here, so the runner faces left.
+    images: [{ label: "Course map around Central Park South", src: "/spectator/stop3-map.jpg", pin: { x: 38.8, y: 57.5, flip: true } }],
+    next: "Head to the meeting spot: **Columbus Ave & W 75th St** (see Meet up below).",
   },
 ];
 
@@ -153,7 +171,12 @@ export const finish = {
   meetingShort: "Columbus Ave & 75th",
   meetingTime: "~2:00 PM",
   meetingMapsQuery: "Columbus Ave & W 75th St, New York, NY",
-  meetingImage: { label: "Meeting spot at Columbus Ave & W 75th St", src: "/spectator/meetup-map.jpg" } as SpectatorImage,
+  // Shown on the meetup row in Where to cheer; the runner stands on the Columbus & W 75th corner.
+  meetingImage: {
+    label: "Meeting spot at Columbus Ave & W 75th St",
+    src: "/spectator/meetup-map.jpg",
+    pin: { x: 24, y: 39.5 },
+  } as SpectatorImage,
 };
 
 /** Full mile-by-mile ETAs. `mile` is the sort key (Half = 13.1, Finish = 26.2). */
