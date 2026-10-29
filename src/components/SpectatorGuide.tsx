@@ -251,9 +251,26 @@ function AtAGlance() {
             </div>
           </li>
         ))}
+        <li className="py-2.5 last:pb-0 flex items-start gap-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <span className="shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold bg-success text-success-contrast">
+                Meet up
+              </span>
+              <span className="text-xs font-semibold text-foreground/70">after the finish</span>
+            </div>
+            <div className="mt-1 font-bold leading-snug">{finish.meetingShort}</div>
+            <div className="text-xs text-foreground/80">I exit the park 20–30 min after finishing</div>
+          </div>
+          <div className="text-right shrink-0">
+            <div className="text-xs font-semibold text-success">meet at</div>
+            <div className="text-lg font-bold tabular-nums leading-tight">{finish.meetingTime}</div>
+            <div className="text-xs text-foreground/70 tabular-nums">I finish {finish.eta}</div>
+          </div>
+        </li>
       </ol>
       <p className="mt-3 pt-3 border-t border-edge text-xs text-foreground/80">
-        Finish ~{finish.eta.replace("~", "")} · Bib <strong>{race.bib}</strong>
+        Bib <strong>{race.bib}</strong>
       </p>
     </section>
   );

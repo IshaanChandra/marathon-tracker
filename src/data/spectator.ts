@@ -22,7 +22,7 @@
 /** Sentinel for "not known yet" — renders as a visible placeholder chip. */
 export const TBD = "TBD";
 
-export const UPDATED = "Oct 27, 2026";
+export const UPDATED = "Oct 28, 2026";
 
 export interface SpectatorImage {
   label: string;
@@ -140,16 +140,20 @@ export const stops: SpectatorStop[] = [
     mapsQuery: "Central Park South & 7th Ave, New York, NY",
     notes: [],
     images: [{ label: "Course map around Central Park South", src: "/spectator/stop3-map.jpg" }],
-    next: "Head to the meeting spot: **Central Park West & W 75th St** (see After the finish).",
+    next: "Head to the meeting spot: **Columbus Ave & W 75th St** (see After the finish).",
   },
 ];
 
 export const finish = {
   eta: "~1:33 PM",
-  note: "I will exit on Central Park West between 74th-76th. It will take me 20-30 minutes to exit the park after finishing.",
-  meetingSpot: "**Central Park West & W 75th St**",
-  meetingMapsQuery: "Central Park West & W 75th St, New York, NY",
-  meetingImage: { label: "Meeting spot on Central Park West at W 75th St", src: "/spectator/meetup-map.jpg" } as SpectatorImage,
+  note: "I will exit on Columbus Ave between 74th-76th. It will take me 20-30 minutes to exit the park after finishing.",
+  // Spectators can't reach Central Park West on race day, so meet one block west.
+  meetingSpot: "**Columbus Ave & W 75th St**",
+  /** For the at-a-glance list: short name + when to meet (finish ~1:33 + 20-30 min to exit). */
+  meetingShort: "Columbus Ave & 75th",
+  meetingTime: "~2:00 PM",
+  meetingMapsQuery: "Columbus Ave & W 75th St, New York, NY",
+  meetingImage: { label: "Meeting spot at Columbus Ave & W 75th St", src: "/spectator/meetup-map.jpg" } as SpectatorImage,
 };
 
 /** Full mile-by-mile ETAs. `mile` is the sort key (Half = 13.1, Finish = 26.2). */
