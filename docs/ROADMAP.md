@@ -164,7 +164,10 @@
       stop 3 side "(runners' left)"; Guide header hidden on this page (tabs at the foot);
       contrast, 44px tap targets, lazy-loaded images. Overview of her code: Claude Doc
       "Friend's Marathon Guide — Code Review & Revamp Overview".
-- [ ] If anything changes before race day: edit `src/data/spectator.ts` and bump `UPDATED`.
+- [x] 2026-10-28 — Spectator guide polish: "Updated …" date removed from the hero; Where to
+      cheer stops (+ meetup) are separate cards with a left stripe in each stop's color; all
+      four start collapsed so the section opens as the compact summary.
+- [ ] If anything changes before race day: edit `src/data/spectator.ts`.
 - [ ] User to set `CRON_SECRET` in Vercel + redeploy so the weekly cron registers and the
       `/api/push/weekly` route is authenticated (unset = route open; cron still fires).
 - [ ] Deferred: training journal, milestone celebrations (race-day pacing card shipped

@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import FoldControls from "@/components/FoldControls";
 import {
   TBD,
-  UPDATED,
   race,
   hero,
   tracking,
@@ -188,7 +187,11 @@ function StopMap({ image }: { image: SpectatorImage }) {
 function StopRow({ stop, index }: { stop: SpectatorStop; index: number }) {
   const style = STOP_STYLE[index % STOP_STYLE.length];
   return (
-    <details open data-rd-fold className="group/stop border-t border-edge first:border-t-0">
+    <details
+      data-rd-fold
+      className="group/stopoverflow-hidden rounded-xl border border-l-4 border-edge bg-card"
+      style={{ borderLeftColor: style.color }}
+    >
       <summary className="grid cursor-pointer list-none grid-cols-[40px_minmax(0,1fr)_32px] gap-x-3 px-4 py-4 active:bg-soft [&::-webkit-details-marker]:hidden">
         <span
           role="img"
@@ -281,7 +284,11 @@ function TimePair({ times }: { times: { label: string; value: string; tone: stri
 /** Last row of Where to cheer: the post-race meetup (the whole "after the finish" story), so the closed rows cover the day. */
 function MeetupRow() {
   return (
-    <details open data-rd-fold className="group/meet border-t border-edge">
+    <details
+      data-rd-fold
+      className="group/meetoverflow-hidden rounded-xl border border-l-4 border-edge bg-card"
+      style={{ borderLeftColor: "var(--success)" }}
+    >
       <summary className="grid cursor-pointer list-none grid-cols-[40px_minmax(0,1fr)_32px] gap-x-3 px-4 py-4 active:bg-soft [&::-webkit-details-marker]:hidden">
         <span aria-hidden="true" className="row-span-2 grid h-10 w-10 place-items-center rounded-[11px] bg-success text-xl">
           🤝
@@ -384,7 +391,7 @@ function RaceHero() {
               </span>
             ))}
           </h1>
-          <p className="mt-2 text-xs font-medium text-[var(--rd-muted)]">Spectator guide · Updated {UPDATED}</p>
+          <p className="mt-2 text-xs font-medium text-[var(--rd-muted)]">Spectator guide</p>
         </div>
         <div className="flex justify-center pt-3 sm:pt-6 sm:pr-12">
           <picture>
@@ -498,8 +505,8 @@ export default function SpectatorGuide() {
         </p>
       </Fold>
 
-      {/* 3. Where to cheer (open by default): collapse the stop rows for a one-screenshot summary */}
-      <Fold title="Where to cheer" open bodyClassName="">
+      {/* 3. Where to cheer (open by default; stop rows start closed = the one-screenshot summary) */}
+      <Fold title="Where to cheer" open bodyClassName="space-y-3 bg-soft p-3">
         {mainStops.map((s, i) => (
           <StopRow key={s.name} stop={s} index={i} />
         ))}

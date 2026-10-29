@@ -8,7 +8,8 @@
  * - Wrap text in **double asterisks** to make it bold on the page (used for train lines).
  * - Times are plain strings like "10:58 AM". "Be in place by" is computed automatically
  *   as 15 minutes before each stop's `eta`, so change only the `eta`.
- * - Bump `UPDATED` whenever you change something, so viewers know they have the latest.
+ * - `UPDATED` is no longer shown on the page (removed from the hero 2026-10-28); bumping it
+ *   is optional bookkeeping.
  *
  * Photos: drop image files into `public/spectator/` and set the matching `src`, e.g.
  *   src: "/spectator/stop1-street.jpg"

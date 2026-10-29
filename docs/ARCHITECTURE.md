@@ -71,7 +71,8 @@ Bottom nav: Today · Plan · Progress · Summary · Guide.
   `globals.css`) + race-bib card, then collapsible `<details>` sections (`Fold`): How to
   track me + Where to cheer open, How to spot me + mile table closed, with an Expand/Collapse
   all button (`FoldControls`, the page's only client JS besides the Guide tabs). Where to
-  cheer = one row per stop (`StopRow`) + the meetup row; each row's closed state is the
+  cheer = one card per stop (`StopRow`, left stripe in the stop's color) + the meetup card,
+  all collapsed by default; each card's closed state is the
   at-a-glance summary, opening adds tips, Maps link, course map with the runner pinned on
   the spot, and next-stop directions. The Guide title/tabs row is hidden on this page
   (`GuideHeader`) and the tabs render at the page's foot instead.
